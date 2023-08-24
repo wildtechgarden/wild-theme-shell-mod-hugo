@@ -5,7 +5,7 @@ Wild Tech 'Garden's future theme of choice.
 ## CI Status
 
 [![pre-commit.ci
-status](https://results.pre-commit.ci/badge/github/wildtechgarden/a-wild-theme-mod-hugo/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/a-wild-theme-mod-hugo/main)
+status](https://results.pre-commit.ci/badge/github/wildtechgarden/wild-theme-shell-mod-hugo/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/wild-theme-shell-mod-hugo/main)
 
 ## Site
 

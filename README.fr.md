@@ -5,7 +5,7 @@ Le thème de choix future de Wild Tech 'Garden'
 ## Statut IC
 
 [![pre-commit.ci
-statut](https://results.pre-commit.ci/badge/github/wildtechgarden/a-wild-theme-mod-hugo/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/a-wild-theme-mod-hugo/main)
+statut](https://results.pre-commit.ci/badge/github/wildtechgarden/wild-theme-shell-mod-hugo/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/wild-theme-shell-mod-hugo/main)
 
 ## Site
 
