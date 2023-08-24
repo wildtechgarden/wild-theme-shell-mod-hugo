@@ -27,7 +27,7 @@
 {{- end -}}
 {{- block "head-meta" . -}}
 <head>
-{{- if templates.Exists "partial/output-wtg-awt/head-contents.html" }}
+{{- if templates.Exists "partials/output-wtg-awt/head-contents.html" }}
 {{ partial "output-wtg-awt/head-contents.html" . -}}
 {{- else }}
 {{ hugo.Generator -}}
