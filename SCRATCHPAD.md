@@ -62,12 +62,6 @@ Defaults to not adding a class to the body. Setting the
 `bodyClass` param as described above, will add the
 string provided as a class to the `<body>` element.
 
-### Body wrapper class
-
-If the page has a `<div class="body-wrapper">` element (the default), then
-setting the `bodyWrapperClass` param will use string provided as the
-class(es) for that wrapper `<div>`.
-
 ### Omit page header
 
 The page can be hidden via param (user) by setting `omitPageHeader`
@@ -81,13 +75,13 @@ class(es) for that `<header>`.
 
 ### Body main class
 
-If the page has a `<div class="body-main">` element (the default), then
+If the page has a `<main class="body-main">` element (the default), then
 setting the `bodyMainClass` param will use string provided as the
 class(es) for that `<div>`.
 
 ### Body main id
 
-If the page has a `<div class="body-main" id="content">` element (the default),
+If the page has a `<main class="body-main" id="content">` element (the default),
 then setting the `bodyMainId` param will use string provided as the
 id for that `<div>`.
 
@@ -104,10 +98,6 @@ partial "helpers-wtg-awt/above-html-setup.html" (if it exists)
 	</head>
 	end
 	<body…>
-	block "body-wrapper-start"
-	default:
-	<div class="body-wrapper">
-	end
 	block "body-header"
 	default:
 	<header class="body-header">
@@ -122,15 +112,15 @@ partial "helpers-wtg-awt/above-html-setup.html" (if it exists)
 		<h1>"output-wtg-awt/page-title.html" partial (cached by page)</h1> if present,
 		else {{ .Title }}
 	end
-		<div class="body-main" id="content">
-	block "main"
+		<main class="body-main" id="content">
+	block "main-content"
 	default:
 	end
 	block "navigation-in-main"
 	default:
 		"output-wtg-awt/page-navigation.html" if present (cached by page)
 	end
-		</div>
+		</main>
 	block "navigation-below-main"
 	default:
 	end
@@ -144,10 +134,6 @@ partial "helpers-wtg-awt/above-html-setup.html" (if it exists)
 	end
 	block "footer-separated"
 	default:
-	end
-	block "body-wrapper-end"
-	default:
-	</div>
 	end
 	</body>
 </html>

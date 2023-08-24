@@ -36,16 +36,6 @@
 </head>
 {{- end }}
 <body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
-{{- block "body-wrapper-start" . }}
-{{- $bodyWrapperClass := "body-wrapper" -}}
-{{- if isset site.Params "bodywrapperclass" -}}
-	{{- $bodyWrapperClass = site.Params.bodyWrapperClass -}}
-	{{- if isset .Page.Params "bodywrapperclass" -}}
-		{{- $bodyWrapperClass = .Page.Params.bodyWrapperClass -}}
-	{{- end -}}
-{{- end }}
-<div{{ with $bodyWrapperClass }} class ="{{ . }}"{{ end }}>
-{{- end -}}
 {{- block "body-header" . }}
 	{{- $omitPageHeader := false -}}
 	{{- if isset site.Params "omitpageheader" -}}
@@ -69,21 +59,6 @@
 		{{- end -}}
 	{{- end -}}
 {{- end -}}
-{{- block "body-after-header-top" . }}
-{{- $bodyAfterHeaderClass := "body-after-header" -}}
-{{- if isset site.Params "bodyafterheaderclass" -}}
-	{{- $bodyAfterHeaderClass = site.Params.bodyAfterHeaderClass -}}
-	{{- if isset .Page.Params "bodyafterheaderclass" -}}
-		{{- $bodyAfterHeaderClass = .Page.Params.bodyAfterHeaderClass -}}
-	{{- end -}}
-{{- end }}
-<div{{ with $bodyAfterHeaderClass }} class="{{ . }}"{{ end }}>
-	<h1>
-		{{- if templates.Exists "partials/output-wtg-awt/page-title.html" }}
-		{{- partialCached "output-wtg-awt/page-title.html" . . -}}
-		{{ else }}{{- .Title -}}{{ end -}}
-	</h1>
-{{- end }}
 {{- $bodyMainClass := "body-main" -}}
 {{- if isset site.Params "bodymainclass" -}}
 	{{- $bodyMainClass = site.Params.bodyMainClass -}}
@@ -98,29 +73,28 @@
 		{{- $bodyMainId = .Page.Params.bodyMainId -}}
 	{{- end -}}
 {{- end }}
-	<div{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="content"{{ end }}>
-{{- block "main" . }}
+<main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="content"{{ end }}>
+{{- block "main-title" . }}
+	<h1>
+		{{- if templates.Exists "partials/output-wtg-awt/page-title.html" }}
+		{{- partialCached "output-wtg-awt/page-title.html" . . -}}
+		{{ else }}{{- .Title -}}{{ end -}}
+	</h1>
+{{- end }}
+{{- block "main-content" . }}
 {{- end }}
 {{- block "navigation-in-main" . -}}
 	{{- if templates.Exists "partials/output-wtg-awt/page-navigation.html" -}}
 		{{- partialCached "output-wtg-awt/page-navigation.html" . . }}
 	{{- end }}
-{{- end -}}
-	</div>
+{{- end }}
+</main>
 {{- block "navigation-below-main" . -}}
 {{- end -}}
 {{- block "footer-after-main" . -}}
-{{- if templates.Exists "partials/output-wtg-awt/footer.html" -}}
-	{{- partialCached "output-wtg-awt/footer.html" . . }}
+{{- if templates.Exists "partials/output-wtg-awt/footer-after-main.html" -}}
+	{{- partialCached "output-wtg-awt/footer-after-main.html" . . }}
 {{- end -}}
-{{- end -}}
-{{- block "body-after-header-bottom" . }}
-</div>
-{{- end -}}
-{{- block "footer-separated" . }}
-{{- end -}}
-{{- block "body-wrapper-end" . }}
-</div>
 {{- end }}
 </body>
 </html>
