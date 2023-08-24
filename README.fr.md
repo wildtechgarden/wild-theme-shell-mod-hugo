@@ -1,4 +1,4 @@
-# Un thème sauvage á Hugo par Wild Tech 'Garden'
+# Un thème sauvage á Hugo de Wild Tech 'Garden'
 
 Le module Hugo enveloppe (coque) aux thèmes de Wild Tech 'Garden' (WTG) --
 très pré-alpha
@@ -21,5 +21,4 @@ TBD
 ## Colophon
 
 Copyright © 2023 Wild Tech 'Garden'  
-[Publié soul license Creative Commons Attribution-ShareAlike 4.0
-International](LICENSE)
+[Publié sous license MIT](LICENSE)
