@@ -1,0 +1,17 @@
+name = "Hugo theme shell for Wild Tech 'Garden'"
+copyright = "© 2023 Wild Tech 'Garden'"
+license = "MIT"
+licenselink = "https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/blob/main/LICENSE"
+description = "The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) -- very pre-alpha."
+homepage = "https://www.wtg-demos.ca/"
+tags = []
+features = []
+min_version = "0.117.0"
+extended = false
+summaryLength = "25"
+
+[author]
+name = "Daniel F. Dickinson for Wild Tech 'Garden'"
+homepage = "https://wildtechgarden.ca/about/"
+copyright = "© 2023 Wild Tech 'Garden'"
+email = "dfdpublic@wildtechgarden.ca"

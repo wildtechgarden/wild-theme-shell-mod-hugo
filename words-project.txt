@@ -22,6 +22,7 @@ goldmark
 hahahugo
 htmlvalidate
 lastmod
+licenselink
 muffet
 pageref
 rclone
