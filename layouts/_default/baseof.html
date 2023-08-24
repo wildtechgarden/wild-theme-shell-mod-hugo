@@ -30,7 +30,7 @@
 {{- if templates.Exists "partials/output-wtg-awt/head-contents.html" }}
 {{ partial "output-wtg-awt/head-contents.html" . -}}
 {{- else }}
-{{ hugo.Generator -}}
+{{ hugo.Generator }}
 <title>{{ .Title }}</title>
 {{- end }}
 </head>
@@ -82,12 +82,12 @@
 	</h1>
 {{- end }}
 {{- block "main-content" . }}
-{{- end }}
+{{- end -}}
 {{- block "navigation-in-main" . -}}
 	{{- if templates.Exists "partials/output-wtg-awt/page-navigation.html" -}}
 		{{- partialCached "output-wtg-awt/page-navigation.html" . . }}
-	{{- end }}
-{{- end }}
+	{{- end -}}
+{{- end -}}
 </main>
 {{- block "navigation-below-main" . -}}
 {{- end -}}
