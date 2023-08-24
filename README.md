@@ -14,7 +14,7 @@ TBD
 
 ## Repository URL
 
-<https://github.com/wildtechgarden/a-wild-theme-mod-hugo>
+<https://github.com/wildtechgarden/wild-theme-shell-mod-hugo>
 
 -------
 
