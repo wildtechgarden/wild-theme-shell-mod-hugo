@@ -11,6 +11,7 @@ SITESRC
 TDEWOLFF
 Werror
 Zgotmpl
+baseof
 curdir
 dontbreakthebackbutton
 errorf
