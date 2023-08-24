@@ -1,0 +1,9 @@
+{{ define "main" }}
+{{- .Content -}}
+{{- range .Data.Pages }}
+<ul>
+<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+</ul>
+{{- end -}}
+{{ end }}
+{{- /* Remove trailing newlines */ -}}

@@ -24,11 +24,11 @@ rm -rf "${SITEROOT}/public"
 
 echo "Building for audit in ${SITEROOT}/public for environment ${HUGO_ENV:-development}"
 
-export HUGO_MODULE_REPLACEMENTS="github.com/wildtechgarden/minimal-test-theme-hugo-wtg -> ../../minimal-test-theme-hugo-wtg, github.com/wildtechgarden/demo-test-site-hugo-wtg -> ../../demo-test-site-hugo-wtg, github.com/wildtechgarden/module-starter-hugo-wtg -> .."
+export HUGO_MODULE_REPLACEMENTS="github.com/wildtechgarden/wild-theme-shell-mod-hugo -> $(pwd)/../wild-theme-shell-mod-hugo, github.com/wildtechgarden/a-wild-theme-mod-hugo -> $(pwd)/../a-wild-theme-mod-hugo, github.com/wildtechgarden/demo-test-site-hugo-wtg -> $(pwd)/../wild-demo-test-site-hugo-wtg, github.com/wildtechgarden/module-starter-hugo-wtg -> $(pwd)/../module-starter-hugo-wtg"
 export HUGO_RESOURCEDIR="$(pwd)/resources"
 
 # shellcheck disable=2086
-if cd $(pwd)/tests/config && HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${SITEROOT}/public" --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} && [ -s "${SITEROOT}/public/index.html" ]; then
+if cd tests/config && HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${SITEROOT}/public" --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} && [ -s "${SITEROOT}/public/index.html" ]; then
 	# If hugo build succeeds, it is possible audit issues are present, check further
 	# Check for problem indicators (see https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184)
 	set +e

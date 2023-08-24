@@ -1,11 +1,13 @@
-name = "New Hugo module by Wild Tech 'Garden'"
+name = "'Wild' theme shell for Hugo by Wild Tech 'Garden'"
 copyright = "© 2023 Wild Tech 'Garden'"
-description = "TBD"
+description = """\
+The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) -- very pre-alpha\
+"""
 
 [module]
 [module.hugoVersion]
-min = "0.115.3"
-extended = false
+min = "0.117.0"
+extended = true
 
 [author]
 name = "Daniel F. Dickinson for Wild Tech 'Garden'"

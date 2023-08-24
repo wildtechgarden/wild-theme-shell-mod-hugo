@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../a-wild-theme-mod-hugo"
+		},
+		{
+			"path": "../../wild-demo-test-site-hugo-wtg"
+		},
+		{
+			"path": "../../minimal-test-theme-hugo-wtg"
+		}
+	],
+	"settings": {}
+}

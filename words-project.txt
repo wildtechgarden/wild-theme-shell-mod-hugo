@@ -4,6 +4,7 @@ ENABLEMISSINGTRANSLATIONPLACEHOLDERS
 HEREDOCS
 KEEPCOMMENTS
 RESOURCEDIR
+RewriteCond
 SITECONFIG
 SITEROOT
 SITESRC
@@ -12,7 +13,9 @@ Werror
 Zgotmpl
 curdir
 dontbreakthebackbutton
+errorf
 frontmatter
+isset
 jmooring
 github
 goldmark
@@ -23,6 +26,7 @@ muffet
 pageref
 rclone
 unminified
+warnf
 wcag
 wildtechgarden
 wtgdeml

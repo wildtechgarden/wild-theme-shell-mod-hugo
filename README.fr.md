@@ -1,19 +1,19 @@
-# Module nouveau á l'Hugo au Wild Tech 'Garden'
+# Un thème sauvage á Hugo par Wild Tech 'Garden'
 
-TBD
+Le thème de choix future de Wild Tech 'Garden'
 
 ## Statut IC
 
 [![pre-commit.ci
-statut](https://results.pre-commit.ci/badge/github/wildtechgarden/module-starter-hugo-wtg/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/module-starter-hugo-wtg/main)
+statut](https://results.pre-commit.ci/badge/github/wildtechgarden/a-wild-theme-mod-hugo/main.svg)](https://results.pre-commit.ci/latest/github/wildtechgarden/a-wild-theme-mod-hugo/main)
 
 ## Site
 
-<https://www.wtg-demos.ca>
+TBD
 
 ## URL du référentiel
 
-<https://github.com/wildtechgarden/new-mod-hugo-wtg>
+<https://github.com/wildtechgarden/a-wild-theme-mod-hugo>
 
 -------
 

@@ -1,0 +1,127 @@
+{{- /* Set some variables */ -}}
+{{- /* cSpell:ignore nojs, toplevelclass, bodyclass, omitbodywrapper, bodywrapperclass, omitpageheader, bodyheaderclass, bodyafterheaderclass, bodymainclass, bodymainid */ -}}
+{{- $topLevelClass := "no-js" -}}
+{{- if isset site.Params "toplevelclass" -}}
+	{{- $topLevelClass = site.Params.topLevelClass -}}
+	{{- if isset .Page.Params "toplevelclass" -}}
+		{{- $topLevelClass = .Page.Params.topLevelClass -}}
+	{{- end -}}
+{{- end }}
+{{- $bodyClass := "" -}}
+{{- if isset site.Params "bodyclass" -}}
+	{{- $bodyClass = site.Params.bodyClass -}}
+	{{- if isset .Page.Params "bodyClass" -}}
+		{{- $bodyClass = .Page.Params.bodyClass -}}
+	{{- end -}}
+{{- end -}}
+{{- if templates.Exists "partials/helpers-wtg-awt/above-html-setup.html" -}}
+	{{- partial "helpers-wtg-awt/above-html-setup.html" . -}}
+{{- end }}
+{{- /* The actual page; nothing should be emitted as page output before this
+		(warnf and errorf are okay).
+*/ -}}
+<!DOCTYPE html>
+<html {{ with $topLevelClass }}class="{{ . }}"{{ end }} lang="{{ $.Site.Language.Lang }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
+{{- if templates.Exists "partials/head.html" -}}
+	{{- warnf "This theme does not use 'partials/head.html'. Please review your layouts." -}}
+{{- end -}}
+{{- block "head-meta" . -}}
+<head>
+{{- if templates.Exists "partial/output-wtg-awt/head-contents.html" }}
+{{ partial "output-wtg-awt/head-contents.html" . -}}
+{{- else }}
+{{ hugo.Generator -}}
+<title>{{ .Title }}</title>
+{{- end }}
+</head>
+{{- end }}
+<body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
+{{- block "body-wrapper-start" . }}
+{{- $bodyWrapperClass := "body-wrapper" -}}
+{{- if isset site.Params "bodywrapperclass" -}}
+	{{- $bodyWrapperClass = site.Params.bodyWrapperClass -}}
+	{{- if isset .Page.Params "bodywrapperclass" -}}
+		{{- $bodyWrapperClass = .Page.Params.bodyWrapperClass -}}
+	{{- end -}}
+{{- end }}
+<div{{ with $bodyWrapperClass }} class ="{{ . }}"{{ end }}>
+{{- end -}}
+{{- block "body-header" . }}
+	{{- $omitPageHeader := false -}}
+	{{- if isset site.Params "omitpageheader" -}}
+		{{- $omitPageHeader = site.Params.omitPageHeader -}}
+		{{- if isset .Page.Params "omitpageheader" -}}
+			{{- $omitPageHeader = .Page.Params.omitPageHeader -}}
+		{{- end -}}
+	{{- end -}}
+	{{- $bodyHeaderClass := "body-header" -}}
+	{{- if isset site.Params "bodyheaderclass" -}}
+		{{- $bodyHeaderClass = site.Params.bodyHeaderClass -}}
+		{{- if isset .Page.Params "bodyheaderclass" -}}
+			{{- $bodyHeaderClass = .Page.Params.bodyHeaderClass -}}
+		{{- end -}}
+	{{- end -}}
+	{{- if templates.Exists "partials/output-wtg-awt/header.html" -}}
+		{{- if not $omitPageHeader }}
+<header{{ with $bodyHeaderClass }} class="{{ . }}"{{ end }}>
+			{{- partialCached "output-wtg-awt/header.html" . . }}
+</header>
+		{{- end -}}
+	{{- end -}}
+{{- end -}}
+{{- block "body-after-header-top" . }}
+{{- $bodyAfterHeaderClass := "body-after-header" -}}
+{{- if isset site.Params "bodyafterheaderclass" -}}
+	{{- $bodyAfterHeaderClass = site.Params.bodyAfterHeaderClass -}}
+	{{- if isset .Page.Params "bodyafterheaderclass" -}}
+		{{- $bodyAfterHeaderClass = .Page.Params.bodyAfterHeaderClass -}}
+	{{- end -}}
+{{- end }}
+<div{{ with $bodyAfterHeaderClass }} class="{{ . }}"{{ end }}>
+	<h1>
+		{{- if templates.Exists "partials/output-wtg-awt/page-title.html" }}
+		{{- partialCached "output-wtg-awt/page-title.html" . . -}}
+		{{ else }}{{- .Title -}}{{ end -}}
+	</h1>
+{{- end }}
+{{- $bodyMainClass := "body-main" -}}
+{{- if isset site.Params "bodymainclass" -}}
+	{{- $bodyMainClass = site.Params.bodyMainClass -}}
+	{{- if isset .Page.Params "bodymainclass" -}}
+		{{- $bodyMainClass = .Page.Params.bodyMainClass -}}
+	{{- end -}}
+{{- end }}
+{{- $bodyMainId := "content" -}}
+{{- if isset site.Params "bodymainid" -}}
+	{{- $bodyMainId = site.Params.bodyMainId -}}
+	{{- if isset .Page.Params "bodymainid" -}}
+		{{- $bodyMainId = .Page.Params.bodyMainId -}}
+	{{- end -}}
+{{- end }}
+	<div{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="content"{{ end }}>
+{{- block "main" . }}
+{{- end }}
+{{- block "navigation-in-main" . -}}
+	{{- if templates.Exists "partials/output-wtg-awt/page-navigation.html" -}}
+		{{- partialCached "output-wtg-awt/page-navigation.html" . . }}
+	{{- end }}
+{{- end -}}
+	</div>
+{{- block "navigation-below-main" . -}}
+{{- end -}}
+{{- block "footer-after-main" . -}}
+{{- if templates.Exists "partials/output-wtg-awt/footer.html" -}}
+	{{- partialCached "output-wtg-awt/footer.html" . . }}
+{{- end -}}
+{{- end -}}
+{{- block "body-after-header-bottom" . }}
+</div>
+{{- end -}}
+{{- block "footer-separated" . }}
+{{- end -}}
+{{- block "body-wrapper-end" . }}
+</div>
+{{- end }}
+</body>
+</html>
+{{- /* Remove trailing newlines */ -}}
