@@ -1,6 +1,7 @@
 # Un thème sauvage á Hugo par Wild Tech 'Garden'
 
-Le thème de choix future de Wild Tech 'Garden'
+Le module Hugo enveloppe (coque) aux thèmes de Wild Tech 'Garden' (WTG) --
+très pré-alpha
 
 ## Statut IC
 

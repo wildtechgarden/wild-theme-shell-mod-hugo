@@ -1,6 +1,7 @@
 # A Wild Theme for Hugo by Wild Tech 'Garden'
 
-Wild Tech 'Garden's future theme of choice.
+The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) --
+very pre-alpha.
 
 ## CI Status
 
