@@ -1,0 +1,26 @@
+{{- $ctx := . -}}
+{{- $destination := .Destination -}}
+{{- $page := .Page -}}
+{{- $plainText := .PlainText -}}
+{{- $text := .Text -}}
+{{- $title := .Title -}}
+{{- $absLink := site.Params.absLinkAll | default $page.Params.absLinkAll | default false -}}
+{{- $staticFallback := site.Params.staticFallbackLink | default $page.Params.staticFallbackLink | default false -}}
+
+{{- $destMap := partial "wtg-shell/helpers/get-link-destination.html" (dict
+	"Destination" $destination
+	"Page" $page
+	"getRemote" false
+	"absLink" $absLink
+	"remoteFallback" false
+	"staticFallback" $staticFallback
+	"isImageLink" false
+) -}}
+
+{{- with $destMap -}}
+	{{- if $destMap.Destination -}}
+<a href="{{ .Destination | safeURL }}"{{ with $title}} title="{{ . }}"{{ end }}>{{ $text | safeHTML }}</a>
+	{{- end -}}
+{{- else -}}
+	{{- errorf "Unable to find destination '%s' from page '%s'" $destination $page.TranslationKey -}}
+{{- end -}}

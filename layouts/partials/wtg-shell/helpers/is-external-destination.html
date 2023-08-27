@@ -1,0 +1,25 @@
+{{- $ctx := . -}}
+{{- $destination := .Destination -}}
+{{- $path := "" -}}
+{{- $fragment := "" -}}
+{{- $external := false -}}}
+{{- $inUrl := urls.Parse $destination -}}
+{{- $invalid := false -}}
+{{- with $inUrl -}}
+	{{- /* We treat absolute URLs (that include either (http/https and host) /* -}}
+	{{- /* or (mailto/etc and opaque target)) */ -}}
+	{{- /* as external as well as links beginning with ('//') */ -}}
+	{{- if or (and .Scheme .Host) (and .Scheme .Opaque) .Host -}}
+		{{- $external = true -}}
+	{{- else if and (not (and .Scheme .Host)) (not (and .Scheme .Opaque)) (not .Host) .Scheme -}}
+		{{- warnf "'%s' does not look like a valid link" $inUrl -}}
+		{{- $invalid = true -}}
+		{{- $external = true -}}
+	{{- end -}}
+{{- /* Hugo was unable to parse .Destination as a link */ -}}
+{{- else -}}
+	{{- warnf "'%s' does not parse as a valid link" $inUrl -}}
+	{{- $invalid = true -}}
+{{- end -}}
+{{- return (dict "isExternal" $external "invalid" $invalid) -}}
+{{- /* Remove trailing newlines */ -}}

@@ -1,0 +1,141 @@
+{{- $ctx := . -}}
+{{- $destination := .Destination -}}
+{{- $page := .Page -}}
+{{- /* Get remote resources (true/false). Currently /* -}}
+{{- /* does not support queries (?param1=val1&param2-val2…) */ -}}
+{{- $getRemote := .getRemote -}}
+{{- $absLink := .absLink -}} {{- /* Make all links absolute (true/false) */ -}}
+{{- /* Fall back to using link verbatim if remote resources unavailable */ -}}
+{{- $remoteFallback := .remoteFallback -}}
+{{- /* Fall back to using link verbatim if local resource cannot be found */ -}}
+{{- $staticFallback := .staticFallback -}}
+{{- /* Link is an image 'src' or equivalent */ -}}
+{{- $isImageLink := .isImageLink | default false -}}
+{{- /* Internal variables */ -}}
+{{- $finalDestination := $page.Scratch.Get "nil-value" -}}
+{{- $finalResource := $page.Scratch.Get "nil-value" -}}
+{{- $isPage := false -}}
+{{- $isStatic := false -}}
+
+{{- $externalResult := (partial "wtg-shell/helpers/is-external-destination.html" (dict "Destination" $destination)) -}}
+{{- if $externalResult.isExternal -}}
+	{{- if not $getRemote -}}
+		{{- /* If the link is external and we are not pulling remote resources, just use the link verbatim */}}
+		{{- $finalDestination = $destination -}}
+	{{- else if not $externalResult.invalid -}}
+		{{- if ge hugo.Version "0.91.0" -}}
+			{{- $linkResource := resources.GetRemote $destination -}}
+			{{- if $linkResource -}}
+				{{- if $linkResource.Err -}}
+					{{- if $remoteFallback -}}
+						{{- warnf "Falling back to non-resource link due to '%s' retrieving '%s'" .Err $destination -}}
+							{{- $finalDestination = $destination -}}
+							{{- $isStatic = true -}}
+					{{- else -}}
+						{{- errorf "'%s' retrieving '%s'" .Err $destination -}}
+					{{- end -}}
+				{{- else -}}
+					{{- $finalResource = $linkResource -}}
+					{{- $finalDestination = $linkResource.Permalink -}}
+				{{- end -}}
+			{{- else -}}
+				{{- if $remoteFallback -}}
+					{{- warnf "Falling back to non-resource link due to '%s' not resolved" $destination -}}
+					{{- $finalDestination = $destination -}}
+					{{- $isStatic = true -}}
+				{{- else -}}
+					{{- errorf "'%s' not resolved and not falling back to non-resource link" $destination -}}
+				{{- end -}}
+			{{- end -}}
+		{{- else if $remoteFallback -}}
+			{{- warnf "Falling back to non-resource link for remote '%s' due to Hugo < 0.91.0 (page %s)" $destination $page.TranslationKey -}}
+			{{- $finalDestination = $destination -}}
+			{{- $isStatic = true -}}
+		{{- else -}}
+			{{- errorf "Pulling remote resource '%d' on page '%s' in this link render-hook not supported with Hugo < 0.91.0 and remoteFallback = false." $destination $page.TranslationKey -}}
+		{{- end -}}
+	{{- else -}}
+		{{- errorf "Internal error: is-external-destination should never return both external and invalid" -}}
+	{{- end -}}
+{{- else if not $externalResult.invalid -}}
+{{- /* Determine if the link is for a page or some other resource */ -}}
+	{{- $fragment := partial "wtg-shell/helpers/get-fragment.html" (dict "Destination" $destination) -}}
+	{{- /* For all resources, except images (which have additional capabilities available) */ -}}
+	{{- if ne $isImageLink true -}}
+		{{- $pageResource := false -}}
+		{{- if $fragment -}}
+			{{- $pageResource = $page.GetPage (strings.TrimSuffix (printf "#%s" $fragment) $destination) -}}
+		{{- else -}}
+			{{- $pageResource = $page.GetPage $destination -}}
+		{{- end -}}
+		{{- if $pageResource -}}
+			{{- $finalResource = $pageResource -}}
+			{{- $isPage = true -}}
+			{{- if $fragment -}}
+				{{- if eq $pageResource.RelPermalink "/" -}}
+					{{- $finalDestination = printf "#%s" $fragment -}}
+				{{- else if ne $absLink true -}}
+					{{- $finalDestination = printf "%s#%s" $pageResource.RelPermalink $fragment -}}
+				{{- else -}}
+					{{- $finalDestination = printf "%s#%s" $pageResource.Permalink $fragment -}}
+				{{- end -}}
+			{{- else if ne $absLink true -}}
+				{{- $finalDestination = $pageResource.RelPermalink -}}
+			{{- else -}}
+				{{- $finalDestination = $pageResource.Permalink -}}
+			{{- end -}}
+		{{- /* if result is not a page resource, but consists only of a fragment */ -}}
+		{{- else if hasPrefix $destination "#" -}}
+			{{- /* The target link is to the current page */}}
+			{{- $finalResource = $page -}}
+			{{- $finalDestination = printf "%s%s" $page.RelPermalink $destination -}}
+			{{- if $absLink -}}
+				{{- $finalDestination = printf "%s%s" $page.Permalink $destination -}}
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+	{{- /* Includes images and links to non-pages (e.g. PDFs, tarballs, text files, etc) */ -}}
+	{{- if not $finalDestination -}}
+		{{- $linkResource := $page.Scratch.Get "nil-value" -}}
+		{{- /* Try first as an absolute (inside branch bundle) path */ -}}
+		{{- if ge hugo.Version "0.97.0" -}}
+			{{- $linkResource = $page.CurrentSection.Resources.Get $destination -}}
+		{{- else -}}
+			{{- $linkResource = $page.CurrentSection.Resources.GetMatch $destination -}}
+		{{- end -}}
+		{{- /* If not found, try as a relative link in Hugo assets dir */ -}}
+		{{- if not $linkResource -}}
+			{{- $destinationPath := strings.TrimLeft "/" $destination -}}
+			{{- $linkResource = resources.GetMatch (printf "%s%s%s" "*" $destinationPath "*") -}}
+		{{- end -}}
+		{{- /* If we found a resource either way */ -}}
+		{{- if $linkResource -}}
+			{{- $finalDestination = $linkResource.RelPermalink -}}
+			{{- if $absLink -}}
+				{{- $finalDestination = $linkResource.Permalink -}}
+			{{- end -}}
+			{{- $finalResource = $linkResource -}}
+		{{- /* A matching resource was not found */ -}}
+		{{- else if $staticFallback -}}
+			{{- $finalDestination = $destination -}}
+			{{- $isStatic = true -}}
+			{{- warnf "%s is not a page or page resource in page %s's section, using fallback to static link" $destination $page.TranslationKey -}}
+		{{- else -}}
+			{{- errorf "%s is not a page or page resource in page %s's section (%s) and static link fallback is not enabled" $destination $page.TranslationKey $page.CurrentSection.TranslationKey -}}
+		{{- end -}}
+	{{- end -}}
+{{- /* .Destination did not parse as a link */ -}}
+{{- else if $staticFallback -}}
+	{{- $finalDestination = $destination -}}
+	{{- $isStatic = true -}}
+	{{- warnf "%s did not parse as a valid link on page '%s' using fallback to static link" $destination $page.TranslationKey -}}
+{{- else -}}
+	{{- errorf "%s is not a page or page resource in page %s's section (%s) and static link fallback is not enabled" $destination $page.TranslationKey $page.CurrentSection.TranslationKey -}}
+{{- end -}}
+{{- return (dict
+	"Destination" $finalDestination
+	"Resource" $finalResource
+	"IsPage" $isPage
+	"IsExternal" $externalResult.isExternal
+	"IsStatic" $isStatic
+) -}}
