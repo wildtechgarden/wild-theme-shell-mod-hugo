@@ -4,15 +4,15 @@
 
 ### the xxx-wtg-awt subdirectories of `layouts/partials`
 
-Partials are stored under `layouts/partials/helpers-wtg-awt` and
-`output-wtg-awt` in order to avoid conflicting with modules from
+Partials are expected under `layouts/partials/wtg-theme/helpers` and
+`wtg-theme/output` in order to avoid conflicting with modules from
 other developers.
 
-### helpers-wtg-awt
+### wtg-theme/helpers
 
 For function (no output) partials
 
-### output-wtg-awt
+### wtg-theme/output
 
 For output partials
 
@@ -73,56 +73,56 @@ to `true`. Alternatively a layout can override the `body-header` block.
 
 #### Body header class
 
-If the page has a `<header class="body-header">` element (the default), then
-setting the `bodyHeaderClass` param will use string provided as the
+If the page has a `<header>` element at the top of the `<body>` (the default),
+then setting the `bodyHeaderClass` param will use string provided as the
 class(es) for that `<header>`.
 
 #### Body main class
 
-If the page has a `<main class="body-main">` element (the default), then
+If the page has a `<main>` element (the default), then
 setting the `bodyMainClass` param will use string provided as the
-class(es) for that `<div>`.
+class(es) for that `<main>`.
 
 #### Body main id
 
-If the page has a `<main class="body-main" id="content">` element (the default),
-then setting the `bodyMainId` param will use string provided as the
-id for that `<div>`.
+If the page has a `<main>` element (the default), then setting
+the `bodyMainId` param will use string provided as the
+id for that `<main>`.
 
 ### baseof.html page outline
 
 ``` plaintext
-partial "helpers-wtg-awt/above-html-setup.html" (if it exists)
+partial "wtg-theme/helpers/above-html-setup.html" (if it exists)
 <html>
 	block "head-meta"
 	default:
 	<head>
-		"output-wtg-awt/head-contents.html" partial (not cached) if present
+		"wtg-theme/output/head-contents.html" partial (not cached) if present
 		else {{ hugo.Generator }}
 	</head>
 	end
-	<body…>
+	<body>
 	block "body-header"
 	default:
-	<header class="body-header">
+	<header>
 		if not hidePageHeader
-			"output-wtg-awt/header.html" partial (cached by page) if present
+			"wtg-theme/output/page-header.html" partial (cached by page) if present
 		end
 	</header>
 	end
 	block "body-after-header-top"
 	default:
-	<div class="body-after-header">
-		<h1>"output-wtg-awt/page-title.html" partial (cached by page)</h1> if present,
+	<div>
+		<h1>"wtg-theme/output/page-title.html" partial (cached by page)</h1> if present,
 		else {{ .Title }}
 	end
-		<main class="body-main" id="content">
+		<main>
 	block "main-content"
 	default:
 	end
 	block "navigation-in-main"
 	default:
-		"output-wtg-awt/page-navigation.html" if present (cached by page)
+		"wtg-theme/output/page-navigation-main-bottom.html" if present (cached by page)
 	end
 		</main>
 	block "navigation-below-main"
@@ -130,7 +130,7 @@ partial "helpers-wtg-awt/above-html-setup.html" (if it exists)
 	end
 	block "footer-after-main"
 	default:
-		"output-wtg-awt/footer.html" if present (cached by page)
+		"wtg-theme/output/page-footer-after-main.html" if present (cached by page)
 	end
 	block "body-after-header-bottom">
 	default:
@@ -153,7 +153,7 @@ partial (`warnf` and `errorf` are okay). This exists to do things like
 
 ### Default list (section) page layout
 
-`_default/list.html` Uses partial `output-wtg-awt/layout-default-list.html` if
+`_default/list.html` Uses partial `wtg-theme/output/layout-default-list.html` if
 present, otherwise
 
 ```go-html-template
@@ -167,8 +167,8 @@ present, otherwise
 
 ### Default single (regular) page layout
 
-`_default/list.html` Uses partial `output-wtg-awt/layout-default-single.html` if
-present, otherwise
+`_default/list.html` Uses partial `wtg-theme/output/layout-default-single.html`
+if present, otherwise
 
 ```go-html-template
 {{ .Content -}}
@@ -176,7 +176,7 @@ present, otherwise
 
 ### 404 page layout
 
-`404.html` Uses partial `output-wtg-awt/layout-404.html` if present,
+`404.html` Uses partial `wtg-theme/output/layout-404.html` if present,
 otherwise
 
 ```html
