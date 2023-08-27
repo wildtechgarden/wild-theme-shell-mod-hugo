@@ -13,5 +13,9 @@
 			"path": "../../minimal-test-theme-hugo-wtg"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.import": [
+			"${workspaceRoot}/cspell.json"
+		]
+	}
 }
