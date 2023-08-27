@@ -1,7 +1,6 @@
 .git
 /public/
-/resources/
-exampleSite/resources/
+resources/
 exampleSite/public/
 node_modules
 *.log
