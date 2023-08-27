@@ -1,7 +1,6 @@
 # 'Wild' theme shell for Hugo by Wild Tech 'Garden'
 
-The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) --
-very pre-alpha.
+The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG)
 
 ## CI Status
 
