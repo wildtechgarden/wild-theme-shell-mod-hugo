@@ -1,0 +1,5 @@
+{{- /* Use page title if defined in frontMatter */ -}}
+<title>{{ partial "wtg-shell/helpers/find-page-title.html" . }}</title>
+{{ hugo.Generator }}
+{{- partial "wtg-shell/output/head-css.html" . -}}
+{{- /* Remove trailing newlines */ -}}

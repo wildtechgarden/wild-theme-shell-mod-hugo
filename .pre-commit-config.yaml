@@ -66,17 +66,17 @@ repos:
     exclude: ^(_vendor)
     args: [--markdown-linebreak-ext=md]
 
-- repo: "https://github.com/pre-commit/mirrors-csslint"
-  rev: v1.0.5
-  # See https://github.com/CSSLint/csslint
+- repo: "https://github.com/awebdeveloper/pre-commit-stylelint"
+  rev: 0.0.2
   hooks:
-  - id: csslint
-
-- repo: "https://github.com/pre-commit/mirrors-scss-lint"
-  rev: v0.60.0
-  # See https://github.com/causes/scss-lint
-  hooks:
-  - id: scss-lint
+  - id: stylelint
+    additional_dependencies:
+    - stylelint
+    - stylelint-config-standard
+    - stylelint-config-recommended
+    args:
+    - --allow-empty-input
+    # - --quiet-deprecation-warnings
 
 - repo: "https://github.com/igorshubovych/markdownlint-cli"
   rev: v0.35.0

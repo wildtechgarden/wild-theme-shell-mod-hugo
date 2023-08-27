@@ -1,0 +1,64 @@
+/* CSS required above the fold on every page - typography
+ * (basic font sizing and rhythm)
+ */
+
+/* We do this to set 1rem to 12pt */
+html {
+	font-size: 12pt;
+}
+
+/* The main typography */
+
+:root {
+	line-height: 1.65;
+}
+
+h1 {
+	font-size: 1.85rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+h2 {
+	font-size: 1.47rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+h3 {
+	font-size: 1.27rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+h4 {
+	font-size: 1.19rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+h5 {
+	font-size: 1.09rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+h6 {
+	font-size: 1.01rem;
+	margin-bottom: .2em;
+	margin-top: .2em;
+}
+
+hr {
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+p {
+	margin-bottom: .5em;
+	margin-top: .5em;
+}
+
+pre code {
+	line-height: 2;
+}

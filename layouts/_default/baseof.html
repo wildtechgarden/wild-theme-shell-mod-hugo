@@ -1,11 +1,31 @@
 {{- /* Set some variables */ -}}
 {{- /* cSpell:ignore nojs, toplevelclass, bodyclass, omitbodywrapper, bodywrapperclass, omitpageheader, bodyheaderclass, bodyafterheaderclass, bodymainclass, bodymainid */ -}}
+{{- if templates.Exists "partials/wtg-theme/helpers/above-html-setup.html" -}}
+	{{- partial "wtg-theme/helpers/above-html-setup.html" . -}}
+{{- end }}
+{{- /* The actual page; nothing should be emitted as page output before this
+		(warnf and errorf are okay).
+	 */ -}}
+<!DOCTYPE html>
 {{- $topLevelClass := "no-js" -}}
 {{- if isset site.Params "toplevelclass" -}}
 	{{- $topLevelClass = site.Params.topLevelClass -}}
 	{{- if isset .Page.Params "toplevelclass" -}}
 		{{- $topLevelClass = .Page.Params.topLevelClass -}}
 	{{- end -}}
+{{- end }}
+<html {{ with $topLevelClass }}class="{{ . }}"{{ end }} lang="{{ $.Site.Language.Lang | default "en" }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
+{{- if templates.Exists "partials/head.html" -}}
+	{{- warnf "This theme does not use 'partials/head.html'. Please review your layouts." -}}
+{{- end -}}
+{{- block "head-meta" . -}}
+<head>
+{{- if templates.Exists "partials/wtg-theme/output/head-contents.html" }}
+	{{- partial "wtg-theme/output/head-contents.html" . -}}
+{{- else }}
+	{{- partial "wtg-shell/output/head-contents.html" . -}}
+{{- end }}
+</head>
 {{- end }}
 {{- $bodyClass := "" -}}
 {{- if isset site.Params "bodyclass" -}}
@@ -14,27 +34,6 @@
 		{{- $bodyClass = .Page.Params.bodyClass -}}
 	{{- end -}}
 {{- end -}}
-{{- if templates.Exists "partials/helpers-wtg-awt/above-html-setup.html" -}}
-	{{- partial "helpers-wtg-awt/above-html-setup.html" . -}}
-{{- end }}
-{{- /* The actual page; nothing should be emitted as page output before this
-		(warnf and errorf are okay).
-*/ -}}
-<!DOCTYPE html>
-<html {{ with $topLevelClass }}class="{{ . }}"{{ end }} lang="{{ $.Site.Language.Lang }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
-{{- if templates.Exists "partials/head.html" -}}
-	{{- warnf "This theme does not use 'partials/head.html'. Please review your layouts." -}}
-{{- end -}}
-{{- block "head-meta" . -}}
-<head>
-{{- if templates.Exists "partials/output-wtg-awt/head-contents.html" }}
-{{ partial "output-wtg-awt/head-contents.html" . -}}
-{{- else }}
-{{ hugo.Generator }}
-<title>{{ .Title }}</title>
-{{- end }}
-</head>
-{{- end }}
 <body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
 {{- block "body-header" . }}
 	{{- $omitPageHeader := false -}}

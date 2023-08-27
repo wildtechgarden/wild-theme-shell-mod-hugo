@@ -1,0 +1,32 @@
+/* CSS colours for the page header */
+
+header:first-child {
+	background-color: var(--header-nav-background-color);
+	color: var(--header-nav-text-color);
+}
+
+header:first-child nav {
+	border-bottom-color: var(--header-nav-border-color);
+}
+
+header:first-child nav a {
+	color: var(--header-nav-link-color);
+}
+
+header:first-child nav a:link {
+	color: var(--header-nav-link-color);
+}
+
+header:first-child nav a:visited {
+	color: var(--header-nav-visited-color);
+}
+
+header:first-child nav a:hover {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}
+
+header:first-child nav a:active {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}

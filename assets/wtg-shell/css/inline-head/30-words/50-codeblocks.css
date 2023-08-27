@@ -1,0 +1,22 @@
+/* CSS for code blocks / pre, etc */
+
+code {
+	tab-size: 3;
+}
+
+pre {
+	tab-size: 3;
+	overflow-wrap: break-word;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+pre code {
+	overflow-wrap: break-word;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+.pre {
+	white-space: pre-wrap;
+}

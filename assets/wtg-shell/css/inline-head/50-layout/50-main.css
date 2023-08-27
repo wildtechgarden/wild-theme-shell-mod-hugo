@@ -1,0 +1,10 @@
+/* CSS required above the fold on every page */
+
+.page-main > * {
+	margin-left: .4em;
+	margin-right: .4em;
+}
+
+.page-main > table {
+	width: calc(100% - .8em);
+}

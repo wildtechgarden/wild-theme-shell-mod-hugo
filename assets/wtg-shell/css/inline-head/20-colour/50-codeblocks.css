@@ -1,0 +1,56 @@
+/* CSS for default colours for code blocks, pre etc */
+
+code {
+	background-color: var(--codeblock-background-color);
+	color: var(--codeblock-text-color);
+}
+
+a code {
+	background-color: var(--main-background-color);
+	color: var(--main-link-color);
+}
+
+.chroma code {
+	background-color: inherit;
+	color: inherit;
+}
+
+a:link code {
+	background-color: var(--main-background-color);
+	color: var(--main-link-color);
+}
+
+a:visited code {
+	background-color: var(--main-background-color);
+	color: var(--main-visited-color);
+}
+
+a:active code {
+	background-color: var(--main-hover-background-color);
+	color: var(--main-hover-text-color);
+}
+
+a:hover code {
+	background-color: var(--main-hover-background-color);
+	color: var(--main-hover-text-color);
+}
+
+code a {
+	color: var(--codeblock-text-color);
+}
+
+code a:link {
+	color: var(--codeblock-text-color);
+}
+
+code a:visited {
+	color: var(--codeblock-text-color);
+}
+
+code a:active {
+	color: var(--codeblock-text-color);
+}
+
+code a:hover {
+	color: var(--codeblock-text-color);
+}
