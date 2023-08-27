@@ -11,32 +11,48 @@ paginatePath = "page"
 rssLimit = 20
 timeout = "600s"
 
+# See https://gohugo.io/content-management/multilingual/
+# and https://www.regisphilibert.com/blog/2018/08/hugo-multilingual-part-1-managing-content-translation/
 [languages]
 [languages.fr]
-title = "Coque thématique 'Sauvage' au Hugo de Wild Tech 'Garden'"
-weight = 10
 contentDir = "content/fr"
+languageName = "Française"
+title = "Coque thématique 'Sauvage' au Hugo par WTG"
+weight = 10
 
 [languages.fr.params]
-description = "Le module Hugo enveloppe (coque) aux thèmes de Wild Tech 'Garden' (WTG) -- très pré-alpha"
+description = "Le module Hugo enveloppe (coque) aux thèmes par Wild Tech 'Garden' (WTG)"
 
 [languages.fr.menu]
 [[languages.fr.menu.main]]
 identifier = "about"
 name = "À propos"
-pageref = "readme"
+pageref = "/about"
 weight = 20
 
 [[languages.fr.menu.main]]
 identifier = "l'accessibilité"
 name = "L'accessibilité"
-pageref = "accessibility"
+pageref = "/accessibility"
 weight = 30
 
+[[languages.fr.menu.main]]
+identifier = "doc"
+name = "Docs"
+pageRef = "/doc"
+weight = 40
+
+[[languages.fr.menu.main]]
+identifier = "demo"
+name = "Manifs"
+pageRef = "/demo"
+weight = 50
+
 [languages.en]
+contentDir = "content/en"
+languageName = "English"
 title = "'Wild' theme shell for Hugo by Wild Tech 'Garden'"
 weight = 1
-contentDir = "content/en"
 
 [languages.en.params]
 description = "The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) -- very pre-alpha"
@@ -45,14 +61,26 @@ description = "The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' 
 [[languages.en.menu.main]]
 identifier = "about"
 name = "About"
-pageref = "readme"
+pageref = "/about"
 weight = 20
 
 [[languages.en.menu.main]]
 identifier = "accessibility"
 name = "Accessibility"
-pageref = "accessibility"
+pageref = "/accessibility"
 weight = 30
+
+[[languages.en.menu.main]]
+identifier = "doc"
+name = "Docs"
+pageRef = "/doc"
+weight = 40
+
+[[languages.en.menu.main]]
+identifier = "demo"
+name = "Demos"
+pageRef = "/demo"
+weight = 50
 
 [taxonomies]
 tag = "tags"
@@ -101,9 +129,6 @@ term = ["HTML", "RSS"]
 #section = ["HTML", "RSS", "JSON"]
 #taxonomy = ["HTML", "RSS", "JSON"]
 #term = ["HTML", "RSS", "JSON"]
-
-# See https://gohugo.io/content-management/multilingual/
-# and https://www.regisphilibert.com/blog/2018/08/hugo-multilingual-part-1-managing-content-translation/
 
 [params]
 mainSections = ["demo","doc"]
@@ -171,8 +196,23 @@ target = "i18n"
 source = "archetypes"
 target = "archetypes"
 
+[[module.imports.mounts]]
+source = "README.md"
+target = "content/doc/wild-theme-shell/README.md"
+lang = "en"
+
+[[module.imports.mounts]]
+source = "README.fr.md"
+target = "content/doc/wild-theme-shell/README.md"
+lang = "fr"
+
+[[module.imports.mounts]]
+source = "LICENSE"
+target = "content/doc/wild-theme-shell/LICENSE"
+
 [[module.imports]]
 path = "github.com/wildtechgarden/demo-test-site-hugo-wtg"
+ignoreImports = true
 
 [[module.imports.mounts]]
 source = "static"
@@ -210,6 +250,53 @@ lang = "fr"
 
 [[module.imports]]
 path = "github.com/wildtechgarden/a-wild-theme-mod-hugo"
+ignoreImports = true
+
+[[module.imports.mounts]]
+source = "README.md"
+target = "content/doc/a-wild-theme/README.md"
+lang = "en"
+
+[[module.imports.mounts]]
+source = "README.fr.md"
+target = "content/doc/a-wild-theme/README.md"
+lang = "fr"
+
+[[module.imports.mounts]]
+source = "LICENSE"
+target = "content/doc/a-wild-theme/LICENSE"
+
+[[module.imports]]
+path = "github.com/wildtechgarden/minimal-test-theme-hugo-wtg"
+ignoreImports = true
+
+[[module.imports.mounts]]
+source = "README.md"
+target = "content/doc/minimal-theme/README.md"
+lang = "en"
+
+[[module.imports.mounts]]
+source = "README.fr.md"
+target = "content/doc/minimal-theme/README.md"
+lang = "fr"
+
+[[module.imports.mounts]]
+source = "docs"
+target = "content/doc/minimal-theme/docs"
+lang = "en"
+
+[[module.imports.mounts]]
+source = "docs"
+target = "content/doc/minimal-theme/docs"
+lang = "fr"
+
+[[module.imports.mounts]]
+source = "LICENSE"
+target = "content/doc/minimal-theme/LICENSE"
+
+[[module.imports]]
+path = "github.com/wildtechgarden/module-starter-hugo-wtg"
+ignoreImports = true
 
 [[module.imports.mounts]]
 source = "static"
@@ -234,33 +321,3 @@ target = "i18n"
 [[module.imports.mounts]]
 source = "archetypes"
 target = "archetypes"
-
-# [[module.imports.mounts]]
-# source = "README.md"
-# target = "content/doc/minimal-theme/README.md"
-# lang = "en"
-
-# [[module.imports.mounts]]
-# source = "README.fr.md"
-# target = "content/doc/minimal-theme/README.md"
-# lang = "fr"
-
-# [[module.imports.mounts]]
-# source = "docs"
-# target = "content/doc/minimal-theme/docs"
-# lang = "en"
-
-# [[module.imports.mounts]]
-# source = "docs"
-# target = "content/doc/minimal-theme/docs"
-# lang = "fr"
-
-# [[module.imports.mounts]]
-# source = "LICENSE"
-# target = "content/doc/minimal-theme/LICENSE"
-# lang = "en"
-
-# [[module.imports.mounts]]
-# source = "LICENSE"
-# target = "content/doc/minimal-theme/LICENSE"
-# lang = "fr"
