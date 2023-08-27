@@ -17,5 +17,10 @@
 		"cSpell.import": [
 			"${workspaceRoot}/cspell.json"
 		]
+	},
+	"extensions": {
+		"recommendations": [
+			"stylelint.vscode-stylelint"
+		]
 	}
 }
