@@ -64,22 +64,29 @@
 		{{- end -}}
 	{{- end -}}
 {{- end -}}
-{{- $bodyMainClass := "" -}}
-{{- if isset site.Params "bodymainclass" -}}
-	{{- $bodyMainClass = site.Params.bodyMainClass -}}
-	{{- if isset .Page.Params "bodymainclass" -}}
-		{{- $bodyMainClass = .Page.Params.bodyMainClass -}}
+{{- $bodyScrollableClass := "" -}}
+{{- if isset site.Params "bodyscrollableclass" -}}
+	{{- $bodyMainClass = site.Params.bodyScrollableClass -}}
+	{{- if isset .Page.Params "bodyscrollableclass" -}}
+		{{- $bodyMainClass = .Page.Params.bodyScrollableClass -}}
 	{{- end -}}
 {{- end }}
-{{- $bodyMainId := "" -}}
-{{- if isset site.Params "bodymainid" -}}
-	{{- $bodyMainId = site.Params.bodyMainId -}}
-	{{- if isset .Page.Params "bodymainid" -}}
-		{{- $bodyMainId = .Page.Params.bodyMainId -}}
-	{{- end -}}
-{{- end }}
-<div class="page-scrollable">
-<main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="{{ . }}"{{ end }}>
+<div{{ with $bodyScrollableClass }} class="{{ . }}"{{ end }}>
+	{{- $bodyMainClass := "" -}}
+	{{- if isset site.Params "bodymainclass" -}}
+		{{- $bodyMainClass = site.Params.bodyMainClass -}}
+		{{- if isset .Page.Params "bodymainclass" -}}
+			{{- $bodyMainClass = .Page.Params.bodyMainClass -}}
+		{{- end -}}
+	{{- end }}
+	{{- $bodyMainId := "" -}}
+	{{- if isset site.Params "bodymainid" -}}
+		{{- $bodyMainId = site.Params.bodyMainId -}}
+		{{- if isset .Page.Params "bodymainid" -}}
+			{{- $bodyMainId = .Page.Params.bodyMainId -}}
+		{{- end -}}
+	{{- end }}
+	<main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="{{ . }}"{{ end }}>
 {{- block "main-title" . -}}
 	{{- if lt (len (findRE `(?s)<h1.*?>.*?</h1>` .Page.Content 1)) 1 }}
 		<h1>
@@ -101,6 +108,8 @@
 {{- block "footer-in-main" . -}}
 {{- if templates.Exists "partials/wtg-theme/output/page-footer-in-main.html" -}}
 	{{- partialCached "wtg-theme/output/page-footer-in-main.html" . . }}
+{{- else -}}
+	{{ partialCached "wtg-shell/output/page-footer-in-main.html" . . -}}
 {{- end -}}
 {{- end }}
 	</main>
