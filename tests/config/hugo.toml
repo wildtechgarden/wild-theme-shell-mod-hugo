@@ -1,6 +1,7 @@
+# cspell:ignore pubdate
+
 baseURL = "https://www.wild-theme-shell.wtg-demos.ca/"
 copyright = "© 2023 Wild Tech 'Garden'"
-homepage = "https://www.wild-theme-shell.wtg-demos.ca/"
 languageCode = "en"
 defaultContentLanguage = "en"
 enableGitInfo = true
@@ -17,11 +18,12 @@ timeout = "600s"
 [languages.fr]
 contentDir = "content/fr"
 languageName = "Française"
-title = "Coque thématique 'Sauvage' au Hugo par WTG"
+title = "Une coquille de thème «sauvage» pour Hugo par WTG"
 weight = 10
 
 [languages.fr.params]
-description = "Le module Hugo enveloppe (coque) aux thèmes par Wild Tech 'Garden' (WTG)"
+copyright = "© 2023 Wild Tech «Garden»"
+description = "Une coquille de thème «sauvage» pour Hugo par Wild Tech «Garden» (WTG)"
 
 [languages.fr.menu]
 [[languages.fr.menu.main]]
@@ -29,12 +31,6 @@ identifier = "about"
 name = "À propos"
 pageref = "/about"
 weight = 20
-
-[[languages.fr.menu.main]]
-identifier = "l'accessibilité"
-name = "L'accessibilité"
-pageref = "/accessibility"
-weight = 30
 
 [[languages.fr.menu.main]]
 identifier = "doc"
@@ -51,11 +47,12 @@ weight = 50
 [languages.en]
 contentDir = "content/en"
 languageName = "English"
-title = "'Wild' theme shell for Hugo by Wild Tech 'Garden'"
+title = "'Wild' theme shell for Hugo by WTG"
 weight = 1
 
 [languages.en.params]
-description = "The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) -- very pre-alpha"
+copyright = "© 2023 Wild Tech 'Garden'"
+description = "The Hugo shell module for themes by Wild Tech 'Garden' (WTG)"
 
 [languages.en.menu]
 [[languages.en.menu.main]]
@@ -63,12 +60,6 @@ identifier = "about"
 name = "About"
 pageref = "/about"
 weight = 20
-
-[[languages.en.menu.main]]
-identifier = "accessibility"
-name = "Accessibility"
-pageref = "/accessibility"
-weight = 30
 
 [[languages.en.menu.main]]
 identifier = "doc"
@@ -82,10 +73,27 @@ name = "Demos"
 pageRef = "/demo"
 weight = 50
 
+[params]
+issueReportUrl = "https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/issues/new"
+mainSections = ["demo","doc"]
+redirectsDomains = [
+	"wild-theme-shell.wtg-demos.ca",
+	"wild-theme-shell.wtg-demos.com",
+	"www.wild-theme-shell.wtg-demos.com"
+]
+redirectsExtra = []
+staticFallback = false
+
+[params.authors]
+[params.authors."Daniel F. Dickinson"]
+homepage = "https://www.danielfdickinson.ca/"
+email = "dfdpublic@wildtechgarden.ca"
+
 [taxonomies]
 tag = "tags"
 
 [frontmatter]
+date = ['date', 'publishDate', 'pubdate', 'lastmod', 'modified', ":git", ":fileModTime"]
 lastmod = [":git", "lastmod", ":fileModTime", "date", "publishDate"]
 
 [markup]
@@ -122,36 +130,15 @@ suffixes = ["htaccess"]
 
 [outputs]
 home = ["HTML", "RSS", "htaccess"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML", "RSS"]
-term = ["HTML", "RSS"]
+section = ["HTML"]
+taxonomy = ["HTML"]
+term = ["HTML"]
 #home = ["HTML", "RSS", "JSON", "htaccess"]
 #section = ["HTML", "RSS", "JSON"]
 #taxonomy = ["HTML", "RSS", "JSON"]
 #term = ["HTML", "RSS", "JSON"]
 
-[params]
-mainSections = ["demo","doc"]
-redirectsDomains = [
-	"wild-theme-shell.wtg-demos.ca",
-	"wild-theme-shell.wtg-demos.com",
-	"www.wild-theme-shell.wtg-demos.com"
-]
-redirectsExtra = []
-
-staticFallback = false
-# Disable if you don't want the test (bare-bones) CSS
-testStylesInclude = true
-# Footnotes and TableOfContents don't work properly with a base href set in <head>
-useBaseURL = false
-
-[params.author]
-name = "Daniel F. Dickinson"
-url = "https://www.danielfdickinson.ca"
-#avatar = "apple-touch-icon.png"
-
 [privacy]
-
 [privacy.vimeo]
 disabled = true
 
@@ -211,8 +198,9 @@ source = "LICENSE"
 target = "content/doc/wild-theme-shell/LICENSE"
 
 [[module.imports]]
-path = "github.com/wildtechgarden/demo-test-site-hugo-wtg"
+ignoreConfig = true
 ignoreImports = true
+path = "github.com/wildtechgarden/demo-test-site-hugo-wtg"
 
 [[module.imports.mounts]]
 source = "static"

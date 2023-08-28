@@ -1,16 +1,11 @@
-name = "'Wild' theme shell for Hugo by Wild Tech 'Garden'"
+title = "'Wild' theme shell for Hugo by WTG"
 copyright = "© 2023 Wild Tech 'Garden'"
-description = """\
-The Hugo wrapper (shell) module for themes by Wild Tech 'Garden' (WTG) -- very pre-alpha\
-"""
+description = "The Hugo shell module for themes by Wild Tech 'Garden' (WTG)"
+
+[params]
+cssColourScheme = "default"
 
 [module]
 [module.hugoVersion]
-min = "0.117.0"
-extended = true
-
-[author]
-name = "Daniel F. Dickinson for Wild Tech 'Garden'"
-homepage = "https://www.danielfdickinson.ca/"
-copyright = "© 2023 Wild Tech 'Garden'"
-email = "dfdpublic@wildtechgarden.ca"
+extended = false
+min = "v0.117.0"
