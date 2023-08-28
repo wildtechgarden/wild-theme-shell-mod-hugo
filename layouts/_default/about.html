@@ -1,0 +1,15 @@
+{{ define "main-content" }}
+{{- if templates.Exists "partials/wtg-theme/output/layout-default-about.html" }}
+{{ partial "wtg-theme/output/layout-default-about.html" . -}}
+{{- else }}
+{{ .Content }}
+		<ul>
+{{- range .Data.Pages }}
+			<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+{{- end }}
+			<li><a href="{{ relref . "/tags" }}">Tags</a></li>
+			<li><a href="{{ ref . (dict "path" "/_index.md" "outputFormat" "rss") }}">RSS feed</a></li>
+		</ul>
+{{- end -}}
+{{ end }}
+{{- /* Remove trailing newlines */ -}}
