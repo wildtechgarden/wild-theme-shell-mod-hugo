@@ -1,0 +1,20 @@
+[atTime]
+other = "at {{ . }}"
+
+[Authored]
+other = "Authored"
+
+[onDate]
+other = "on"
+
+[pageAuthor]
+other = "Page authored by"
+
+[poweredByTheme]
+other = "Powered by <a href=\"https://github.com/wildtechgarden/wild-theme-shell-mod-hugo\">'Wild' theme shell</a> for <a href=\"https://gohugo.io/\">Hugo</a>"
+
+[reportAnIssue]
+other = "Report an issue"
+
+[siteCopyright]
+other = "Site {{ . }}"
