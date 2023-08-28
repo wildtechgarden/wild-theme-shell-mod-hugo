@@ -1,7 +1,6 @@
-# Coque thématique 'Sauvage' au Hugo par Wild Tech 'Garden'
+# Une coquille de thème «sauvage» pour Hugo par WTG
 
-Le module Hugo enveloppe (coque) aux thèmes de Wild Tech 'Garden' (WTG) --
-très pré-alpha
+Une coquille de thème «sauvage» pour Hugo par Wild Tech «Garden» (WTG)
 
 ## Statut IC
 
