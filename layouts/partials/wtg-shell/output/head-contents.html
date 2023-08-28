@@ -1,5 +1,40 @@
 {{- /* Use page title if defined in frontMatter */ -}}
-<title>{{ partial "wtg-shell/helpers/find-page-title.html" . }}</title>
+{{- if templates.Exists "partials/wtg-theme/output/find-page-title.html" }}
+<title>{{ partialCached "wtg-theme/helpers/find-page-title.html" . . | safeHTML }}</title>
+{{- else }}
+<title>{{ partialCached "wtg-shell/helpers/find-page-title.html" . . | safeHTML }}</title>
+{{- end }}
 {{ hugo.Generator }}
-{{- partial "wtg-shell/output/head-css.html" . -}}
-{{- /* Remove trailing newlines */ -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-css.html" -}}
+	{{- partialCached "wtg-theme/output/head-css.html" . . -}}
+{{- else -}}
+	{{- partialCached "wtg-shell/output/head-css.html" . . -}}
+{{- end -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-metadata.html" -}}
+	{{- partialCached "wtg-theme/output/head-metadata.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-metadata.html" -}}
+		{{- partialCached "wtg-shell/output/head-metadata.html" . . -}}
+	{{- end -}}
+{{- end -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-links.html" -}}
+	{{- partialCached "wtg-theme/output/head-links.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-links.html" -}}
+		{{- partialCached "wtg-shell/output/head-links.html" . . -}}
+	{{- end -}}
+{{- end -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-social.html" -}}
+	{{- partialCached "wtg-theme/output/head-social.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-social.html" -}}
+		{{- partialCached "wtg-shell/output/head-social.html" . . -}}
+	{{- end -}}
+{{- end -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-seo.html" -}}
+	{{- partialCached "wtg-theme/output/head-seo.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-seo.html" -}}
+		{{- partialCached "wtg-shell/output/head-seo.html" . . -}}
+	{{- end -}}
+{{- end -}}
