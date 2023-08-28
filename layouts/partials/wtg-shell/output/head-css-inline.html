@@ -1,0 +1,28 @@
+{{- /* cspell:ignore anchorize */ -}}
+{{- $ctx := . -}}
+{{- $curPage := .Page -}}
+{{- $combinedCSS := ( slice ) -}}
+{{- $essentialCSS := resources.Match "/wtg-theme/css/inline-head/**/*.css" -}}
+{{- if $essentialCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+{{- else -}}
+	{{- $essentialCSS = resources.Match "/wtg-shell/css/inline-head/**/*.css" -}}
+	{{- if $essentialCSS -}}
+		{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+	{{- end -}}
+{{- end -}}
+{{- $customCSS := resources.Match "/css/wtg-custom/inline-head/*.css" -}}
+{{- if $customCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $customCSS -}}
+{{- end -}}
+{{- if gt (len $combinedCSS) 0 -}}
+	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-inline-head-%s.css" (.TranslationKey | anchorize )) -}}
+	{{- if hugo.IsProduction }}
+		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+	{{- end }}
+<style>
+{{ $combinedCSS.Content | safeCSS -}}
+</style>
+{{- end -}}
+{{- /* Remove trailing newlines */ -}}

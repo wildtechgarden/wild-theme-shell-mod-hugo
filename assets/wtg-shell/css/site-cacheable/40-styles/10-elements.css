@@ -1,0 +1,6 @@
+/* Styling for generic elements */
+
+.pre {
+	padding: .6rem;
+	white-space: pre-wrap;
+}

@@ -1,0 +1,17 @@
+code {
+	tab-size: 3;
+}
+
+pre code {
+	overflow-wrap: break-word;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+pre {
+	tab-size: 3;
+	overflow-wrap: break-word;
+	padding: .6rem;
+	white-space: pre-wrap;
+	word-break: break-all;
+}

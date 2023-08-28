@@ -1,6 +1,4 @@
-/* CSS color application required above the fold on every page
- * We do this for colors to avoid a flash when page loads, especially for dark themes
- */
+/* CSS color application */
 
 body {
 	background-color: var(--main-background-color);
@@ -31,14 +29,4 @@ a:active {
 a:hover {
 	background-color: var(--main-hover-background-color);
 	color: var(--main-hover-text-color);
-}
-
-thead {
-	background-color: var(--table-heading-background-color);
-	color: var(--table-heading-text-color);
-}
-
-tr:nth-of-type(even) {
-	background-color: var(--table-even-background-color);
-	color: var(--table-even-text-color);
 }

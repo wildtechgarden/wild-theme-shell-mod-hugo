@@ -1,0 +1,43 @@
+{{- /* cspell:ignore anchorize csscolourscheme */ -}}
+{{- $ctx := . -}}
+{{- $curPage := .Page -}}
+{{- $combinedCSS := (slice) -}}
+{{- $tablesCSS := resources.Match "/wtg-theme/css/page-cacheable/40-tables/*.css" -}}
+{{- if not $tablesCSS -}}
+	{{- $tablesCSS = resources.Match "/wtg-shell/css/page-cacheable/40-tables/*.css" -}}
+{{- end -}}
+{{- $processedTables := false -}}
+{{- if $tablesCSS -}}
+	{{- if in .Content "<table" -}}
+		{{- $combinedCSS = $combinedCSS | append $tablesCSS -}}
+	{{- end -}}
+{{- end -}}
+{{- $codeblocksCSS := resources.Match "/wtg-theme/css/page-cacheable/50-codeblocks/*.css" -}}
+{{- if not $codeblocksCSS -}}
+	{{- $codeblocksCSS = resources.Match "/wtg-shell/css/page-cacheable/50-codeblocks/*.css" -}}
+{{- end -}}
+{{- $processedTables := false -}}
+{{- if $codeblocksCSS -}}
+	{{- if or (in .Content "<code") (in .Content "<.pre") -}}
+		{{- $combinedCSS = $combinedCSS | append $codeblocksCSS -}}
+	{{- end -}}
+{{- end -}}
+{{- $customCSS := resources.Match "/css/wtg-custom/page-cacheable/*.css" -}}
+{{- $processedCustom := false -}}
+{{- if $customCSS -}}
+	{{- range $customCSS -}}
+		{{- $processedCustom = . | resources.ExecuteAsTemplate (printf "/assets/css/wtg-shell-page-cacheable-custom-%s-%s.css" (.RelPermalink | anchorize) ($ctx.TranslationKey | anchorize)) $ctx -}}
+		{{- if gt (len $processedCustom.Content) 0 -}}
+			{{- $combinedCSS = $combinedCSS | append $processedCustom -}}
+		{{- end -}}
+	{{- end -}}
+{{- end -}}
+{{- if gt (len $combinedCSS) 0 -}}
+	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-page-cacheable-%s.css" (.TranslationKey | anchorize )) -}}
+	{{- if hugo.IsProduction }}
+		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+	{{- end }}
+<link rel="stylesheet" href="{{ $combinedCSS.Permalink }}">
+{{- end -}}
+{{- /* Remove trailing newlines */ -}}

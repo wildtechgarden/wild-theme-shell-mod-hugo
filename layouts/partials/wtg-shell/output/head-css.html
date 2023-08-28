@@ -1,28 +1,35 @@
+{{- /* cspell:ignore csscolourscheme anchorize */ -}}
 {{- $ctx := . -}}
 {{- $curPage := .Page -}}
-{{- $combinedCSS := ( slice ) -}}
-{{- $essentialCSS := resources.Match "/wtg-theme/css/inline-head/**/*.css" -}}
-{{- if $essentialCSS -}}
-	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+{{- /* May (probably should) be generated per page */ -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-css-inline.html" -}}
+	{{- partial "wtg-theme/output/head-css-inline.html" . -}}
 {{- else -}}
-	{{- $essentialCSS := resources.Match "/wtg-shell/css/inline-head/**/*.css" -}}
-	{{- if not $essentialCSS -}}
-		{{- errorf "'/wtg-shell/css/inline-head/**/*.css' is missing" -}}
-	{{- end -}}
-	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+	{{- partial "wtg-shell/output/head-css-inline.html" . -}}
 {{- end -}}
-{{- $customCSS := resources.Match "/css/wtg-custom/inline-head/*.css" -}}
-{{- if $customCSS -}}
-	{{- $combinedCSS = $combinedCSS | append $customCSS -}}
+{{- /* Special handling for colour schemes; they are selected per-page but
+	there is not a separate colour scheme for each page.
+	*/ -}}
+{{- $cssColourScheme := "default" -}}
+{{- if isset $curPage.Params "csscolourscheme" -}}
+	{{- $cssColourScheme = $curPage.Params.cssColourScheme -}}
+{{- else if isset site.Params "csscolourscheme" -}}
+	{{- $cssColourScheme = site.Params.cssColourScheme -}}
+{{- end }}
+{{- if templates.Exists "partials/wtg-theme/output/head-css-colour-schemes.html" -}}
+	{{- partialCached "wtg-theme/output/head-css-colour-schemes.html" . $cssColourScheme -}}
+{{- else -}}
+	{{- partialCached "wtg-shell/output/head-css-colour-schemes.html" . $cssColourScheme -}}
 {{- end -}}
-{{- if gt (len $combinedCSS) 0 -}}
-	{{- $combinedCSS = $combinedCSS | resources.Concat "/assets/css/wtg-shell-inline-head.css" -}}
-	{{- if hugo.IsProduction }}
-		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
-		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
-	{{- end }}
-<style>
-{{ $combinedCSS.Content | safeCSS -}}
-</style>
+{{- /* Should be page specific only */ -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-css-cacheable-per-page.html" -}}
+	{{- partialCached "wtg-theme/output/head-css-cacheable-per-page.html" . . -}}
+{{- else -}}
+	{{- partialCached "wtg-shell/output/head-css-cacheable-per-page.html" . . -}}
 {{- end -}}
-{{- /* Remove trailing newlines */ -}}
+{{- /* Should not be page or even section-specific; site-wide */ -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-css-cacheable.html" -}}
+	{{- partialCached "wtg-theme/output/head-css-cacheable.html" . -}}
+{{- else -}}
+	{{- partialCached "wtg-shell/output/head-css-cacheable.html" . -}}
+{{- end -}}

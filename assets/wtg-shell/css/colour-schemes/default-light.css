@@ -16,34 +16,12 @@
 	--header-nav-background-color: #222;
 	--header-nav-border-color: #fff;
 	--header-nav-text-color: #eff;
-	--header-nav-link-color: #11d;
+	--header-nav-link-color: #4fbfff;
 	--header-nav-visited-color: #f8f;
 	--header-nav-hover-background-color: #ddd;
 	--header-nav-hover-text-color: #111;
 	--codeblock-background-color: #444;
 	--codeblock-text-color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--main-background-color: #191919;
-		--main-text-color: #ccc;
-		--main-link-color: #aaf;
-		--main-visited-color: #c9f;
-		--main-hover-background-color: #bbb;
-		--main-hover-text-color: #000;
-		--table-heading-background-color: #333;
-		--table-heading-text-color: #d9d9d9;
-		--table-even-background-color: #000;
-		--table-even-text-color: #a9a9a9;
-		--header-nav-background-color: #292929;
-		--header-nav-border-color: #000;
-		--header-nav-text-color: #ddd;
-		--header-nav-link-color: #ccf;
-		--header-nav-visited-color: #ff90ff;
-		--header-nav-hover-background-color: #eee;
-		--header-nav-hover-text-color: #333;
-		--codeblock-background-color: #eee;
-		--codeblock-text-color: #222;
-	}
+	--popup-box-background-color: #c0c0c0;
+	--popup-box-text-color: #000;
 }

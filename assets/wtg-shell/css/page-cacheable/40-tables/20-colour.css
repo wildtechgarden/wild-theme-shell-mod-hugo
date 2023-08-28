@@ -1,0 +1,9 @@
+thead {
+	background-color: var(--table-heading-background-color);
+	color: var(--table-heading-text-color);
+}
+
+tr:nth-of-type(even) {
+	background-color: var(--table-even-background-color);
+	color: var(--table-even-text-color);
+}

@@ -1,0 +1,29 @@
+{{- /* cspell:ignore anchorize csscolourscheme */ -}}
+{{- $ctx := . -}}
+{{- $curPage := .Page -}}
+{{- $combinedCSS := (slice) -}}
+{{- $cssColourScheme := "default" -}}
+{{- if isset $curPage.Params "csscolourscheme" -}}
+	{{- $cssColourScheme = $curPage.Params.cssColourScheme -}}
+{{- else if isset site.Params "csscolourscheme" -}}
+	{{- $cssColourScheme = site.Params.cssColourScheme -}}
+{{- end }}
+{{- $colourSchemeCSS := resources.Match (printf "/wtg-theme/css/colour-schemes/%s.css" $cssColourScheme) -}}
+{{- if $colourSchemeCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $colourSchemeCSS -}}
+{{- else -}}
+	{{- $colourSchemeCSS = resources.Match (printf "/wtg-shell/css/colour-schemes/%s.css" $cssColourScheme) -}}
+	{{- if not $colourSchemeCSS -}}
+		{{- errorf "'/wtg-theme/css/colour-schemes/%s.css' is missing" $cssColourScheme }}
+	{{- end -}}
+	{{- $combinedCSS = $combinedCSS | append $colourSchemeCSS -}}
+{{- end -}}
+{{- if gt (len $combinedCSS) 0 -}}
+	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-colour-scheme-%s.css" ($cssColourScheme | anchorize )) -}}
+	{{- if hugo.IsProduction }}
+		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+	{{- end }}
+<link rel="stylesheet" href="{{ $combinedCSS.Permalink }}">
+{{- end -}}
+{{- /* Remove trailing newlines */ -}}

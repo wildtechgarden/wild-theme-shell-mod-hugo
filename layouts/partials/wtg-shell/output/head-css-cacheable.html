@@ -1,0 +1,24 @@
+{{- $combinedCSS := (slice) -}}
+{{- $essentialCSS := resources.Match "/wtg-theme/css/site-cacheable/**/*.css" -}}
+{{- if $essentialCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+{{- else -}}
+	{{- $essentialCSS = resources.Match "/wtg-shell/css/site-cacheable/**/*.css" -}}
+	{{- if not $essentialCSS -}}
+		{{- errorf "'/wtg-theme/css/site-cacheable/**/*.css' is missing" -}}
+	{{- end -}}
+	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+{{- end -}}
+{{- $customCSS := resources.Match "/css/wtg-custom/site-cacheable/*.css" -}}
+{{- if $customCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $customCSS -}}
+{{- end -}}
+{{- if gt (len $combinedCSS) 0 -}}
+	{{- $combinedCSS = $combinedCSS | resources.Concat "/assets/css/wtg-shell-site-cacheable.css" -}}
+	{{- if hugo.IsProduction }}
+		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+	{{- end }}
+<link rel="stylesheet" href="{{ $combinedCSS.Permalink }}">
+{{- end -}}
+{{- /* Remove trailing newlines */ -}}

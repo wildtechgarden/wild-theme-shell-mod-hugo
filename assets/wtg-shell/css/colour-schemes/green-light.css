@@ -1,0 +1,27 @@
+/* CSS color schemes required above the fold on every page
+ * We do this for colors to avoid a flash when page loads, especially for dark themes
+ */
+
+:root {
+	--main-background-color: #dde0da;
+	--main-text-color: #0f150f;
+	--main-link-color: #053025;
+	--main-visited-color: #404005;
+	--main-hover-background-color: #006025;
+	--main-hover-text-color: #dafffa;
+	--table-heading-background-color: #d0f0d0;
+	--table-heading-text-color: #040;
+	--table-even-background-color: #b0cac5;
+	--table-even-text-color: #010;
+	--header-nav-background-color: #205920;
+	--header-nav-border-color: #fff;
+	--header-nav-text-color: #eff;
+	--header-nav-link-color: #acffcf;
+	--header-nav-visited-color: #efefcf;
+	--header-nav-hover-background-color: #c9f0b9;
+	--header-nav-hover-text-color: #121;
+	--codeblock-background-color: #111;
+	--codeblock-text-color: #cfc;
+	--popup-box-background-color: #b0cac5;
+	--popup-box-text-color: #010;
+}

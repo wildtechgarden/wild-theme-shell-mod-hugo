@@ -1,0 +1,38 @@
+/* Page header and footer */
+
+header:first-of-type {
+	border-style: solid;
+	border-width: 1px;
+}
+
+main > footer:last-of-type {
+	font-style: italic;
+}
+
+main > footer:last-of-type > details > summary {
+	padding-right: .8em;
+}
+
+main > footer:last-of-type > details[open] {
+	padding: .8em;
+}
+
+body > div > footer:last-of-type {
+	border-style: solid;
+	border-width: 1px;
+}
+
+body > div > footer:last-of-type > div {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+
+header:first-of-type nav menu a {
+	text-decoration: none;
+}
+
+header:first-of-type nav > menu:first-of-type > li a {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

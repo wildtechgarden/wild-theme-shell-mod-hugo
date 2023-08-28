@@ -1,6 +1,4 @@
-/* CSS required above the fold on every page - typography
- * (basic font sizing and rhythm)
- */
+/* Typography - basic font sizing and rhythm */
 
 /* We do this to set 1rem to 12pt */
 html {
@@ -57,8 +55,4 @@ hr {
 p {
 	margin-bottom: .5em;
 	margin-top: .5em;
-}
-
-pre code {
-	line-height: 2;
 }

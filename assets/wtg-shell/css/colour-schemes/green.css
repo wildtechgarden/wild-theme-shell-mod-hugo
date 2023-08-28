@@ -1,0 +1,53 @@
+/* CSS color schemes required above the fold on every page
+ * We do this for colors to avoid a flash when page loads, especially for dark themes
+ */
+
+:root {
+	--main-background-color: #dde0da;
+	--main-text-color: #0f150f;
+	--main-link-color: #053025;
+	--main-visited-color: #404005;
+	--main-hover-background-color: #006025;
+	--main-hover-text-color: #dafffa;
+	--table-heading-background-color: #d0f0d0;
+	--table-heading-text-color: #040;
+	--table-even-background-color: #b0cac5;
+	--table-even-text-color: #010;
+	--header-nav-background-color: #205920;
+	--header-nav-border-color: #fff;
+	--header-nav-text-color: #eff;
+	--header-nav-link-color: #acffcf;
+	--header-nav-visited-color: #efefcf;
+	--header-nav-hover-background-color: #c9f0b9;
+	--header-nav-hover-text-color: #121;
+	--codeblock-background-color: #111;
+	--codeblock-text-color: #cfc;
+	--popup-box-background-color: #b0cac5;
+	--popup-box-text-color: #010;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--main-background-color: #020;
+		--main-text-color: #dae0da;
+		--main-link-color: #cc8;
+		--main-visited-color: #a0e9d0;
+		--main-hover-background-color: #adc;
+		--main-hover-text-color: #111;
+		--table-heading-background-color: #0f3f29;
+		--table-heading-text-color: #c0e0ca;
+		--table-even-background-color: #010;
+		--table-even-text-color: #bad0ba;
+		--header-nav-background-color: #0f3f29;
+		--header-nav-border-color: #000;
+		--header-nav-text-color: #cae5ca;
+		--header-nav-link-color: #d9d999;
+		--header-nav-visited-color: #99e9b9;
+		--header-nav-hover-background-color: #bee9c9;
+		--header-nav-hover-text-color: #0f3f29;
+		--codeblock-background-color: #ccc;
+		--codeblock-text-color: #102010;
+		--popup-box-background-color: #010;
+		--popup-box-text-color: #bad0ba;
+	}
+}
