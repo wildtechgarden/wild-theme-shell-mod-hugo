@@ -1,5 +1,5 @@
 {{- /* Set some variables */ -}}
-{{- /* cSpell:ignore nojs, toplevelclass, bodyclass, omitbodywrapper, bodywrapperclass, omitpageheader, bodyheaderclass, bodyafterheaderclass, bodymainclass, bodymainid */ -}}
+{{- /* cSpell:ignore toplevelclass, bodyclass, omitbodywrapper, bodywrapperclass, omitpageheader, bodyheaderclass, bodyafterheaderclass, bodymainclass, bodymainid, bodyscrollableclass */ -}}
 {{- if templates.Exists "partials/wtg-theme/helpers/above-html-setup.html" -}}
 	{{- partial "wtg-theme/helpers/above-html-setup.html" . -}}
 {{- end }}
@@ -18,7 +18,7 @@
 {{- if templates.Exists "partials/head.html" -}}
 	{{- warnf "This theme does not use 'partials/head.html'. Please review your layouts." -}}
 {{- end -}}
-{{- block "head-meta" . -}}
+{{- block "head-meta" . }}
 <head>
 {{- if templates.Exists "partials/wtg-theme/output/head-contents.html" }}
 	{{- partial "wtg-theme/output/head-contents.html" . -}}
@@ -26,14 +26,14 @@
 	{{- partial "wtg-shell/output/head-contents.html" . -}}
 {{- end }}
 </head>
-{{- end }}
+{{- end -}}
 {{- $bodyClass := "" -}}
 {{- if isset site.Params "bodyclass" -}}
 	{{- $bodyClass = site.Params.bodyClass -}}
 	{{- if isset .Page.Params "bodyClass" -}}
 		{{- $bodyClass = .Page.Params.bodyClass -}}
 	{{- end -}}
-{{- end -}}
+{{- end }}
 <body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
 {{- block "body-header" . }}
 	{{- $omitPageHeader := false -}}
@@ -82,16 +82,16 @@
 <main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="{{ . }}"{{ end }}>
 {{- block "main-title" . -}}
 	{{- if lt (len (findRE `(?s)<h1.*?>.*?</h1>` .Page.Content 1)) 1 }}
-	<h1>
+		<h1>
 		{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title.html" }}
 			{{- partialCached "wtg-theme/helpers/find-page-title.html" . . -}}
 		{{- else }}
 			{{- partialCached "wtg-shell/helpers/find-page-title.html" . . -}}
 		{{ end -}}
-	</h1>
+		</h1>
 	{{- end -}}
 {{- end }}
-{{- block "main-content" . }}
+{{ block "main-content" . }}
 {{- end -}}
 {{- block "navigation-in-main" . -}}
 	{{- if templates.Exists "partials/wtg-theme/output/page-navigation-main-bottom.html" -}}
@@ -103,7 +103,7 @@
 	{{- partialCached "wtg-theme/output/page-footer-in-main.html" . . }}
 {{- end -}}
 {{- end }}
-</main>
+	</main>
 {{- block "navigation-below-main" . -}}
 {{- end -}}
 {{- block "footer-after-main" . -}}

@@ -2,7 +2,7 @@
 {{- if templates.Exists "partials/output-wtg-awt/layout-default-single.html" }}
 {{ partial "output-wtg-awt/layout-default-single.html" . -}}
 {{- else }}
-{{ .Content -}}
+{{ .Content }}
 {{- end -}}
 {{ end }}
 {{- /* Remove trailing newlines */ -}}

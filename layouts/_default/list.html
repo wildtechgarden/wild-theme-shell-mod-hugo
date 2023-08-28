@@ -2,11 +2,13 @@
 {{- if templates.Exists "partials/output-wtg-awt/layout-default-list.html" }}
 {{ partial "output-wtg-awt/layout-default-list.html" . -}}
 {{- else }}
-{{- .Content -}}
-{{- range .Data.Pages }}
-<ul>
-<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-</ul>
+{{ .Content }}
+{{ if .Data.Pages }}
+		<ul>
+	{{- range .Data.Pages }}
+			<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+{{- end }}
+		</ul>
 {{- end -}}
 {{- end -}}
 {{ end }}
