@@ -74,6 +74,7 @@ repos:
     - stylelint
     - stylelint-config-standard
     - stylelint-config-recommended
+    - stylelint-order
     args:
     - --allow-empty-input
     # - --quiet-deprecation-warnings

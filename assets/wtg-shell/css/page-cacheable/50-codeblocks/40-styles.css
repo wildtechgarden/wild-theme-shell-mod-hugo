@@ -4,14 +4,14 @@ code {
 
 pre code {
 	overflow-wrap: break-word;
-	word-break: break-all;
 	white-space: pre-wrap;
+	word-break: break-all;
 }
 
 pre {
-	tab-size: 3;
 	overflow-wrap: break-word;
 	padding: .6rem;
+	tab-size: 3;
 	white-space: pre-wrap;
 	word-break: break-all;
 }

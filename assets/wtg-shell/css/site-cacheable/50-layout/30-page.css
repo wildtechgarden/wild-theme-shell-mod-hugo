@@ -17,8 +17,8 @@ body > header:first-of-type {
 }
 
 main {
-	left: 0;
 	height: 100%;
+	left: 0;
 	position: relative;
 	top: 0;
 	width: 100%;

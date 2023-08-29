@@ -11,25 +11,25 @@
 
 /* LineLink */
 .chroma .lnlinks {
+	color: inherit;
 	outline: none;
 	text-decoration: none;
-	color: inherit
 }
 
 /* LineTableTD */
 .chroma .lntd {
-	vertical-align: top;
-	padding: 0;
-	margin: 0;
 	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
 }
 
 /* LineTable */
 .chroma .lntable {
-	border-spacing: 0;
-	padding: 0;
-	margin: 0;
 	border: 0;
+	border-spacing: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* LineHighlight */
@@ -39,24 +39,24 @@
 
 /* LineNumbersTable */
 .chroma .lnt {
-	white-space: pre;
-	user-select: none;
+	color: #7f7f7f;
 	margin-right: 0.4em;
 	padding: 0 0.4em;
-	color: #7f7f7f;
+	user-select: none;
+	white-space: pre;
 }
 
 /* LineNumbers */ .chroma .ln {
-	white-space: pre;
-	user-select: none;
+	color: #7f7f7f;
 	margin-right: 0.4em;
 	padding: 0 0.4em;
-	color: #7f7f7f
+	user-select: none;
+	white-space: pre;
 }
 
 /* Line */ .chroma .line {
-	display: flex;
 	border: 1px dashed #111;
+	display: flex;
 }
 
 /* Keyword */ .chroma .k { color: #00f }
@@ -181,13 +181,13 @@
 @media (prefers-color-scheme: dark) {
 
 	/* Background */ .bg {
+		background-color: #000;
 		color: #f8f8f2;
-		background-color: #000
 	}
 
 	/* PreWrapper */ .chroma {
-		color: #f8f8f2;
 		background-color: #000;
+		color: #f8f8f2;
 	}
 
 	/* Other .chroma .x {  } */
@@ -198,44 +198,44 @@
 
 	/* LineTableTD */
 	.chroma .lntd {
-		vertical-align: top;
-		padding: 0;
-		margin: 0;
 		border: 0;
+		margin: 0;
+		padding: 0;
+		vertical-align: top;
 	}
 
 	/* LineTable */
 	.chroma .lntable {
-		border-spacing: 0;
-		padding: 0;
-		margin: 0;
 		border: 0;
+		border-spacing: 0;
+		margin: 0;
+		padding: 0;
 	}
 
 	/* LineHighlight */ .chroma .hl { background-color: #ffc }
 
 	/* LineNumbersTable */
 	.chroma .lnt {
-		white-space: pre-wrap;
-		user-select: none;
+		color: #7c7c79;
 		margin-right: 0.4em;
 		padding: 0 0.4em;
-		color: #7c7c79
+		user-select: none;
+		white-space: pre-wrap;
 	}
 
 	/* LineNumbers */
 	.chroma .ln {
-		white-space: pre;
-		user-select: none;
+		color: #7c7c79;
 		margin-right: 0.4em;
 		padding: 0 0.4em;
-		color: #7c7c79
+		user-select: none;
+		white-space: pre;
 	}
 
 	/* Line */
 	.chroma .line {
-		display: flex;
 		border: 1px dashed #9c9c99;
+		display: flex;
 	}
 
 	/* Keyword */ .chroma .k { color: #f66 }
