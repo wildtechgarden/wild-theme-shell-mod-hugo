@@ -10,7 +10,6 @@ main > footer:last-of-type > details > summary {
 }
 
 header:first-of-type > details:first-of-type > summary {
-	line-height: 2.5;
 	list-style-type: none;
 	text-align: right;
 }
