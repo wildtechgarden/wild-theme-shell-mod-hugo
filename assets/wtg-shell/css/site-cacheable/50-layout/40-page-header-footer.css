@@ -10,12 +10,6 @@ header:first-of-type > nav details {
 	margin-left: auto;
 }
 
-header:first-of-type > nav details summary {
-	border: solid 1px;
-	padding-left: .4em;
-	padding-right: .4em;
-}
-
 header:first-of-type > nav details[open] {
 	display: block;
 	text-align: right;
@@ -118,8 +112,9 @@ header:first-of-type > nav menu li {
 }
 
 header:first-of-type > nav menu a {
-	display: block;
-	padding: .4em;
+	display: inline-block;
+	padding-left: .4em;
+	padding-right: .4em;
 }
 
 header:first-of-type > nav > menu:first-of-type {
@@ -131,9 +126,10 @@ header:first-of-type > nav > menu:first-of-type > li {
 }
 
 header:first-of-type > nav > menu:first-of-type > li a {
-	display: block;
+	display: inline-block;
 	overflow: hidden;
-	padding: .4rem;
+	padding-left: .4em;
+	padding-right: .4em;
 }
 
 header:first-of-type > nav menu:nth-of-type(2) {
@@ -145,13 +141,6 @@ header:first-of-type > nav menu:nth-of-type(2) {
 header:first-of-type > nav menu:nth-of-type(2) li {
 	margin-left: 1em;
 	margin-right: 1em;
-}
-
-header:first-of-type > details:first-of-type nav {
-	margin-bottom: 1em;
-	margin-top: 1em;
-	padding-left: 1em;
-	padding-right: 1em;
 }
 
 header:first-of-type > details:first-of-type nav menu {

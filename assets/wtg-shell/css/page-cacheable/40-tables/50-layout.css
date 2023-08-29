@@ -5,6 +5,8 @@ table {
 	width: 100%;
 }
 
-main > table {
-	width: calc(100% - .8em);
+@media screen and (width >= 700px) {
+	main > table {
+		width: calc(100% - 1.2em);
+	}
 }

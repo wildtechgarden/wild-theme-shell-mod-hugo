@@ -1,6 +1,6 @@
 /* CSS for generic elements layout */
 
-html {
+:root {
 	box-sizing: border-box;
 }
 
