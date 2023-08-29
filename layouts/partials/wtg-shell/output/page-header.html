@@ -1,35 +1,21 @@
 {{- /* Trim whitespace before us */ -}}
-{{- /* First header piece is a link to the home page with the site's name as as the text */}}
-	<nav>
-		<menu>
-			<li><a href="{{ relref .Page "/" }}">{{ site.Title }}</a></li>
-		</menu>
-{{- /* Next header piece is/are links to translations of this page */ -}}
-{{- if .IsTranslated }}
-		<details>
-			<summary>A↔B</summary>
-			<div>
-	{{- range .Translations }}
-				<span><a href="{{ .RelPermalink }}">{{ with .Language.LanguageName }}{{ . }}{{ else }}{{ .Lang }}{{ end }}</a></span>
-	{{- end }}
-			</div>
-		</details>
-{{- end }}
-{{- /* Next header piece is/are menu items, if a 'main' menu is defined */}}
-		<menu>
-{{- with site.Menus.main -}}
-	{{- range . }}
-			<li><a href="{{- .URL -}}">{{- .Name -}}</a></li>
-	{{- end -}}
+{{- /* Mobile header */ -}}
+	<details>
+		<summary>
+			<span>{{ i18n "Menu" }}</span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="24" height="24"><g><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="white" /></g></svg>
+		</summary>
+{{- if templates.Exists "partials/wtg-theme/output/page-header-nav.html" -}}
+	{{- partialCached "wtg-theme/output/page-header-nav.html" . . }}
 {{- else -}}
-{{- /* Final section(s) is/are 'mainSections' items, if present */ -}}
-{{- range site.Params.mainSections -}}
-		{{- $page := site.GetPage ( printf "/%s" . ) -}}
-		{{- with $page }}
-			<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{- partialCached "wtg-shell/output/page-header-nav.html" . . }}
 {{- end -}}
+	</details>
+{{- /* First desktop header piece is a link to the home page with the site's
+	name as as the text
+*/}}
+{{- if templates.Exists "partials/wtg-theme/output/page-header-nav.html" -}}
+	{{- partialCached "wtg-theme/output/page-header-nav.html" . . }}
+{{- else -}}
+	{{- partialCached "wtg-shell/output/page-header-nav.html" . . }}
 {{- end -}}
-{{- end }}
-		</menu>
-	</nav>
 {{- /* Remove trailing whitespace */ -}}

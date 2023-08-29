@@ -5,12 +5,31 @@ header:first-of-type {
 	border-width: 1px;
 }
 
-main > footer:last-of-type {
-	font-style: italic;
-}
-
 main > footer:last-of-type > details > summary {
 	padding-right: .8em;
+}
+
+header:first-of-type > details:first-of-type > summary {
+	line-height: 2.5;
+	list-style-type: none;
+	text-align: right;
+}
+
+header:first-of-type > details:first-of-type > summary > span {
+	margin-left: auto;
+	vertical-align: middle;
+}
+
+header:first-of-type > details:first-of-type > summary > svg {
+	vertical-align: middle;
+}
+
+header:first-of-type > details:first-of-type > summary > span + svg {
+	margin-left: .4em;
+}
+
+main > footer:last-of-type {
+	font-style: italic;
 }
 
 main > footer:last-of-type > details[open] {

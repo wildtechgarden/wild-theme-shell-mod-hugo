@@ -4,6 +4,9 @@ other = "à {{ . }}"
 [Authored]
 other = "Créée"
 
+[Menu]
+other = "Menu"
+
 [onDate]
 other = " "
 

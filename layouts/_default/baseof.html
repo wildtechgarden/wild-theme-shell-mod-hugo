@@ -53,13 +53,13 @@
 	{{- if templates.Exists "partials/wtg-theme/output/page-header.html" -}}
 		{{- if not $omitPageHeader }}
 <header{{ with $bodyHeaderClass }} class="{{ . }}"{{ end }}>
-			{{- partialCached "wtg-theme/output/page-header.html" . .TranslationKey }}
+			{{- partialCached "wtg-theme/output/page-header.html" . . }}
 </header>
 		{{- end -}}
 	{{- else -}}
 		{{- if not $omitPageHeader }}
 <header{{ with $bodyHeaderClass }} class="{{ . }}"{{ end }}>
-			{{- partialCached "wtg-shell/output/page-header.html" . .TranslationKey }}
+			{{- partialCached "wtg-shell/output/page-header.html" . . }}
 </header>
 		{{- end -}}
 	{{- end -}}
