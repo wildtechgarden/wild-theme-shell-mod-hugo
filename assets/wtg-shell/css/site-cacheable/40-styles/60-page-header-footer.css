@@ -1,12 +1,24 @@
 /* Page header and footer */
 
-header:first-of-type {
+main > footer:last-of-type > details > summary {
+	padding-right: .8em;
+}
+
+header:first-of-type > details:first-of-type {
 	border-style: solid;
 	border-width: 1px;
 }
 
-main > footer:last-of-type > details > summary {
-	padding-right: .8em;
+header:first-of-type > nav {
+	border-style: solid;
+	border-width: 1px;
+}
+
+header:first-of-type > nav details summary {
+	border: solid 1px;
+	list-style-type: none;
+	padding-left: .4em;
+	padding-right: .4em;
 }
 
 header:first-of-type > details:first-of-type > summary {
@@ -38,12 +50,6 @@ main > footer:last-of-type > details[open] {
 body > div > footer:last-of-type {
 	border-style: solid;
 	border-width: 1px;
-}
-
-body > div > footer:last-of-type > div {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
 }
 
 header:first-of-type nav menu a {

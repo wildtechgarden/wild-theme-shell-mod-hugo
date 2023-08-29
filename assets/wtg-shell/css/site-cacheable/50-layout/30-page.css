@@ -1,32 +1,19 @@
 /* CSS for top-level page layout */
 
 body {
-	display: block;
-	left: 0;
-	overflow: auto;
-	position: relative;
-	top: 0;
-	z-index: 3
-}
-
-body > header {
-	left: 0;
-	position: sticky;
-	top: 0;
-	width: 100%;
-	z-index: 7;
-}
-
-body header + div {
 	display: grid;
-	grid-template-rows: 1fr auto;
+	grid-template-rows: minmax(1cm, auto) 1fr;
+	height: 100svh;
 	left: 0;
-	height: 100%;
-	min-height: calc(100svh - 2.75rem);
 	overflow: hidden;
 	position: relative;
 	top: 0;
-	z-index: 6
+	width: 100%;
+	z-index: 3
+}
+
+body > header:first-of-type {
+	overflow: visible;
 }
 
 main {
@@ -34,22 +21,27 @@ main {
 	height: 100%;
 	position: relative;
 	top: 0;
-	z-index: 5
+	width: 100%;
+	z-index: 4
 }
 
-body header + div > main {
+body header:first-of-type + div:first-of-type {
+	display: grid;
+	grid-template-rows: 1fr minmax(1cm, auto);
+	height: 100%;
+	left: 0;
+	min-height: calc(100svh - 1cm);
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+}
+
+body header:first-of-type + div:first-of-type > main {
+	height: max-content;
+	min-height: 100%;
 	overflow: hidden;
-}
-
-@media screen and (width >= 700px) {
-	body header + div {
-		height: auto;
-		min-height: 100%;
-		overflow-y: auto;
-	}
-
-	body header + div > main {
-		height: auto;
-		overflow: visible;
-	}
+	width: 100%;
 }
