@@ -12,6 +12,13 @@
 {{- else -}}
 	{{- partialCached "wtg-shell/output/head-css.html" . . -}}
 {{- end -}}
+{{- if templates.Exists "partials/wtg-theme/output/head-js.html" -}}
+	{{- partialCached "wtg-theme/output/head-js.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-js.html" -}}
+		{{- partialCached "wtg-shell/output/head-js.html" . . -}}
+	{{- end -}}
+{{- end -}}
 {{- if templates.Exists "partials/wtg-theme/output/head-metadata.html" -}}
 	{{- partialCached "wtg-theme/output/head-metadata.html" . . -}}
 {{- else -}}
