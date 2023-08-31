@@ -208,7 +208,29 @@ body > div > footer:last-of-type {
 	height: max-content;
 }
 
-@media screen and (width >= 700px) {
+@media screen and (width >= 700px) and (resolution < 2dppx) {
+	header:first-of-type > details:first-of-type {
+		z-index: 2;
+	}
+
+	header:first-of-type > nav {
+		z-index: 7;
+	}
+
+	body > div > footer:last-of-type {
+		padding-left: .6em;
+		padding-right: .6em;
+
+	}
+
+	body > div > footer:last-of-type > div {
+		flex-flow: row nowrap;
+		padding-bottom: 0;
+		padding-top: 0;
+	}
+}
+
+@media screen and (width >= 1200px) and (resolution >= 2dppx) {
 	header:first-of-type > details:first-of-type {
 		z-index: 2;
 	}

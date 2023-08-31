@@ -5,7 +5,13 @@ table {
 	width: 100%;
 }
 
-@media screen and (width >= 700px) {
+@media screen and (width >= 700px) and (resolution < 2dppx) {
+	main > table {
+		width: calc(100% - 1.2em);
+	}
+}
+
+@media screen and (width >= 1200px) and (resolution >= 2dppx) {
 	main > table {
 		width: calc(100% - 1.2em);
 	}
