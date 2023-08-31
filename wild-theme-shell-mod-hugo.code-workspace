@@ -1,4 +1,5 @@
 {
+	// cspell:ignore reforme, yzhang, ecmel, davidanson, budparr, mrmlnc
 	"folders": [
 		{
 			"path": "../a-wild-theme-mod-hugo"
@@ -20,7 +21,17 @@
 	},
 	"extensions": {
 		"recommendations": [
-			"stylelint.vscode-stylelint"
+			"streetsidesoftware.code-spell-checker-canadian-english",
+			"streetsidesoftware.code-spell-checker",
+			"editorconfig.editorconfig",
+			"streetsidesoftware.code-spell-checker-french",
+			"streetsidesoftware.code-spell-checker-french-reforme",
+			"ecmel.vscode-html-css",
+			"davidanson.vscode-markdownlint",
+			"stylelint.vscode-stylelint",
+			"redhat.vscode-yaml",
+			"budparr.language-hugo-vscode",
+			"mrmlnc.vscode-apache"
 		]
 	}
 }
