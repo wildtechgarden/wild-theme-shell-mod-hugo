@@ -73,6 +73,7 @@
 			],
 			"filename": [
 				"**/content/fr/**/*.md",
+				"**/docs/*.fr.md",
 				"**/README.fr.md"
 			],
 			"ignoreRegExpList": [

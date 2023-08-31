@@ -89,60 +89,6 @@ If the page has a `<main>` element (the default), then setting
 the `bodyMainId` param will use string provided as the
 id for that `<main>`.
 
-### baseof.html page outline
-
-``` plaintext
-partial "wtg-theme/helpers/above-html-setup.html" (if it exists)
-<html>
-	block "head-meta"
-	default:
-	<head>
-		"wtg-theme/output/head-contents.html" partial (not cached) if present
-		else {{ hugo.Generator }}
-	</head>
-	end
-	<body>
-	block "body-header"
-	default:
-	<header>
-		if not hidePageHeader
-			"wtg-theme/output/page-header.html" partial (cached by page) if present
-		end
-	</header>
-	end
-	block "body-after-header-top"
-	default:
-	<div>
-		<h1>"wtg-theme/output/page-title.html" partial (cached by page)</h1> if present,
-		else {{ .Title }}
-	end
-		<main>
-	block "main-content"
-	default:
-	end
-	block "navigation-in-main"
-	default:
-		"wtg-theme/output/page-navigation-main-bottom.html" if present (cached by page)
-	end
-		</main>
-	block "navigation-below-main"
-	default:
-	end
-	block "footer-after-main"
-	default:
-		"wtg-theme/output/page-footer-after-main.html" if present (cached by page)
-	end
-	block "body-after-header-bottom">
-	default:
-	</div>
-	end
-	block "footer-separated"
-	default:
-	end
-	</body>
-</html>
-```
-
 ### Above HTML setup
 
 This is a function partial…no page text/elements/etc may be output by this

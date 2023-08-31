@@ -197,6 +197,10 @@ lang = "fr"
 source = "LICENSE"
 target = "content/doc/wild-theme-shell/LICENSE"
 
+[[module.imports.mounts]]
+source = "docs"
+target = "content/doc/wild-theme-shell/docs"
+
 [[module.imports]]
 ignoreConfig = true
 ignoreImports = true
