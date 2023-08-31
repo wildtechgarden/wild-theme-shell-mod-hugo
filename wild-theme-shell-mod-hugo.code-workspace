@@ -17,7 +17,10 @@
 	"settings": {
 		"cSpell.import": [
 			"${workspaceRoot}/cspell.json"
-		]
+		],
+		"markdown.extension.toc.levels": "2..4",
+		"markdown.extension.toc.orderedList": true,
+		"markdown.extension.toc.unorderedList.marker": "*"
 	},
 	"extensions": {
 		"recommendations": [
@@ -26,6 +29,7 @@
 			"editorconfig.editorconfig",
 			"streetsidesoftware.code-spell-checker-french",
 			"streetsidesoftware.code-spell-checker-french-reforme",
+			"yzhang.markdown-all-in-one",
 			"ecmel.vscode-html-css",
 			"davidanson.vscode-markdownlint",
 			"stylelint.vscode-stylelint",
