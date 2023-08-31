@@ -1,0 +1,37 @@
+/* Page header and footer layout */
+
+@media print {
+	main > footer:last-of-type {
+		height: max-content;
+		min-height: initial;
+	}
+
+	body > div > footer:last-of-type  {
+		display: none;
+	}
+
+	main > footer:last-of-type > details {
+		display: none;
+	}
+
+	main > footer:last-of-type > aside {
+		display: block;
+	}
+
+	main > footer:last-of-type > aside > p {
+		display: inline;
+		margin-bottom: 0;
+	}
+
+	main > footer:last-of-type > aside > div {
+		display: inline;
+	}
+
+	main > footer:last-of-type > aside > div > address {
+		display: inline;
+	}
+
+	main > footer:last-of-type > aside > div > address > br {
+		display: none;
+	}
+}

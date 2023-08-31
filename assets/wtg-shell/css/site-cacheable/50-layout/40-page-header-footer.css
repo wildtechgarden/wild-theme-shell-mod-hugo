@@ -200,6 +200,10 @@ main > footer:last-of-type {
 	min-height: 1cm;
 }
 
+main > footer:last-of-type > aside {
+	display: none;
+}
+
 body > div > footer:last-of-type {
 	height: max-content;
 }

@@ -39,5 +39,41 @@
 	{{- end }}
 				</div>
 			</details>
+	{{- with site.Params.authors -}}
+		{{- with (index . page.Params.author) -}}
+			{{- $haveAuthor = true }}
+			<aside>
+				<p>{{- i18n "pageAuthor" }} {{ $ctx.Page.Params.author -}}</p>
+		{{- if or (index . "homepage") (index . "email") -}}
+				{{ $haveAddress = true }}
+				<div>
+					<address>
+				{{- if index . "homepage" }}
+<a href="{{ .homepage }}">{{ .homepage }}</a>
+					{{- if index . "email" }}
+						<br>
+					{{- end -}}
+				{{- end -}}
+				{{- if index . "email" }}
+<a href="mailto:{{ .email }}">{{ .email }}</a>
+				{{- end }}
+					</address>
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+	{{- if not $haveAuthor }}
+			<aside>
+				<p>{{ i18n "Authored" }}</p>
+	{{- end -}}
+	{{- if not $haveAddress }}
+				<div>
+	{{- end }}
+	{{- if $ctx.Page.Date }}
+					<span>{{ i18n "onDate" | safeHTML }} <time datetime="{{ $ctx.Page.Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ $ctx.Page.Date.Local.Format "Jan 2, 2006" }} {{ i18n "atTime" ($ctx.Page.Date.Local.Format "3:04 PM MST") }}</time></span>
+	{{- else }}
+					<span></span>
+	{{- end }}
+				</div>
+			</aside>
 		</footer>
 {{- end -}}

@@ -1,0 +1,38 @@
+/* CSS for top-level printed page layout */
+
+@media print {
+	body {
+		display: block;
+		height: max-content;
+		overflow: visible;
+		position: static;
+		width: 100%;
+	}
+
+	body > header:first-of-type {
+		display: none;
+		overflow: visible;
+	}
+
+	main {
+		height: max-content;
+		position: static;
+		width: 100%;
+	}
+
+	body header:first-of-type + div:first-of-type {
+		display: block;
+		height: max-content;
+		min-height: initial;
+		overflow: visible;
+		position: static;
+		width: 100%;
+	}
+
+	body header:first-of-type + div:first-of-type > main {
+		height: max-content;
+		min-height: initial;
+		overflow: visible;
+		width: 100%;
+	}
+}

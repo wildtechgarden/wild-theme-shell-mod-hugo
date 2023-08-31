@@ -1,0 +1,9 @@
+/* Typography - basic font sizing and rhythm */
+
+/* The main typography */
+
+@media print {
+	:root {
+		line-height: 2;
+	}
+}
