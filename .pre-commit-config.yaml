@@ -71,10 +71,10 @@ repos:
   hooks:
   - id: stylelint
     additional_dependencies:
-    - stylelint
-    - stylelint-config-standard
-    - stylelint-config-recommended
-    - stylelint-order
+    - stylelint@^15.10.3
+    - stylelint-config-standard@^34.0.0
+    - stylelint-config-recommended@^13.0.0
+    - stylelint-order@^6.0.3
     args:
     - --allow-empty-input
     # - --quiet-deprecation-warnings
