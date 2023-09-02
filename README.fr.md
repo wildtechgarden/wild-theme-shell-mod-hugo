@@ -13,6 +13,7 @@ Statut IC: [![pre-commit.ci statut](https://results.pre-commit.ci/badge/github/w
 	1. [Conçu pour l'extensibilité](#conçu-pour-lextensibilité)
 	2. [Thème minimal à part entière](#thème-minimal-à-part-entière)
 	3. [CSS sans classe ou classe pris en charge](#css-sans-classe-ou-classe-pris-en-charge)
+	4. [Livré avec un échantillon de CSS vanille « réactif »](#livré-avec-un-échantillon-de-css-vanille--réactif-)
 3. [Utilisation](#utilisation)
 	1. [De base (comme thème)](#de-base-comme-thème)
 		1. [Module Hugo (préféré)](#module-hugo-préféré)
@@ -27,9 +28,33 @@ Statut IC: [![pre-commit.ci statut](https://results.pre-commit.ci/badge/github/w
 
 ### Conçu pour l'extensibilité
 
+Conçu principalement comme un squelette avec des « crochets » destinés à être
+fournis par le consommateur de ce shell (p. ex., peut être spécifique au site
+ou utilisé par un thème qui étend le coquille).
+
+Voir [Extension (les crochets)][extension], ci-dessous.
+
 ### Thème minimal à part entière
 
+Le squelette a des valeurs par défaut pour les 'crochets' qui sont
+suffisantes à vous permettre de utilisez ce projet comme thème minimal des
+sites web.
+
+Voir [Utilisation][use], ci-dessous
+
 ### CSS sans classe ou classe pris en charge
+
+Le code HTML dans le squelette n'est par défaut aucune classe sur les éléments
+par défaut, mais accepte des paramètres pour remplacer ce comportement (peut
+souvent être à l'échelle du site ou par page, ou à l'échelle du site avec des
+remplacements de page, selon votre choix).
+
+### Livré avec un échantillon de CSS vanille « réactif »
+
+1. Par défaut, le menu mobile comme en-tête jusqu'à ce que des écrans plus
+	grands soient plus grands
+2. Comprend une sélection de couleurs de départ
+3. Comprend des styles pour une sortie d'impression raisonnable
 
 ## Utilisation
 
@@ -102,5 +127,7 @@ Voir [le documentation du squelette][skel]
 Copyright © 2023 Wild Tech 'Garden'  
 [Publié sous license MIT](LICENSE)
 
+[extension]: #extension-les-crochets
 [skel]: docs/skeleton.fr.md
 [pre-commit-ic]: https://results.pre-commit.ci/latest/github/wildtechgarden/wild-theme-shell-mod-hugo/main
+[use]: #utilisation
