@@ -66,8 +66,8 @@ repos:
     exclude: ^(_vendor)
     args: [--markdown-linebreak-ext=md]
 
-- repo: "https://github.com/awebdeveloper/pre-commit-stylelint"
-  rev: 0.0.2
+- repo: "https://github.com/thibaudcolas/pre-commit-stylelint"
+  rev: v15.10.3
   hooks:
   - id: stylelint
     additional_dependencies:
@@ -76,8 +76,10 @@ repos:
     - stylelint-config-recommended@^13.0.0
     - stylelint-order@^6.0.3
     args:
+    - --config
+    - .stylelintrc.json
     - --allow-empty-input
-    # - --quiet-deprecation-warnings
+    files: \.(css$)
 
 - repo: "https://github.com/igorshubovych/markdownlint-cli"
   rev: v0.35.0
@@ -99,7 +101,7 @@ repos:
     exclude: ^(_vendor)
 
 - repo: "https://github.com/zricethezav/gitleaks"
-  rev: v8.17.0
+  rev: v8.18.0
   hooks:
   - id: gitleaks
 
@@ -116,7 +118,7 @@ repos:
     exclude: ^(LICENSE$|README.md$|package(-lock)?.json$|_vendor)
 
 - repo: "https://github.com/streetsidesoftware/cspell-cli"
-  rev: v7.0.0
+  rev: v7.3.0
   hooks:
   - id: cspell
     additional_dependencies:
