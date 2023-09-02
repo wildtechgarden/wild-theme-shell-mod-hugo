@@ -1,6 +1,6 @@
 {{ define "main-content" }}
-{{- if templates.Exists "partials/output-wtg-awt/layout-default-list.html" }}
-{{ partial "output-wtg-awt/layout-default-list.html" . -}}
+{{- if templates.Exists "partials/wtg-theme/output/layout-default-list.html" }}
+{{ partial "wtg-theme/output/layout-default-list.html" . -}}
 {{- else }}
 {{ .Content }}
 {{ if .Data.Pages }}
