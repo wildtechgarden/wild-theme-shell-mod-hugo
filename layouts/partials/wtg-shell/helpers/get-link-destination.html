@@ -63,7 +63,14 @@
 	{{- /* For all resources, except images (which have additional capabilities available) */ -}}
 	{{- if ne $isImageLink true -}}
 		{{- $pageResource := false -}}
-		{{- if $fragment -}}
+		{{- if hasPrefix $destination "#" -}}
+			{{- /* The target link is to the current page */}}
+			{{- $finalResource = $page -}}
+			{{- $finalDestination = printf "%s%s" $page.RelPermalink $destination -}}
+			{{- if $absLink -}}
+				{{- $finalDestination = printf "%s%s" $page.Permalink $destination -}}
+			{{- end -}}
+		{{- else if $fragment -}}
 			{{- $pageResource = $page.GetPage (strings.TrimSuffix (printf "#%s" $fragment) $destination) -}}
 		{{- else -}}
 			{{- $pageResource = $page.GetPage $destination -}}
@@ -83,14 +90,6 @@
 				{{- $finalDestination = $pageResource.RelPermalink -}}
 			{{- else -}}
 				{{- $finalDestination = $pageResource.Permalink -}}
-			{{- end -}}
-		{{- /* if result is not a page resource, but consists only of a fragment */ -}}
-		{{- else if hasPrefix $destination "#" -}}
-			{{- /* The target link is to the current page */}}
-			{{- $finalResource = $page -}}
-			{{- $finalDestination = printf "%s%s" $page.RelPermalink $destination -}}
-			{{- if $absLink -}}
-				{{- $finalDestination = printf "%s%s" $page.Permalink $destination -}}
 			{{- end -}}
 		{{- end -}}
 	{{- end -}}
