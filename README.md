@@ -14,8 +14,6 @@ CI Status: [![pre-commit.ci status][pre-commit-ci]](https://results.pre-commit.c
 	2. [Minimal theme in its own right](#minimal-theme-in-its-own-right)
 	3. [Classless or classful CSS supported](#classless-or-classful-css-supported)
 	4. [Comes with sample 'responsive' vanilla CSS](#comes-with-sample-responsive-vanilla-css)
-		1. [Defaults to mobile menu until on larger screens](#defaults-to-mobile-menu-until-on-larger-screens)
-		2. [Includes a selection of starter colour schemes](#includes-a-selection-of-starter-colour-schemes)
 3. [Usage](#usage)
 	1. [Basic (as theme)](#basic-as-theme)
 		1. [Hugo module (preferred)](#hugo-module-preferred)
@@ -51,9 +49,9 @@ per-page, or site-wide with page overrides, as you choose).
 
 ### Comes with sample 'responsive' vanilla CSS
 
-#### Defaults to mobile menu until on larger screens
-
-#### Includes a selection of starter colour schemes
+1. Defaults to mobile menu as header until on larger screens
+2. Includes a selection of starter colour schemes
+3. Includes styles for reasonable printed output
 
 ## Usage
 
@@ -72,14 +70,13 @@ per-page, or site-wide with page overrides, as you choose).
 	path = "github.com/wildtechgarden/wild-theme-shell-mod-hugo"
 	```
 
-3. Change back to the site directory
-4. Get the module
+3. Get the module
 
 	```sh
 	hugo mod get github.com/wildtechgarden/wild-theme-shell-mod-hugo
 	```
 
-5. To test the result, run the local Hugo server
+4. To test the result, run the local Hugo server
 
 	```sh
 	hugo server -b http://localhost:1313/
@@ -104,7 +101,7 @@ per-page, or site-wide with page overrides, as you choose).
 4. To test the result, run the local Hugo server
 
 	```sh
-	hugo server -t hugo-minimal-test -b http://localhost:1313/
+	hugo server -t wild-theme-shell-mod-hugo -b http://localhost:1313/
 	```
 
  Enjoy!

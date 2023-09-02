@@ -48,14 +48,13 @@ Statut IC: [![pre-commit.ci statut](https://results.pre-commit.ci/badge/github/w
 	path = "github.com/wildtechgarden/wild-theme-shell-mod-hugo"
 	```
 
-3. Revenu à l'annuaire du site
-4. Obtenez le module
+3. Obtenez le module
 
 	```sh
 	hugo mod get github.com/wildtechgarden/wild-theme-shell-mod-hugo
 	```
 
-5. Aux faire vérifier le résultat, exécutez le serveur Hugo local
+4. Aux faire vérifier le résultat, exécutez le serveur Hugo local
 
 	```sh
 	hugo server -b http://localhost:1313/
