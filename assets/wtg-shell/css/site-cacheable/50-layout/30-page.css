@@ -3,7 +3,7 @@
 body {
 	display: grid;
 	grid-template-rows: minmax(1cm, auto) 1fr;
-	height: 100svh;
+	height: 100vh;
 	left: 0;
 	overflow: hidden;
 	position: relative;
@@ -30,7 +30,7 @@ body header:first-of-type + div:first-of-type {
 	grid-template-rows: 1fr minmax(1cm, auto);
 	height: 100%;
 	left: 0;
-	min-height: calc(100svh - 1cm);
+	min-height: calc(100vh - 1cm);
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: relative;
