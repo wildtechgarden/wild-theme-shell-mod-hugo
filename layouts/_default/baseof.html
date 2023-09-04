@@ -14,7 +14,7 @@
 		{{- $topLevelClass = .Page.Params.topLevelClass -}}
 	{{- end -}}
 {{- end }}
-<html {{ with $topLevelClass }}class="{{ . }}"{{ end }} lang="{{ $.Site.Language.Lang | default "en" }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
+<html {{ with $topLevelClass }}class="{{ . }}"{{ end }} lang="{{  or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 {{- if templates.Exists "partials/head.html" -}}
 	{{- warnf "This theme does not use 'partials/head.html'. Please review your layouts." -}}
 {{- end -}}
