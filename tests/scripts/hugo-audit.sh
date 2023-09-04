@@ -12,7 +12,7 @@ fi
 if [ -n "$SITECONFIG" ]; then
 	SITECONFIG="--config ""$SITECONFIG"
 else
-	SITECONFIG="--config ""$(pwd)"/hugo.toml,"$(pwd)"/site.toml
+	SITECONFIG="--config ""$(pwd)"/tests/config/hugo.toml
 fi
 
 if [ -z "${HUGO_CACHEDIR}" ]; then
@@ -24,6 +24,7 @@ rm -rf "${SITEROOT}/public"
 
 echo "Building for audit in ${SITEROOT}/public for environment ${HUGO_ENV:-development}"
 
+export HUGO_MODULE_REPLACEMENTS="github.com/wildtechgarden/wild-theme-shell-mod-hugo -> $(pwd)"
 export HUGO_RESOURCEDIR="$(pwd)/resources"
 
 # shellcheck disable=2086

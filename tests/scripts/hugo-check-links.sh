@@ -5,9 +5,10 @@ set -o pipefail
 
 SITEROOT="$(pwd)"
 
-systemd-run -E PATH="${PATH}" -E HUGO_RESOURCEDIR="$(pwd)"/resources --unit=hugo-serve --user hugo serve --source "$(pwd)" --environment "production" --config "$(pwd)"/hugo.toml,"$(pwd)"/site.toml --port 1313 --bind 127.0.0.1
+export HUGO_MODULE_REPLACEMENTS="github.com/wildtechgarden/wild-theme-shell-mod-hugo -> $(pwd)"
+systemd-run --working-dir "$(pwd)/tests/config" -E PATH="${PATH}" -E HUGO_RESOURCEDIR="$(pwd)"/resources -E HUGO_MODULE_REPLACEMENTS="$HUGO_MODULE_REPLACEMENTS" --unit=hugo-serve --user hugo serve --source "$(pwd)" --environment "production" --config "$(pwd)"/tests/config/hugo.toml --port 1313 --bind 127.0.0.1
 
-sleep 2
+sleep 5
 
 if muffet http://127.0.0.1:1313/ | tee check-links.log; then
 	echo "ok"
