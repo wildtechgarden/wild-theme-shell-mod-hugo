@@ -49,6 +49,11 @@ main > footer:last-of-type > details[open] {
 	color: var(--popup-box-text-color);
 }
 
+main > footer:last-of-type > details[open] + aside {
+	background-color: var(--popup-box-background-color);
+	color: var(--popup-box-text-color);
+}
+
 body > div > footer:last-of-type {
 	background-color: var(--header-nav-background-color);
 	border-color: var(--header-nav-border-color);

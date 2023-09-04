@@ -4,15 +4,7 @@
 		<summary>
 			<span>{{ i18n "Menu" }}</span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="24" height="24"><g><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="white" /></g></svg>
 		</summary>
-{{- if templates.Exists "partials/wtg-theme/output/page-header-nav.html" -}}
-	{{- partialCached "wtg-theme/output/page-header-nav.html" . . }}
-{{- else -}}
-	{{- partialCached "wtg-shell/output/page-header-nav.html" . . }}
-{{- end -}}
 	</details>
-{{- /* First desktop header piece is a link to the home page with the site's
-	name as as the text
-*/}}
 {{- if templates.Exists "partials/wtg-theme/output/page-header-nav.html" -}}
 	{{- partialCached "wtg-theme/output/page-header-nav.html" . . }}
 {{- else -}}

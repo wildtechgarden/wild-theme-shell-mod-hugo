@@ -4,3 +4,7 @@
 	padding: .6rem;
 	white-space: pre-wrap;
 }
+
+p img {
+	vertical-align: middle;
+}
