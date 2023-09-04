@@ -2,7 +2,7 @@
 
 Description:	The Hugo shell (wrapper) module for themes by
 					Wild Tech 'Garden' (WTG)  
-Site: <https://www.wtg-demos.ca/doc/wild-theme-shell/readme/>  
+Site: <https://www.wild-theme-shell.wtg-demos.ca/>  
 Repository: <https://github.com/wildtechgarden/wild-theme-shell-mod-hugo>  
 CI Status: [![pre-commit.ci status][pre-commit-ci]](https://results.pre-commit.ci/latest/github/wildtechgarden/wild-theme-shell-mod-hugo/main)
 
