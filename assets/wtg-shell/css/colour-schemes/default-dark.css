@@ -13,16 +13,17 @@
 	--table-heading-text-color: #d9d9d9;
 	--table-even-background-color: #000;
 	--table-even-text-color: #a9a9a9;
-	--header-nav-background-color: #292929;
+	--header-nav-background-color: #393939;
 	--header-nav-border-color: #000;
-	--header-nav-text-color: #ddd;
-	--header-nav-link-color: #ccf;
-	--header-nav-visited-color: #ff90ff;
+	--header-nav-text-color: #cfcfcf;
+	--header-nav-link-color: #ddf;
+	--header-nav-visited-color: #fbf;
 	--header-nav-hover-background-color: #eee;
 	--header-nav-hover-text-color: #333;
 	--codeblock-background-color: #eee;
 	--codeblock-text-color: #222;
 	--popup-box-background-color: #000;
+	--popup-box-box-shadow-color: #333;
 	--popup-box-text-color: #a9a9a9;
 }
 

@@ -3,14 +3,14 @@
  */
 
 :root {
-	--main-background-color: #dde0da;
+	--main-background-color: #cdd0ca;
 	--main-text-color: #0f150f;
 	--main-link-color: #053025;
-	--main-visited-color: #404005;
+	--main-visited-color: #303000;
 	--main-hover-background-color: #006025;
 	--main-hover-text-color: #dafffa;
-	--table-heading-background-color: #d0f0d0;
-	--table-heading-text-color: #040;
+	--table-heading-background-color: #c0e0c0;
+	--table-heading-text-color: #030;
 	--table-even-background-color: #b0cac5;
 	--table-even-text-color: #010;
 	--header-nav-background-color: #205920;
@@ -23,5 +23,6 @@
 	--codeblock-background-color: #111;
 	--codeblock-text-color: #cfc;
 	--popup-box-background-color: #b0cac5;
+	--popup-box-box-shadow-color: #a0bab6;
 	--popup-box-text-color: #010;
 }

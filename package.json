@@ -8,5 +8,12 @@
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-order": "^6.0.3"
+  },
+  "stylelint": {
+    "overrides": [
+      {
+        "cosmiconfig": "~8.2.0"
+      }
+    ]
   }
 }
