@@ -61,10 +61,6 @@ main > footer:last-of-type > details:last-of-type {
 	padding-top: .4em;
 }
 
-main > footer:last-of-type:has(> details:last-of-type[open]) {
-	box-shadow: 4px 4px 4px var(--popup-box-box-shadow-color, #333);
-}
-
 main > footer:last-of-type > details[open] + aside {
 	border-bottom-left-radius: .8rem;
 	border-bottom-right-radius: .8rem;
