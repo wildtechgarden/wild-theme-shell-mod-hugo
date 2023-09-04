@@ -1,0 +1,32 @@
+# cspell:ignore demosite
+name = 'Wild theme shell for WTG'
+license = 'MIT'
+licenselink = 'https://github.com/wildtechgarden/wild-them-shell-mod-hugo/LICENSE'
+description = 'Theme description'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/wildtechgarden/wild-theme-shell-mod-hugo'
+
+# If you have a running demo of the theme
+demosite = 'https://wwww.wild-theme-shell.wtg-demos.ca/'
+
+# Taxonomy terms
+# tags = ['blog', 'company']
+# features = ['some', 'awesome', 'features']
+
+# If the theme has multiple authors
+# authors = [
+#  {name = 'Name of author', homepage = 'Website of author'},
+#  {name = 'Name of author', homepage = 'Website of author'}
+# ]
+
+# If the theme has a single author
+[author]
+name = 'Daniel F. Dickinson'
+homepage = 'https://www.danielfdickinson.ca/'
+
+# If porting an existing theme
+# [original]
+#  author = 'Name of original author'
+#  homepage = 'Website of original author'
+#  repo = 'https://github.com/owner/repo'
