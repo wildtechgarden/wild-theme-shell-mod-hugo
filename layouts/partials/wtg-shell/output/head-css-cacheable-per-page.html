@@ -34,10 +34,12 @@
 {{- end -}}
 {{- if gt (len $combinedCSS) 0 -}}
 	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-page-cacheable-%s.css" (.TranslationKey | anchorize )) -}}
-	{{- if hugo.IsProduction }}
+	{{- if ne hugo.Environment "development" -}}
 		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
 		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
-	{{- end }}
+<link rel="stylesheet" href="{{ $combinedCSS.Permalink }}" integrity="{{ $combinedCSS.Data.Integrity }}" crossorigin="anonymous">
+	{{- else }}
 <link rel="stylesheet" href="{{ $combinedCSS.Permalink }}">
+	{{- end -}}
 {{- end -}}
 {{- /* Remove trailing newlines */ -}}

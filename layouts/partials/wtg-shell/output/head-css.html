@@ -3,9 +3,9 @@
 {{- $curPage := .Page -}}
 {{- /* May (probably should) be generated per page */ -}}
 {{- if templates.Exists "partials/wtg-theme/output/head-css-inline.html" -}}
-	{{- partial "wtg-theme/output/head-css-inline.html" . -}}
+	{{- partialCached "wtg-theme/output/head-css-inline.html" . . -}}
 {{- else -}}
-	{{- partial "wtg-shell/output/head-css-inline.html" . -}}
+	{{- partialCached "wtg-shell/output/head-css-inline.html" . . -}}
 {{- end -}}
 {{- /* Special handling for colour schemes; they are selected per-page but
 	there is not a separate colour scheme for each page.
