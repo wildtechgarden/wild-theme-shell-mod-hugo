@@ -21,3 +21,6 @@ other = "Report an issue"
 
 [siteCopyright]
 other = "Site {{ . }}"
+
+[updated]
+other = "updated"

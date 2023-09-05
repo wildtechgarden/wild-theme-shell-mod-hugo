@@ -37,6 +37,14 @@
 		{{- else }}
 				<span></span>
 	{{- end }}
+	{{- if $ctx.Page.Lastmod }}
+	{{- if $ctx.Page.Date }}
+				<br>
+	{{- end }}
+				<span>{{ i18n "updated" | safeHTML }} <time datetime="{{ $ctx.Page.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}">{{ $ctx.Page.Lastmod.Local.Format "Jan 2, 2006" }} {{ i18n "atTime" ($ctx.Page.Lastmod.Local.Format "3:04 PM MST") }}</time></span>
+		{{- else }}
+				<span></span>
+	{{- end }}
 			</aside>
 		</footer>
 {{- end -}}
