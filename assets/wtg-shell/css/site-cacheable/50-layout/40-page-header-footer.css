@@ -69,11 +69,12 @@ header:first-of-type > details:first-of-type[open] + nav details summary {
 	margin-top: .6em;
 }
 
-body > div > footer:last-of-type > div {
+body > div > footer:last-of-type {
 	align-items: center;
 	column-gap: .6em;
 	display: flex;
 	flex-flow: column wrap;
+	height: max-content;
 	justify-content: space-between;
 	margin-left: 0;
 	margin-right: 0;
@@ -105,10 +106,6 @@ header:first-of-type > details:first-of-type[open] + nav menu li {
 	margin-top: .6em;
 }
 
-body > div > footer:last-of-type {
-	height: max-content;
-}
-
 @media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
 	header:first-of-type > nav details {
 		align-self: center;
@@ -119,10 +116,9 @@ body > div > footer:last-of-type {
 		z-index: 2;
 	}
 
-	body > div > footer:last-of-type > div {
+	body > div > footer:last-of-type {
 		flex-flow: row nowrap;
-		padding-bottom: 0;
-		padding-top: 0;
+		padding: 0 .6em;
 	}
 
 	header:first-of-type > nav details[open] > div {
@@ -228,10 +224,5 @@ body > div > footer:last-of-type {
 	header:first-of-type > nav details[open] summary {
 		display: inline;
 		margin-right: 1em;
-	}
-
-	body > div > footer:last-of-type {
-		padding-left: .6em;
-		padding-right: .6em;
 	}
 }
