@@ -64,22 +64,59 @@ header:first-of-type > details:first-of-type[open] + nav {
 	z-index: 7;
 }
 
+body > div:last-of-type > footer:last-of-type > details > summary {
+	border: solid 2px;
+	border-radius: 12px;
+	list-style: none;
+	margin: .4em .2em;
+	padding: .1em .4em;
+}
+
+body > div:last-of-type > footer:last-of-type > details + div {
+	display: none;
+}
+
+body > div:last-of-type > footer:last-of-type > details[open] + div {
+	border: solid 2px;
+	border-radius: 8px;
+	bottom: 100%;
+	display: block;
+	padding: .1em .8em;
+	position: absolute;
+}
+
+body > div:last-of-type > footer:last-of-type > div:nth-of-type(3):nth-last-of-type(1) {
+	border: solid 2px;
+	border-radius: 12px;
+	margin: .4em .2em;
+	padding: .1em .4em;
+}
+
+body > div:last-of-type > footer:last-of-type > div:nth-of-type(3):nth-last-of-type(1) a {
+	display: block;
+	text-decoration: none;
+}
+
 header:first-of-type > details:first-of-type[open] + nav details summary {
 	margin-bottom: .6em;
 	margin-top: .6em;
 }
 
-body > div > footer:last-of-type {
+body > div:last-of-type > footer:last-of-type {
 	align-items: center;
 	column-gap: .6em;
 	display: flex;
-	flex-flow: column wrap;
+	flex-flow: row wrap;
 	height: max-content;
-	justify-content: space-between;
+	justify-content: center;
+	left: 0;
 	margin-left: 0;
 	margin-right: 0;
 	padding-bottom: .4em;
 	padding-top: .4em;
+	position: relative;
+	top: 0;
+	z-index: 7;
 }
 
 header:first-of-type > details:first-of-type[open] + nav > details[open] > summary + div > span {
@@ -116,7 +153,7 @@ header:first-of-type > details:first-of-type[open] + nav menu li {
 		z-index: 2;
 	}
 
-	body > div > footer:last-of-type {
+	body > div:last-of-type > footer:last-of-type {
 		flex-flow: row nowrap;
 		padding: 0 .6em;
 	}

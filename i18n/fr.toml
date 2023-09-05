@@ -16,11 +16,11 @@ other = "Page créée par"
 [poweredByTheme]
 other = "Powered by <a href=\"https://github.com/wildtechgarden/wild-theme-shell-mod-hugo\">Une coquille de thème «sauvage»</a> à <a href=\"https://gohugo.io/\">Hugo</a>"
 
-[reportAnIssue]
-other = "Signaler un problème"
-
 [siteCopyright]
 other = "Site {{ . }}"
+
+[siteIssue]
+other = "Problème en site?"
 
 [updated]
 other = "actualisé"

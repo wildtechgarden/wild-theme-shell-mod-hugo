@@ -2,13 +2,19 @@
 {{- if ne ($ctx.Page.Param "omitPageFooter") true }}
 	<footer>
 {{- if ne ($ctx.Param "omitSiteCopyright") true }}
+		<details>
+			<summary>License</summary>
+		</details>
 		<div>{{- i18n "siteCopyright" site.Params.copyright -}}</div>
 {{- end -}}
 {{- if ne ($ctx.Param "omitPoweredBy") true -}}
+		<details>
+			<summary>Built-with</summary>
+		</details>
 		<div>{{ i18n "poweredByTheme" | safeHTML }}</div>
 {{- end -}}
 {{- with $ctx.Page.Param "issueReportUrl"}}
-		<div><a href="{{ . }}">{{ i18n "reportAnIssue" }}</a></div>
+		<div><a href="{{ . }}">{{ i18n "siteIssue" }}</a></div>
 {{- end }}
 	</footer>
 {{- end -}}
