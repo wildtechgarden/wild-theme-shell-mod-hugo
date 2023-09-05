@@ -44,7 +44,8 @@ header:first-of-type > details:first-of-type + nav {
 }
 
 header:first-of-type nav details summary {
-	border: solid 1px;
+	border: solid 2px;
+	border-radius: 8px;
 	list-style-type: none;
 	margin-bottom: 0;
 	margin-top: 0;
@@ -178,6 +179,8 @@ header:first-of-type > details:first-of-type[open] + nav menu li {
 	}
 
 	header:first-of-type > nav menu a {
+		border: solid 2px;
+		border-radius: 8px;
 		display: inline-block;
 		padding-left: .4em;
 		padding-right: .4em;
@@ -258,8 +261,11 @@ header:first-of-type > details:first-of-type[open] + nav menu li {
 		width: 100%;
 	}
 
+	header:first-of-type > nav details summary {
+		margin-right: 1em;
+	}
+
 	header:first-of-type > nav details[open] summary {
 		display: inline;
-		margin-right: 1em;
 	}
 }

@@ -12,8 +12,8 @@ header:first-of-type > details:first-of-type {
 header:first-of-type > nav {
 	border-style: solid;
 	border-width: 1px;
-	padding-bottom: .2em;
-	padding-top: .2em;
+	padding-bottom: .3em;
+	padding-top: .3em;
 }
 
 header:first-of-type nav details summary {
