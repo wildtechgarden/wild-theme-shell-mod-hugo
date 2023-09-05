@@ -14,6 +14,7 @@ main > footer:last-of-type {
 	height: max-content;
 	line-height: 1cm;
 	margin-right: 0;
+	max-width: calc(100% - .8em);
 	min-height: 1cm;
 	overflow: hidden;
 	padding-right: 0;

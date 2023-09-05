@@ -78,7 +78,7 @@ repos:
     args:
     - --config
     - .stylelintrc.json
-    - --allow-empty-input
+    - --no-fix
     files: \.(css$)
 
 - repo: "https://github.com/igorshubovych/markdownlint-cli"

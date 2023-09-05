@@ -10,28 +10,36 @@
 		display: none;
 	}
 
-	main > footer:last-of-type > details {
-		display: none;
+	main > footer:last-of-type > details:last-of-type {
+		display: inline;
+		padding-left: 0;
 	}
 
-	main > footer:last-of-type > aside {
-		display: block;
+	main > footer:last-of-type > details:last-of-type > summary {
+		display: inline;
+		list-style: none;
+		padding-right: 0;
 	}
 
-	main > footer:last-of-type > aside > p {
+	main > footer:last-of-type > details:last-of-type + aside {
+		display: inline;
+	}
+
+	main > footer:last-of-type > details:last-of-type + aside > address {
 		display: inline;
 		margin-bottom: 0;
 	}
 
-	main > footer:last-of-type > aside > div {
-		display: inline;
+	main > footer:last-of-type > details:last-of-type + aside > address > br {
+		display: none;
 	}
 
-	main > footer:last-of-type > aside > div > address {
+	main > footer:last-of-type > details:last-of-type + aside > span {
 		display: inline;
+		margin-bottom: 0;
 	}
 
-	main > footer:last-of-type > aside > div > address > br {
+	main > footer:last-of-type > details:last-of-type + aside > span + br {
 		display: none;
 	}
 }
