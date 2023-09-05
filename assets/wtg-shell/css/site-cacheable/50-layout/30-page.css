@@ -43,5 +43,6 @@ body header:first-of-type + div:first-of-type > main {
 	height: max-content;
 	min-height: 100%;
 	overflow: hidden;
+	padding-bottom: 1cm;
 	width: 100%;
 }
