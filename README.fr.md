@@ -5,6 +5,7 @@ Description:	Une coquille (envelopper) de thème «sauvage» pour Hugo par
 Site: <https://www.wild-theme-shell.wtg-demos.ca/>  
 URL du référentiel: <https://github.com/wildtechgarden/wild-theme-shell-mod-hugo>\
 Statut IC: [![pre-commit.ci statut](https://results.pre-commit.ci/badge/github/wildtechgarden/wild-theme-shell-mod-hugo/main.svg)][pre-commit-ic]
+[![build-audit](https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/actions/workflows/audit-only.yml/badge.svg)](https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/actions/workflows/audit-only.yml)
 
 ## Matières
 

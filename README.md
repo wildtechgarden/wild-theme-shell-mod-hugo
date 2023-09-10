@@ -5,6 +5,7 @@ Description:	The Hugo shell (wrapper) module for themes by
 Site: <https://www.wild-theme-shell.wtg-demos.ca/>  
 Repository: <https://github.com/wildtechgarden/wild-theme-shell-mod-hugo>  
 CI Status: [![pre-commit.ci status][pre-commit-ci]](https://results.pre-commit.ci/latest/github/wildtechgarden/wild-theme-shell-mod-hugo/main)
+[![build-audit](https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/actions/workflows/audit-only.yml/badge.svg)](https://github.com/wildtechgarden/wild-theme-shell-mod-hugo/actions/workflows/audit-only.yml)
 
 ## Contents
 
