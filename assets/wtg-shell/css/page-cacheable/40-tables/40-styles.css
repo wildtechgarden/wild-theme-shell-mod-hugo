@@ -22,12 +22,12 @@ td {
 	padding: .4em;
 }
 
-td:nth-of-type(-n + 2) {
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-}
-
 td:nth-of-type(n + 2) {
 	border-left-style: solid;
 	border-left-width: 2px;
+}
+
+tr:nth-of-type(n + 1) td {
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
 }
