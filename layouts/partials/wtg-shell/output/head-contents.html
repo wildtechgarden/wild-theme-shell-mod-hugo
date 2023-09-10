@@ -5,7 +5,7 @@
 <title>{{ partialCached "wtg-shell/helpers/find-page-title.html" . . | safeHTML }}</title>
 {{- end }}
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
 {{ hugo.Generator }}
 {{- if templates.Exists "partials/wtg-theme/output/head-css.html" -}}
 	{{- partialCached "wtg-theme/output/head-css.html" . . -}}
