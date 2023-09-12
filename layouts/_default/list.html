@@ -8,9 +8,9 @@
 	{{- range .Data.Pages }}
 			<li><a href="{{ .RelPermalink }}">
 		{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title" }}
-			{{- partial "wtg-theme/helpers/find-page-title" . | safeHTML -}}
+			{{- partialCached "wtg-theme/helpers/find-page-title" . . | safeHTML -}}
 		{{ else }}
-			{{- partial "wtg-shell/helpers/find-page-title" . | safeHTML -}}
+			{{- partialCached "wtg-shell/helpers/find-page-title" . . | safeHTML -}}
 		{{ end -}}
 			</a></li>
 {{- end }}
