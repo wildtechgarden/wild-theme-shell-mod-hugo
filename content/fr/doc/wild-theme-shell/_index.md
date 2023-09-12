@@ -16,7 +16,6 @@ Documentation au 'un coque thématique sauvage' par Wild Tech 'Garden'. \
 Les informations primaires en utiliser le thème sont en le \
 [README](README.fr.md). \
 """
-layout = "single"
 +++
 
 ## Aperçu
@@ -32,3 +31,5 @@ Les informations primaires en utiliser le thème sont en le
 ## Colophon
 
 [LICENSE](LICENSE)
+
+## Les autres docs

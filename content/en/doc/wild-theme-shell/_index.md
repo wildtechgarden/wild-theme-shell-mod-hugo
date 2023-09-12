@@ -16,7 +16,6 @@ Documentation for Wild Tech 'Garden's 'wild' theme shell. The main \
 information on using the theme is in the [README](README.md). \
 \
 """
-layout = "single"
 +++
 
 ## Overview
@@ -31,3 +30,5 @@ information on using the theme is in the [README](README.md).
 ## Colophon
 
 [LICENSE](LICENSE)
+
+## Other docs
