@@ -1,4 +1,4 @@
-{{- $pageTitle := .Title -}}
+{{- $pageTitle := .Page.Title -}}
 {{- if not $pageTitle -}}
 	{{- $pageTitle = findRE `(?s)<h1.*?>.*?</h1>` .Page.Content 1 -}}
 	{{- if and $pageTitle (ge (len $pageTitle) 1) -}}
@@ -6,7 +6,7 @@
 			{{- $pageTitle = replaceRE `(?s)<h1.*?>(.*?)</h1>` `$1` . -}}
 		{{- end -}}
 	{{- else -}}
-		{{- $pageTitle = path.Base .TranslationKey -}}
+		{{- $pageTitle = path.Base .Page.TranslationKey -}}
 	{{- end -}}
 {{- end -}}
 {{- return $pageTitle -}}
