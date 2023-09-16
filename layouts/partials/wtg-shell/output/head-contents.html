@@ -7,6 +7,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
 {{ hugo.Generator }}
+{{- if templates.Exists "partials/wtg-theme/output/head-canonical.html" -}}
+	{{- partialCached "wtg-theme/output/head-canonical.html" . . -}}
+{{- else -}}
+	{{- if templates.Exists "partials/wtg-shell/output/head-canonical.html" -}}
+		{{- partialCached "wtg-shell/output/head-canonical.html" . . -}}
+	{{- end -}}
+{{- end -}}
 {{- if templates.Exists "partials/wtg-theme/output/head-css.html" -}}
 	{{- partialCached "wtg-theme/output/head-css.html" . . -}}
 {{- else -}}
