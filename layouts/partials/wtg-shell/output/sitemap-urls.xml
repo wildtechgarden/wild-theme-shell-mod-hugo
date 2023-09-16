@@ -1,0 +1,43 @@
+{{- /* cspell:ignore pagecanonical taxcanonical changefreq hreflang */ -}}
+{{ range .Data.Pages }}
+	{{- $pageCanonical := true -}}
+	{{- if isset .Page.Params "pagecanonical" -}}
+		{{- $pageCanonical = .Page.Params.pageCanonical -}}
+	{{- else if isset site.Params "pagecanonical" -}}
+		{{- $pageCanonical = site.Params.pageCanonical -}}
+	{{- end -}}
+	{{- $taxCanonical := false -}}
+	{{- if isset .Page.Params "taxcanonical" -}}
+		{{- $taxCanonical = .Page.Params.taxCanonical -}}
+	{{- else if isset site.Params "taxcanonical" -}}
+		{{- $taxCanonical = site.Params.taxCanonical -}}
+	{{- end -}}
+	{{- $omitFromSitemap := or (not $pageCanonical) (or (.Param "omitFromSitemap") false) (and (ne $taxCanonical true) (or (.Data.Singular) (.Data.Plural))) -}}
+	{{- if not $omitFromSitemap }}
+	<url>
+		<loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+		<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+	{{- end -}}
+	{{- with .Sitemap.ChangeFreq }}
+		<changefreq>{{ . }}</changefreq>
+	{{- end -}}
+	{{- if ge .Sitemap.Priority 0.0 }}
+		<priority>{{ .Sitemap.Priority }}</priority>
+	{{- end -}}
+	{{- if .IsTranslated }}
+		{{- range .Translations }}
+		<xhtml:link
+			rel="alternate"
+			hreflang="{{ .Language.Lang }}"
+			href="{{ .Permalink }}"
+		/>
+		{{- end }}
+		<xhtml:link
+			rel="alternate"
+			hreflang="{{ .Language.Lang }}"
+			href="{{ .Permalink }}"
+		/>
+	{{- end }}
+	</url>
+	{{- end -}}
+{{- end -}}
