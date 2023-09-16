@@ -82,11 +82,57 @@ redirectsDomains = [
 	"www.wild-theme-shell.wtg-demos.com"
 ]
 redirectsExtra = []
+rssIncludeFullArticle = true
 staticFallback = false
+taxCanonical = false
+
+[[cascade]]
+omitFromFeeds = true
+[cascade._target]
+kind = "taxonomy"
+
+[[cascade]]
+omitFromFeeds = true
+[cascade._target]
+kind = "term"
+
+[[cascade]]
+pageCanonical = true
+[cascade._target]
+path = "/{about,demo,doc}/_index.md"
+lang="en"
+
+[[cascade]]
+pageCanonical = true
+[cascade._target]
+path = "/{about,demo,doc}/_index.md"
+lang="fr"
+
+[[cascade]]
+pageCanonical = false
+toRelCanonical = "https://www.wtg-demos.ca"
+[cascade._target]
+path = "/{about,demo,doc}/**"
+lang="en"
+
+[[cascade]]
+pageCanonical = false
+toRelCanonical = "https://www.wtg-demos.ca"
+[cascade._target]
+path = "/{about,demo,doc}/**"
+lang="fr"
 
 [params.authors]
 [params.authors."Daniel F. Dickinson"]
 homepage = "https://www.danielfdickinson.ca/"
+email = "dfdpublic@wildtechgarden.ca"
+
+[params.editor]
+name = "Daniel F. Dickinson"
+email = "dfdpublic@wildtechgarden.ca"
+
+[params.webMaster]
+name = "Daniel F. Dickinson"
 email = "dfdpublic@wildtechgarden.ca"
 
 [taxonomies]
