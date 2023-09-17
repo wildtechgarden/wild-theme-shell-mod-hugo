@@ -28,7 +28,7 @@
 	{{- if and .Permalink (or (eq $pageCanonical true) (and (eq $taxCanonical true) (not (or (.Data.Singular) (.Data.Plural))))) }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-be-canonical\" href=%q -->" .Permalink) | safeHTML -}}
 		{{- with .Sites.First.GetPage (.TranslationKey | strings.TrimPrefix (.Page.Kind | lower) | strings.TrimPrefix "/") }}
-{{ (printf "<!-- link rel=\"alternate\" hreflang=\"x-default\" href=%q>" .Permalink) | safeHTML -}}
+{{ (printf "<!-- link rel=\"alternate\" hreflang=\"x-default\" href=%q -->" .Permalink) | safeHTML -}}
 		{{- end -}}
 	{{- else if .Page.Params.toCanonical }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-be-canonical\" href=\"%s\" -->" .Page.Params.toCanonical) | safeHTML -}}
