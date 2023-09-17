@@ -5,7 +5,13 @@
 {{ .Content }}
 		<ul>
 {{- range .Data.Pages }}
-			<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+			<li><a href="{{ .RelPermalink }}">
+				{{- if templates.Exists "partials/wtg-theme/helpers/find-link-title" -}}
+					{{- partialCached "wtg-theme/helpers/find-link-title" . . -}}
+				{{- else -}}
+					{{- partialCached "wtg-shell/helpers/find-link-title" . . -}}
+			{{- end -}}
+			</a></li>
 {{- end }}
 			<li><a href="{{ relref . "/tags" }}">Tags</a></li>
 			<li><a href="{{ ref . (dict "path" "/_index.md" "outputFormat" "rss") }}">RSS feed</a></li>

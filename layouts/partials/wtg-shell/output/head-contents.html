@@ -1,4 +1,3 @@
-{{- /* Use page title if defined in frontMatter */ -}}
 {{- if templates.Exists "partials/wtg-theme/output/find-page-title.html" }}
 <title>{{ partialCached "wtg-theme/helpers/find-page-title.html" . . | safeHTML }}</title>
 {{- else }}

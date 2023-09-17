@@ -106,7 +106,7 @@ present, otherwise
 {{- .Content -}}
 {{- range .Data.Pages }}
 <ul>
-<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+<li><a href="{{ .RelPermalink }}">[Uses partial "…helpers/find-link-title]</a></li>
 </ul>
 {{- end -}}
 ```

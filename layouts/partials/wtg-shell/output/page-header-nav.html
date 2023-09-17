@@ -24,7 +24,13 @@
 {{- range site.Params.mainSections -}}
 	{{- $page := site.GetPage ( printf "/%s" . ) -}}
 	{{- with $page }}
-		<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+		<li><a href="{{ .RelPermalink }}">
+			{{- if templates.Exists "partials/wtg-theme/helpers/find-link-title" -}}
+				{{- partialCached "wtg-theme/helpers/find-link-title" . . -}}
+			{{- else -}}
+				{{- partialCached "wtg-shell/helpers/find-link-title" . . -}}
+			{{- end -}}
+		</a></li>
 {{- end -}}
 {{- end -}}
 {{- end }}

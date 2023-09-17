@@ -57,10 +57,10 @@
 	{{- $curPage := .Page }}
 		<item>
 			<title>
-	{{- if templates.Exists "partial/wtg-theme/helpers/find-page-title.html" -}}
-		{{- partialCached "wtg-theme/helpers/find-page-title.html" . . -}}
+	{{- if templates.Exists "partial/wtg-theme/helpers/find-link-title.html" -}}
+		{{- partialCached "wtg-theme/helpers/find-link-title.html" . . -}}
 	{{- else -}}
-		{{- partialCached "wtg-shell/helpers/find-page-title.html" . . -}}
+		{{- partialCached "wtg-shell/helpers/find-link-title.html" . . -}}
 	{{- end -}}
 			</title>
 			<link>{{ .Permalink }}</link>

@@ -1,0 +1,10 @@
+{{- $pageTitle := .Page.LinkTitle -}}
+{{- if not $pageTitle -}}
+	{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title" -}}
+		{{- $pageTitle = partialCached "wtg-theme/helpers/find-page-title" . . -}}
+	{{- else -}}
+		{{ $pageTitle = partialCached "wtg-shell/helpers/find-page-title" . . -}}
+	{{- end -}}
+{{- end -}}
+{{- return $pageTitle -}}
+{{- /* Remove trailing newlines */ -}}
