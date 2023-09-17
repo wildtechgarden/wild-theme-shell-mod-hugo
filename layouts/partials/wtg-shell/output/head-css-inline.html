@@ -19,7 +19,7 @@
 	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-inline-head-%s.css" (.TranslationKey | anchorize )) -}}
 	{{- if ne hugo.Environment "development" -}}
 		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
-		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint }}
 	<style integrity="{{ $combinedCSS.Data.Integrity }}">
 		{{ $combinedCSS.Content | safeCSS -}}
 	</style>

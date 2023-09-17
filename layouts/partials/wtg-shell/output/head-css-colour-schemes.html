@@ -22,7 +22,7 @@
 	{{- $combinedCSS = $combinedCSS | resources.Concat (printf "/assets/css/wtg-shell-colour-scheme-%s.css" ($cssColourScheme | anchorize )) -}}
 	{{- if ne hugo.Environment "development" -}}
 		{{- $combinedCSS = $combinedCSS | resources.Minify -}}
-		{{- $combinedCSS = $combinedCSS | resources.Fingerprint -}}
+		{{- $combinedCSS = $combinedCSS | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $combinedCSS.Permalink }}" integrity="{{ $combinedCSS.Data.Integrity }}" crossorigin="anonymous">
 	{{- else }}
 <link rel="stylesheet" href="{{ $combinedCSS.Permalink }}">
