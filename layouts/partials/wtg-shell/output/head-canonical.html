@@ -15,9 +15,6 @@
 <meta name="robots" content="index, follow">
 	{{- if and .Permalink (or (eq $pageCanonical true) (and (eq $taxCanonical true) (not (or (.Data.Singular) (.Data.Plural))))) }}
 <link rel="canonical" href="{{ .Permalink }}">
-		{{- with .Sites.First.GetPage (.TranslationKey | strings.TrimPrefix (.Page.Kind | lower) | strings.TrimPrefix "/") }}
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
-		{{- end -}}
 	{{- else if .Page.Params.toCanonical }}
 <link rel="canonical" href="{{ .Page.Params.toCanonical }}">
 	{{- else if .Page.Params.toRelCanonical }}
@@ -27,15 +24,21 @@
 <meta name="robots" content="noindex, nofollow">
 	{{- if and .Permalink (or (eq $pageCanonical true) (and (eq $taxCanonical true) (not (or (.Data.Singular) (.Data.Plural))))) }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-be-canonical\" href=%q -->" .Permalink) | safeHTML -}}
-		{{- with .Sites.First.GetPage (.TranslationKey | strings.TrimPrefix (.Page.Kind | lower) | strings.TrimPrefix "/") }}
-{{ (printf "<!-- link rel=\"alternate\" hreflang=\"x-default\" href=%q -->" .Permalink) | safeHTML -}}
-		{{- end -}}
 	{{- else if .Page.Params.toCanonical }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-be-canonical\" href=\"%s\" -->" .Page.Params.toCanonical) | safeHTML -}}
 	{{- else if .Page.Params.toRelCanonical }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-be-canonical\" href=\"%s%s\" -->" .Page.Params.toRelCanonical .RelPermalink) | safeHTML -}}
 	{{- else }}
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-not-be-canonical\" href=\"%s\" -->" .Permalink) | safeHTML -}}
+	{{- end -}}
+{{- end -}}
+{{- if .IsTranslated -}}
+	{{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+	{{- end }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+	{{- with .Sites.First.GetPage (.TranslationKey | strings.TrimPrefix (.Page.Kind | lower) | strings.TrimPrefix "/") }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
 	{{- end -}}
 {{- end -}}
 {{- /* Remove trailing newlines */ -}}
