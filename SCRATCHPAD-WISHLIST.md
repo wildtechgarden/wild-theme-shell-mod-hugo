@@ -149,3 +149,14 @@ correctly when using HTML content files.
 * Archetypes need to include `default.html` for HTML content.
 * Functionality in render-X hooks should also be available to HTML content
 files via shortcodes.
+
+## Limit use of section/list pages with content
+
+* Content should be on regular pages.
+* Manual links to pages in a section on a regular page should be the default
+navigation targets rather than list pages in most cases.
+* Exceptions include situations like a list of blog posts, pages in a
+(taxonomy) term, and a paginated HTML sitemap.
+* Therefore we want menus that don't use e.g. `mainSections` or to set
+`mainSections` to an empty list so that we define the proper navigation
+targets.
