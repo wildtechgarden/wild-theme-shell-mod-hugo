@@ -31,8 +31,7 @@ body header:first-of-type + div:first-of-type {
 	height: 100%;
 	left: 0;
 	min-height: calc(100vh - 1cm);
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden auto;
 	position: relative;
 	top: 0;
 	width: 100%;
