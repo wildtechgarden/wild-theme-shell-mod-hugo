@@ -141,3 +141,11 @@ Generate a static Content-Security-Policy (nonces not available)
 	* Tags
 	* Series
 * Paginate the list of pages for each term.
+
+## HTML content-friendly
+
+* Generating Tables of Contents, HTML sitemaps, and so on should work
+correctly when using HTML content files.
+* Archetypes need to include `default.html` for HTML content.
+* Functionality in render-X hooks should also be available to HTML content
+files via shortcodes.
