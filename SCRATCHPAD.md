@@ -2,7 +2,7 @@
 
 ## Partials 'namespace' to aid interoperability with other modules
 
-### the xxx-wtg-awt subdirectories of `layouts/partials`
+### the wtg-theme subdirectories of `layouts/partials`
 
 Partials are expected under `layouts/partials/wtg-theme/helpers` and
 `wtg-theme/output` in order to avoid conflicting with modules from
