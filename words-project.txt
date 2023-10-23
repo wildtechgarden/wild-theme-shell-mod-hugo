@@ -4,8 +4,10 @@ csslint
 curdir
 DEPLOYDBASEURL
 dontbreakthebackbutton
+ECDNS
 ENABLEMISSINGTRANSLATIONPLACEHOLDERS
 errorf
+Formspree
 frontmatter
 github
 goldmark
@@ -17,11 +19,15 @@ jmooring
 KEEPCOMMENTS
 lastmod
 licenselink
+LQIP
 muffet
+pagefind
 pageref
 rclone
 RESOURCEDIR
 RewriteCond
+shortcode
+Shortcodes
 SITECONFIG
 SITEROOT
 SITESRC
