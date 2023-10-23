@@ -8,6 +8,13 @@
 Wish to avoid SASS if possible.  
 Wish to avoid NPM if possible.
 
+## General UI
+
+* Light, dark, and system selection colour modes
+* Configuration of mode to light or dark
+* Cookie consent dialogue when configuration is done
+* Easily configurable/customizable colour schemes
+
 ## Technical SEO
 
 * Only one H1 per page
@@ -31,6 +38,7 @@ Wish to avoid NPM if possible.
 
 * Anchor link targets
 * Visual breadcrumb
+* High contract (both light and dark modes)
 
 ## GitHub / GitLab / Plain Markdown compatibility
 
