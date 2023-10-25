@@ -1,18 +1,24 @@
 # Definition of wild-shell and a-wild-theme combined result
 
+## TODO
+
+Split this into items for `wild-shell` (core) and `a-wild-theme` (add-on modules)
+
 ## General
 
 * Preferably vanilla CSS
 * Preferably vanilla JS
+* Incorporate techniques from [CSS Nouveau](https://www.spicyweb.dev/building-courseware-i-understand/)
 
-Wish to avoid SASS if possible.  
-Wish to avoid NPM if possible.
+Wish to avoid SASS/PostCSS if possible.  
+Wish to avoid NPM/js.Build if possible.
 
 ## General UI
 
 * Light, dark, and system selection colour modes
 * Configuration of mode to light or dark
 * Cookie consent dialogue when configuration is done
+	* If not accepted, no configuration is stored (warn user of this)
 * Easily configurable/customizable colour schemes
 
 ## Technical SEO
@@ -36,16 +42,19 @@ Wish to avoid NPM if possible.
 
 ## Accessibility / Ease of use
 
+* Must be accessible (a11y)
 * Anchor link targets
 * Visual breadcrumb
-* High contract (both light and dark modes)
+* High contrast (both light and dark modes)
+* Also see [images](#images)
 
 ## GitHub / GitLab / Plain Markdown compatibility
 
 * render-link that correctly generates links that can also be properly
 navigated from the source code (e.g. a base `file.md` links to a sibling
 file and `../file.md` links to a file in the parent directory)
-* render-image doing the same for paths to images
+* render-image doing the same for paths to images (so when GitHub/GitLab
+render Markdown you should see the images)
 
 ## Images
 
@@ -57,8 +66,12 @@ file and `../file.md` links to a file in the parent directory)
 * TODO: Use Git-LFS and process images on build (with cache),
 or do processing outside Hugo and reference images not in repo?
 * Image credits / copyright notices
-* Easy use of ECDNS and other CC local stock photos
+* Easy use of [EDCNS](https://edcns.ca) and other CC local stock photos
 * Gallery and/or carousel for multiple images
+* Default to use alt as caption (if it doesn't make sense as a
+caption it probably doesn't make sense as an alt).
+	* Needs to able to be readily styled in a spot, font, etc, that looks good
+* Configurable warn or error on no alt text
 
 ## Visible metadata / Authorship / Copyright
 
@@ -103,14 +116,22 @@ design.
 * Word break (`<wbr>`) support
 * Add wrapper (wrapper, wrapper-start, wrapper-end)
 
+### Fonts
+
+* Probably need to break down an use some kind of web font for good, and
+consistent look.
+* Use locally host fonts though (no external CDN)
+
 ## Feeds
 
 * RSS and JSON feeds with full article content
+	* Make sure valid XML is generated (WIP)
 
 ## Multilingual
 
 * Language selector
 * hreflang support
+* Enable / disable language(s) with 'switch' (i.e. only configuration edits)
 
 ## Favicons / Logo
 
@@ -122,14 +143,16 @@ design.
 
 * Scalable local search using pagefind?
 
-## 404
+## Error pages
+
+### 404
 
 * Friendly
 * Search (if supported)
 * Sitemap (if present)
 * Home (browse)
 
-## Other error pages
+### Other errors
 
 * Identify where it makes sense
 
@@ -168,3 +191,8 @@ navigation targets rather than list pages in most cases.
 * Therefore we want menus that don't use e.g. `mainSections` or to set
 `mainSections` to an empty list so that we define the proper navigation
 targets.
+
+## Review already done features and record implemented but not listed
+
+* [wtg-shell](https://www.wtg-demos.ca/)
+* [DFD-Zen](https://www.zen-theme-hugo-wtg.wtg-demos.ca/)
