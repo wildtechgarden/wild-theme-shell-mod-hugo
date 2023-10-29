@@ -228,6 +228,8 @@ disabled = true
 disabled = true
 
 [module]
+replacements = "github.com/wildtechgarden/wild-theme-shell-mod-hugo -> .."
+
 [[module.mounts]]
 source = "static"
 target = "static"
