@@ -32,13 +32,4 @@
 {{ (printf "<!-- link rel=\"alternate\" data=\"will-not-be-canonical\" href=\"%s\" -->" .Permalink) | safeHTML -}}
 	{{- end -}}
 {{- end -}}
-{{- if .IsTranslated -}}
-	{{- range .Translations }}
-<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
-	{{- end }}
-<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
-	{{- with .Sites.First.GetPage (.TranslationKey | strings.TrimPrefix (.Page.Kind | lower) | strings.TrimPrefix "/") }}
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
-	{{- end -}}
-{{- end -}}
 {{- /* Remove trailing newlines */ -}}

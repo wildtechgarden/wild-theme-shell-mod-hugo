@@ -1,4 +1,4 @@
-{{- /* cspell:ignore pagecanonical taxcanonical changefreq hreflang */ -}}
+{{- /* cspell:ignore pagecanonical taxcanonical changefreq */ -}}
 {{ range .Data.Pages }}
 	{{- $pageCanonical := true -}}
 	{{- if isset .Page.Params "pagecanonical" -}}
@@ -24,20 +24,6 @@
 	{{- if ge .Sitemap.Priority 0.0 }}
 		<priority>{{ .Sitemap.Priority }}</priority>
 	{{- end -}}
-	{{- if .IsTranslated }}
-		{{- range .Translations }}
-		<xhtml:link
-			rel="alternate"
-			hreflang="{{ .Language.Lang }}"
-			href="{{ .Permalink }}"
-		/>
-		{{- end }}
-		<xhtml:link
-			rel="alternate"
-			hreflang="{{ .Language.Lang }}"
-			href="{{ .Permalink }}"
-		/>
-	{{- end }}
 	</url>
 	{{- end -}}
 {{- end -}}
