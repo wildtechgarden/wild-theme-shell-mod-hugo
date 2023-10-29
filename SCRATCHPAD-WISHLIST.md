@@ -37,7 +37,12 @@ without needing to replace all CSS).
 * Valid HTML5 / CSS3 (updated as browsers gain support for features)
 * Canonical or not appropriately
 * Index / follow or not appropriately
-* Robots.txt with pointer to sitemap.xml
+* TODO: Robots.txt with pointer to sitemap.xml
+
+## 404
+
+Basic 404 page (just the error message "404 Not Found" in the style of the
+site).
 
 ## Mobile
 
