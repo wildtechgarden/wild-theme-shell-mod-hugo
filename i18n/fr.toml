@@ -16,12 +16,6 @@ other = "Page créée par"
 [poweredByTheme]
 other = "Powered by <a href=\"https://github.com/wildtechgarden/wild-theme-shell-mod-hugo\">Une coquille de thème «sauvage»</a> à <a href=\"https://gohugo.io/\">Hugo</a>"
 
-[recentInSectionOnSite]
-other = "Contenu récent au section «{{ .pageTitle }}» de {{ .siteTitle }}"
-
-[sectionOnSite]
-other = "{{ .pageTitle }} de {{ .siteTitle }}"
-
 [siteCopyright]
 other = "Site {{ . }}"
 
