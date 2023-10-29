@@ -2,19 +2,8 @@
 	<menu>
 		<li><a href="{{ relref .Page "/" }}">{{ site.Title }}</a></li>
 	</menu>
-{{- /* Next header piece is/are links to translations of this page */ -}}
-{{- if .IsTranslated }}
-	<details>
-		<summary>A↔B</summary>
-		<div>
-{{- range .Translations }}
-			<span><a href="{{ .RelPermalink }}">{{ with .Language.LanguageName }}{{ . }}{{ else }}{{ .Lang }}{{ end }}</a></span>
-{{- end }}
-		</div>
-	</details>
-{{- else -}}
+{{- /* Next header piece placeholder for language selector */ -}}
 	<div></div>
-{{- end }}
 {{- /* Next header piece is/are menu items, if a 'main' menu is defined */}}
 	<menu>
 {{- with site.Menus.main -}}
