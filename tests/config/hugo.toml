@@ -204,7 +204,8 @@ notAlternative = true
 suffixes = ["htaccess"]
 
 [outputs]
-home = ["HTML", "RSS", "htaccess"]
+#home = ["HTML", "RSS", "htaccess"]
+home = ["HTML", "htaccess"]
 section = ["HTML"]
 taxonomy = ["HTML"]
 term = ["HTML"]

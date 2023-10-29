@@ -14,7 +14,9 @@
 			</a></li>
 {{- end }}
 			<li><a href="{{ relref . "/tags" }}">Tags</a></li>
+			{{- if where (site.GetPage "/").AlternativeOutputFormats "Name" "eq" "rss" }}
 			<li><a href="{{ ref . (dict "path" "/_index.md" "outputFormat" "rss") }}">RSS feed</a></li>
+			{{- end }}
 		</ul>
 {{- end -}}
 {{ end }}
