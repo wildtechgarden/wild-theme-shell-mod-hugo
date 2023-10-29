@@ -21,7 +21,7 @@ jobs:
       with:
         base-url: "https://example.com/"
         build-for-downstream: true
-        config-file: tests/config/hugo.toml
+        config-file: tests/config/test-config.toml
         hugo-version: latest
         # source-directory: tests/config
     - name: Validate HTML and CSS of website
