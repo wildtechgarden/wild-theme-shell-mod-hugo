@@ -54,6 +54,28 @@ header:first-of-type nav details summary {
 	width: max-content;
 }
 
+header:first-of-type nav > div {
+	border: none;
+	border-radius: 8px;
+	list-style-type: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-left: .4em;
+	padding-right: .4em;
+	width: max-content;
+}
+
+header:first-of-type nav details > div {
+	border: solid 2px;
+	border-radius: 8px;
+	list-style-type: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-left: .4em;
+	padding-right: .4em;
+	width: max-content;
+}
+
 header:first-of-type > details:first-of-type[open] + nav {
 	max-height: calc(100vh - 1cm);
 	min-height: 60vh;
@@ -146,6 +168,11 @@ header:first-of-type > details:first-of-type[open] + nav menu li {
 
 @media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
 	header:first-of-type > nav details {
+		align-self: center;
+		margin-left: auto;
+	}
+
+	header:first-of-type > nav > div {
 		align-self: center;
 		margin-left: auto;
 	}
