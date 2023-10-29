@@ -1,4 +1,6 @@
-# Definition of wild-shell and a-wild-theme combined result
+# Definition of wild-theme-shell
+
+For addons see [a-wild-theme](https://github.com/wildtechgarden/a-wild-theme-mod-hugo)
 
 ## TODO
 
@@ -7,29 +9,31 @@ Split this into items for `wild-shell` (core) and `a-wild-theme` (add-on modules
 ## General
 
 * Preferably vanilla CSS
-* Preferably vanilla JS
+* Preferably vanilla JS and then only if required
 * Incorporate techniques from [CSS Nouveau](https://www.spicyweb.dev/building-courseware-i-understand/)
 
 Wish to avoid SASS/PostCSS if possible.  
 Wish to avoid NPM/js.Build if possible.
 
+In general any partial should be overridable in a theme using this shell,
+and smaller customizations should also be supported (e.g. colour scheme only,
+without needing to replace all CSS).
+
 ## General UI
 
 * Light, dark, and system selection colour modes
-* Configuration of mode to light or dark
-* Cookie consent dialogue when configuration is done
-	* If not accepted, no configuration is stored (warn user of this)
-* Easily configurable/customizable colour schemes
+* Easily customizable colour schemes
+
+## Multilingual
+
+* Make sure theme can easily support additional languages
 
 ## Technical SEO
 
 * Only one H1 per page
 * Head title 50 ≤ characters ≤ 70
 * Description 110 ≤ characters ≤ 160
-* OpenGraph schema with social media card (image)
-	* Where no cover image, use a generated card
-* JSON-LD 'Schema' and 'Breadcrumbs'
-* perfect PageSpeed scores
+* perfect (or close) PageSpeed scores
 * Valid HTML5 / CSS3 (updated as browsers gain support for features)
 * Canonical or not appropriately
 * Index / follow or not appropriately
@@ -46,7 +50,6 @@ Wish to avoid NPM/js.Build if possible.
 * Anchor link targets
 * Visual breadcrumb
 * High contrast (both light and dark modes)
-* Also see [images](#images)
 
 ## GitHub / GitLab / Plain Markdown compatibility
 
@@ -55,23 +58,6 @@ navigated from the source code (e.g. a base `file.md` links to a sibling
 file and `../file.md` links to a file in the parent directory)
 * render-image doing the same for paths to images (so when GitHub/GitLab
 render Markdown you should see the images)
-
-## Images
-
-* Convert to WebP (with fallback to JPG for old Safari-iOS?)
-* Responsive sizes for images
-* Responsive pixel densities for images
-* Generate thumbnails when requested
-* LQIP and colour gradient maps with lazy loading
-* TODO: Use Git-LFS and process images on build (with cache),
-or do processing outside Hugo and reference images not in repo?
-* Image credits / copyright notices
-* Easy use of [EDCNS](https://edcns.ca) and other CC local stock photos
-* Gallery and/or carousel for multiple images
-* Default to use alt as caption (if it doesn't make sense as a
-caption it probably doesn't make sense as an alt).
-	* Needs to able to be readily styled in a spot, font, etc, that looks good
-* Configurable warn or error on no alt text
 
 ## Visible metadata / Authorship / Copyright
 
@@ -82,96 +68,31 @@ caption it probably doesn't make sense as an alt).
 
 ## Convenience / Shortcodes
 
-* Insert CreativeCommons license images and links using e.g. CC-BY-SA
 * Pull in content from Markdown files in assets or bundles
 * Contact form (Formspree or Netlify)
-* Emoji support
-* Figure
-* Img
-* Svg
-* Embedded PDFs
-* Embedded docx
-* Embedded ODF
 * Empty shortcode (for doing Markdown linter disable in `.md` files)
-* Subscript / superscript
 
 ## Page looks
 
 * Standard article
-* Optionally with hero image
 * Custom homepage
-	* Hero image with minimal text on landing page 'above the fold'
-	* Scrolls up to a mobile or desktop (multi-column) friendly intro page with
-	top navbar. On desktop also has navigation sidebar. On mobile (TBD)
-* Optional 'cards' on any section (list) page (as with DFD-Zen)
-* Optional thumbnails in 'cards'
-* Configurable layout of cards (single or multi-column etc) with responsive
-design.
-* Pagination for long lists
-* Related articles
 * Optional article summary at top of page
 * Tags or other taxonomies (visible)
-* Subscript / superscript
-* ToC
-* Word break (`<wbr>`) support
-* Add wrapper (wrapper, wrapper-start, wrapper-end)
+* Table of Contents
 
-### Fonts
+### Footer
 
-* Probably need to break down an use some kind of web font for good, and
-consistent look.
-* Use locally host fonts though (no external CDN)
-
-## Feeds
-
-* RSS and JSON feeds with full article content
-	* Make sure valid XML is generated (WIP)
-
-## Multilingual
-
-* Language selector
-* hreflang support
-* Enable / disable language(s) with 'switch' (i.e. only configuration edits)
-
-## Favicons / Logo
-
-* Based on package from RealFaviconGenerator
-* Logo optional
-* Part of top navbar if present
-
-## Local search
-
-* Scalable local search using pagefind?
-
-## Error pages
-
-### 404
-
-* Friendly
-* Search (if supported)
-* Sitemap (if present)
-* Home (browse)
-
-### Other errors
-
-* Identify where it makes sense
-
-## Redirects and Headers (choices)
-
-* Apache2
-* Netlify
-* Text
-* JSON
-* CSV
-
-Generate a static Content-Security-Policy (nonces not available)
+* License / copyright (preferably via click/keypress not taking up space
+always)
+* Optional Build with / Powered by
+* Optional Report a site issue
+* Customizable
 
 ## Taxonomies and Terms
 
 * Support OOB
 	* Tags
 	* Series
-* Paginate the list of pages for each term.
 
 ## HTML content-friendly
 
