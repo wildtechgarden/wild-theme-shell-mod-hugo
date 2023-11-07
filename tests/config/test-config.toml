@@ -231,7 +231,7 @@ disabled = true
 #replacements = "github.com/wildtechgarden/wild-theme-shell-mod-hugo -> .."
 
 [[module.mounts]]
-source = "static"
+source = "../../static"
 target = "static"
 
 [[module.imports]]

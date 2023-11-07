@@ -6,7 +6,7 @@ set -o pipefail
 [ -z "$HUGO_COMMAND" ] && HUGO_COMMAND="hugo"
 
 if [ -z "$SITEROOT" ]; then
-	SITEROOT="$(pwd)"
+	SITEROOT="$(pwd)/test/config"
 fi
 
 if [ -n "$SITECONFIG" ]; then
@@ -20,15 +20,17 @@ if [ -z "${HUGO_CACHEDIR}" ]; then
 fi
 export HUGO_CACHEDIR
 
-rm -rf "${SITEROOT}/public"
+TARGET="$(pwd)/tests/config"
 
-echo "Building for audit in ${SITEROOT}/public for environment ${HUGO_ENV:-development}"
+rm -rf "${TARGET}"
+
+echo "Building for audit in ${TARGET} for environment ${HUGO_ENV:-development}"
 
 export HUGO_MODULE_REPLACEMENTS="github.com/wildtechgarden/wild-theme-shell-mod-hugo -> $(pwd)/../wild-theme-shell-mod-hugo, github.com/wildtechgarden/a-wild-theme-mod-hugo -> $(pwd)/../a-wild-theme-mod-hugo, github.com/wildtechgarden/demo-test-site-hugo-wtg -> $(pwd)/../demo-test-site-hugo-wtg, github.com/wildtechgarden/module-starter-hugo-wtg -> $(pwd)/../module-starter-hugo-wtg, github.com/wildtechgarden/minimal-test-theme-hugo-wtg -> $(pwd)/../minimal-test-theme-hugo-wtg"
 export HUGO_RESOURCEDIR="$(pwd)/resources"
 
 # shellcheck disable=2086
-if cd tests/config && HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${SITEROOT}/public" --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} && [ -s "${SITEROOT}/public/index.html" ]; then
+if cd tests/config && HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${TARGET}" --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} && [ -s "${SITEROOT}/public/index.html" ]; then
 	# If hugo build succeeds, it is possible audit issues are present, check further
 	# Check for problem indicators (see https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184)
 	set +e
@@ -55,10 +57,10 @@ if cd tests/config && HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMIS
 			exit 1
 		fi
 	fi
-	rm -rf "${SITEROOT}/public"
+	rm -rf "${TARGET}"
 	echo "Building unminified site for checks in ${SITEROOT}/public for environment ${HUGO_ENV:-development}"
 	# Build unminified site without audit-only information
-	if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=false HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=false "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${SITEROOT}"/public --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} >hugo-build-unminified.log; then
+	if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=false HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=false "$HUGO_COMMAND" $SITECONFIG --gc --buildDrafts --buildFuture --source "${SITEROOT}" --destination "${TARGET}" --environment "${HUGO_ENV:-development}" ${BASEURL:+-b $BASEURL} >hugo-build-unminified.log; then
 		if [ -s "${SITEROOT}/public/index.html" ]; then
 			set +e
 			grep -InE '(WARN [0-9:/\ ]+ FAIL: )' hugo-build-unminified.log
