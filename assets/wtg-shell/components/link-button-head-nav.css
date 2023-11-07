@@ -1,0 +1,33 @@
+/* link-button-head-nav */
+:host {
+	margin-left: .5em;
+	margin-right: .5em;
+}
+
+::slotted(a) {
+	border: solid 2px;
+	border-radius: 8px;
+	color: var(--header-nav-link-color);
+	display: block;
+	padding-left: .4em;
+	padding-right: .4em;
+	text-decoration: none;
+}
+
+::slotted(a):link {
+	color: var(--header-nav-link-color);
+}
+
+::slotted(a):visited {
+	color: var(--header-nav-visited-color);
+}
+
+::slotted(a):hover {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}
+
+::slotted(a):active {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}

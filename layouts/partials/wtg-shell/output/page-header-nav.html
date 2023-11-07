@@ -1,30 +1,56 @@
+{{- $curPage := .Page -}}
 <nav>
-	<menu>
-		<li><a href="{{ relref .Page "/" }}">{{ site.Title }}</a></li>
-	</menu>
+	{{/* <menu>
+		<li> */}}
+	{{- $styleFile := "wtg-shell/components/link-button-head-nav.css" -}}
+	{{- $link := printf "<a href=%q>%s</a>" "/" site.Title }}
+	{{- $linkButtonDict := (dict "styleFile" $styleFile "link" $link "Page" $curPage) -}}
+	{{- if templates.Exists "partials/wtg-theme/components/link-button.html" -}}
+		{{- partialCached "wtg-theme/components/link-button.html" $linkButtonDict (printf "%s%s" $styleFile $link) -}}
+	{{- else -}}
+		{{- if templates.Exists "partials/wtg-shell/components/link-button.html" -}}
+			{{- partialCached "wtg-shell/components/link-button.html" $linkButtonDict (printf "%s%s" $styleFile $link) -}}
+		{{- else -}}
+			<a href="{{- .URL -}}">{{- .Name -}}</a>{{/* </li> */}}
+		{{- end -}}
+	{{- end -}}
+		{{/* </li>
+	</menu> */}}
 {{- /* Next header piece placeholder for language selector */ -}}
-	<div></div>
+	<language-selector></language-selector>
 {{- /* Next header piece is/are menu items, if a 'main' menu is defined */}}
-	<menu>
+	{{/* <menu> */}}
 {{- with site.Menus.main -}}
 {{- range . }}
-		<li><a href="{{- .URL -}}">{{- .Name -}}</a></li>
+		{{/* <li> */}}
+	{{- $styleFile := "wtg-shell/components/link-button-head-nav.css" -}}
+	{{- $link := printf "<a href=%q>%s</a>" .URL .Name }}
+	{{- $linkButtonDict := (dict "styleFile" $styleFile "link" $link "Page" $curPage) -}}
+	{{- if templates.Exists "partials/wtg-theme/components/link-button.html" -}}
+		{{- partialCached "wtg-theme/components/link-button.html" $linkButtonDict (printf "%s%s" $styleFile $link) -}}
+	{{- else -}}
+		{{- if templates.Exists "partials/wtg-shell/components/link-button.html" -}}
+			{{- partialCached "wtg-shell/components/link-button.html" $linkButtonDict (printf "%s%s" $styleFile $link) -}}
+		{{- else -}}
+			<a href="{{- .URL -}}">{{- .Name -}}</a>{{/* </li> */}}
+		{{- end -}}
+	{{- end -}}
 {{- end -}}
 {{- else -}}
 {{- /* Final section(s) is/are 'mainSections' items, if present */ -}}
 {{- range site.Params.mainSections -}}
 	{{- $page := site.GetPage ( printf "/%s" . ) -}}
 	{{- with $page }}
-		<li><a href="{{ .RelPermalink }}">
+		{{/* <li> */}}<a href="{{ .RelPermalink }}">
 			{{- if templates.Exists "partials/wtg-theme/helpers/find-link-title" -}}
 				{{- partialCached "wtg-theme/helpers/find-link-title" . . -}}
 			{{- else -}}
 				{{- partialCached "wtg-shell/helpers/find-link-title" . . -}}
 			{{- end -}}
-		</a></li>
+		</a>{{/* </li> */}}
 {{- end -}}
 {{- end -}}
 {{- end }}
-	</menu>
+	{{/* </menu> */}}
 </nav>
 {{- /* Remove trailing whitespace */ -}}

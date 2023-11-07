@@ -26,6 +26,7 @@ pageref
 rclone
 RESOURCEDIR
 RewriteCond
+shadowrootmode
 shortcode
 Shortcodes
 SITECONFIG

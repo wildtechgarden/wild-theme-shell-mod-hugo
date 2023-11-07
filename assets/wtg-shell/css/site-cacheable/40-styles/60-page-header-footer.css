@@ -63,9 +63,9 @@ main > footer:last-of-type > details[open] + aside {
 	padding-right: .8em;
 }
 
-header:first-of-type nav menu a {
+/* header:first-of-type nav menu a {
 	text-decoration: none;
-}
+} */
 
 header:first-of-type nav > menu:first-of-type > li a {
 	text-overflow: ellipsis;

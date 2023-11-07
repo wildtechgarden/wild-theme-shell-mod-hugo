@@ -18,7 +18,7 @@ header:first-of-type > details:first-of-type[open] > nav {
 	color: var(--header-nav-text-color);
 }
 
-header:first-of-type nav a {
+/* header:first-of-type nav a {
 	color: var(--header-nav-link-color);
 }
 
@@ -38,7 +38,7 @@ header:first-of-type nav a:hover {
 header:first-of-type nav a:active {
 	background-color: var(--header-nav-hover-background-color);
 	color: var(--header-nav-hover-text-color);
-}
+} */
 
 main > footer:last-of-type > details[open] {
 	background-color: var(--popup-box-background-color);
