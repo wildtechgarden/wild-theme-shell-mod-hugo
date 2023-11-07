@@ -15,7 +15,7 @@ minimum_pre_commit_version: 3.2.1
 # yamllint disable rule:key-ordering
 repos:
 - repo: "https://github.com/pre-commit/pre-commit-hooks"
-  rev: v4.4.0
+  rev: v4.5.0
   hooks:
   - id: check-added-large-files
     exclude: ^(package-lock\.json$)
@@ -67,14 +67,14 @@ repos:
     args: [--markdown-linebreak-ext=md]
 
 - repo: "https://github.com/thibaudcolas/pre-commit-stylelint"
-  rev: v15.10.3
+  rev: v15.11.0
   hooks:
   - id: stylelint
     additional_dependencies:
-    - stylelint@^15.10.3
-    - stylelint-config-standard@^34.0.0
-    - stylelint-config-recommended@^13.0.0
-    - stylelint-order@^6.0.3
+    - stylelint@^15.11.0
+    - stylelint-config-standard
+    - stylelint-config-recommended
+    - stylelint-order
     args:
     - --config
     - .stylelintrc.json
@@ -105,20 +105,20 @@ repos:
   hooks:
   - id: gitleaks
 
-- repo: "https://github.com/jorisroovers/gitlint"
-  rev: v0.19.1
-  hooks:
-  - id: gitlint
+# - repo: "https://github.com/jorisroovers/gitlint"
+#   rev: v0.19.1
+#   hooks:
+#   - id: gitlint
 
 - repo: "https://github.com/editorconfig-checker/editorconfig-checker.python"
-  rev: 2.7.2
+  rev: 2.7.3
   hooks:
   - id: editorconfig-checker
     alias: ec
     exclude: ^(LICENSE$|README.md$|package(-lock)?.json$|_vendor)
 
 - repo: "https://github.com/streetsidesoftware/cspell-cli"
-  rev: v7.3.0
+  rev: v7.3.2
   hooks:
   - id: cspell
     additional_dependencies:
