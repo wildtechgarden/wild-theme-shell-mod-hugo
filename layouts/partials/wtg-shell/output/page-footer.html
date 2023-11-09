@@ -1,6 +1,5 @@
 {{- $ctx := . -}}
 {{- if ne ($ctx.Page.Param "omitPageFooter") true }}
-	<footer>
 {{- if ne ($ctx.Param "omitSiteCopyright") true }}
 		<details>
 			<summary>License</summary>
@@ -16,5 +15,4 @@
 {{- with $ctx.Page.Param "issueReportUrl"}}
 		<div><a href="{{ . }}">{{ i18n "siteIssue" }}</a></div>
 {{- end }}
-	</footer>
 {{- end -}}

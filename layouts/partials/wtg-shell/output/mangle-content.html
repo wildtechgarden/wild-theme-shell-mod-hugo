@@ -1,0 +1,12 @@
+{{- $pageTitle := "" -}}
+{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title.html" -}}
+	{{- $pageTitle =  partial "wtg-theme/helpers/find-page-title.html" . -}}
+{{- else -}}
+	{{- $pageTitle = partial "wtg-shell/helpers/find-page-title.html" . -}}
+{{ end -}}
+{{- if gt (len (findRE `(?s)<h1.*?>.*?</h1>` .Page.Content)) 0 -}}
+	{{- $h1ToH2 := replaceRE `(?s)<h1 (id="(.*)")?(.*?)>(.*?)</h1>` `<h2 id="$2-7563"$3>$4</h2>` .Page.Content | safeHTML -}}
+	{{- replaceRE (printf "(?s)<h2.*?>%s</h2>" $pageTitle) `` $h1ToH2 | safeHTML -}}
+{{- else -}}
+	{{ .Content }}
+{{- end -}}

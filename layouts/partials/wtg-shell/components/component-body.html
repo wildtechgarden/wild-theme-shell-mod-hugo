@@ -1,0 +1,12 @@
+{{- $ctx := . -}}
+{{- $curPage := .Page }}
+{{- if templates.Exists "partials/wtg-theme/components/component-open.html" -}}
+	{{- partial "wtg-theme/components/component-open.html" . }}
+{{- else if templates.Exists "partials/wtg-shell/components/component-open.html" -}}
+	{{- partial "wtg-shell/components/component-open.html" . }}
+{{- end -}}
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partial "wtg-theme/components/component-contents.html" . }}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partial "wtg-shell/components/component-contents.html" . }}
+{{- end -}}

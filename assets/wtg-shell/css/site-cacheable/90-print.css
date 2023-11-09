@@ -1,0 +1,93 @@
+@media print {
+	:root {
+		--main-background-color: transparent;
+		--main-text-color: #111;
+		--main-link-color: #11c;
+		--main-visited-color: #707;
+		--main-hover-background-color: #222;
+		--main-hover-text-color: #eee;
+		--table-heading-background-color: #f0f0f0;
+		--table-heading-text-color: #303030;
+		--table-even-background-color: #c0c0c0;
+		--table-even-text-color: #000;
+		--header-nav-background-color: transparent;
+		--header-nav-border-color: #333;
+		--header-nav-text-color: #111;
+		--header-nav-link-color: #11c;
+		--header-nav-visited-color: #707;
+		--header-nav-hover-background-color: #222;
+		--header-nav-hover-text-color: #eee;
+		--codeblock-background-color: transparent;
+		--codeblock-text-color: #111;
+		--popup-box-background-color: #c0c0c0;
+		--popup-box-text-color: #000;
+
+		line-height: 2;
+	}
+
+	body {
+		display: block;
+		height: max-content;
+		overflow: visible;
+		overflow-wrap: break-word;
+		position: static;
+		width: 100%;
+	}
+
+	body > header:first-of-type {
+		display: none;
+		overflow: visible;
+	}
+
+	scrollable-section:first-of-type {
+		display: block;
+		height: auto;
+		overflow: visible;
+		position: static;
+	}
+
+	main {
+		display: block;
+		height: auto;
+		overflow: visible;
+		position: static;
+	}
+
+	main-footer address {
+		display: inline;
+	}
+
+	main-footer span + br {
+		display: none;
+	}
+
+	main-footer [slot^="rollup-title"] + [slot^="rollup-contents"] {
+		display: inline;
+	}
+
+	main-footer[slot^="rollup-title"] {
+		display: inline;
+	}
+
+	page-footer {
+		display: flex;
+		flex-flow: row wrap;
+		height: auto;
+		justify-content: space-between;
+		overflow: visible;
+		padding-inline: 1rem;
+		position: static;
+	}
+
+	page-footer details {
+		display: none;
+	}
+
+	page-footer details + div {
+		display: block;
+	}
+
+	page-footer > div:nth-of-type(3):nth-last-of-type(1) {
+		display: none;
+	}
+}

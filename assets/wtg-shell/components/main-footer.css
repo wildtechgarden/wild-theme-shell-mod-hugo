@@ -1,0 +1,88 @@
+:host {
+	align-self: end;
+	border-radius: .8rem;
+	display: inline;
+	font-style: italic;
+	height: max-content;
+	line-height: 1cm;
+	margin-bottom: .4em;
+	margin-right: 0;
+	max-width: calc(100% - .8em);
+	min-height: 1cm;
+	overflow: hidden;
+	padding-right: .4em;
+	width: max-content;
+	z-index: 7;
+}
+
+details[open] {
+	background-color: var(--popup-box-background-color);
+	color: var(--popup-box-text-color);
+}
+
+details > summary {
+	padding-right: .8em;
+}
+
+details {
+	border-top-left-radius: .8rem;
+	border-top-right-radius: .8rem;
+	margin-left: 0;
+	padding-left: .8em;
+	padding-top: .4em;
+}
+
+aside {
+	display: block;
+	height: max-content;
+}
+
+details + aside {
+	display: none;
+}
+
+details[open] + aside {
+	background-color: var(--popup-box-background-color);
+	border-bottom-left-radius: .8rem;
+	border-bottom-right-radius: .8rem;
+	color: var(--popup-box-text-color);
+	display: block;
+	padding-bottom: .8em;
+	padding-left: .8em;
+	padding-right: .8em;
+}
+
+@media print {
+	:host {
+		display: block;
+		height: auto;
+		overflow: visible;
+		padding-inline: 1rem;
+		position: static;
+	}
+
+	details {
+		display: inline;
+		height: auto;
+		overflow: visible;
+		padding: 0;
+		position: static;
+	}
+
+	details summary {
+		padding-right: 0;
+	}
+
+	details summary::marker {
+		content: "";
+		display: none;
+	}
+
+	details + aside {
+		display: inline;
+		height: auto;
+		overflow: visible;
+		padding-inline: 0;
+		position: static;
+	}
+}

@@ -2,7 +2,11 @@
 {{- if templates.Exists "partials/wtg-theme/output/layout-default-about.html" }}
 {{ partial "wtg-theme/output/layout-default-about.html" . -}}
 {{- else }}
-{{ .Content }}
+	{{- if templates.Exists "partials/wtg-theme/output/mangle-content.html" -}}
+		{{- partial "wtg-theme/output/mangle-content.html" . -}}
+	{{- else if templates.Exists "partials/wtg-shell/output/mangle-content.html" -}}
+		{{- partial "wtg-shell/output/mangle-content.html" . -}}
+	{{- end -}}
 		<ul>
 {{- range .Data.Pages }}
 			<li><a href="{{ .RelPermalink }}">

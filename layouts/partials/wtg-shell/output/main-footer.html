@@ -2,22 +2,16 @@
 {{- $haveAuthor := false -}}
 {{- $haveAddress := false -}}
 {{- if not (eq ($ctx.Page.Param "omitAuthoredFooter") true) }}
-		<footer>
 	{{- with site.Params.authors -}}
 		{{- with (index . page.Params.author) -}}
-			{{- $haveAuthor = true }}
-			<details>
-				<summary>{{- i18n "pageAuthor" }} {{ $ctx.Page.Params.author -}}</summary>
-			</details>
-			<aside>
+			{{- $haveAuthor = true -}}
+			<span slot="rollup-title">{{- i18n "pageAuthor" }} {{ $ctx.Page.Params.author -}}</span>
+			<div slot="rollup-contents">
 				{{- if or (index . "homepage") (index . "email") -}}
 				{{ $haveAddress = true }}
 					<address>
 				{{- if index . "homepage" }}
 <a href="{{ .homepage }}">{{ .homepage }}</a>
-					{{- if index . "email" }}
-						<br>
-					{{- end -}}
 				{{- end -}}
 				{{- if index . "email" }}
 <a href="mailto:{{ .email }}">{{ .email }}</a>
@@ -26,11 +20,9 @@
 			{{- end -}}
 		{{- end -}}
 	{{- end -}}
-	{{- if not $haveAuthor }}
-			<details>
-				<summary>{{ i18n "Authored" }}</summary>
-			</details>
-			<aside>
+	{{- if not $haveAuthor -}}
+			<span slot="rollup-title">{{ i18n "Authored" }}</span>
+			<div slot="rollup-contents">
 	{{- end -}}
 	{{- if $ctx.Page.Date }}
 				<span>{{ i18n "onDate" | safeHTML }} <time datetime="{{ $ctx.Page.Date.UTC.Format "2006-01-02T15:04:05Z" }}">{{ $ctx.Page.Date.Local.Format "Jan 2, 2006" }} {{ i18n "atTime" ($ctx.Page.Date.Local.Format "3:04 PM MST") }}</time></span>
@@ -38,13 +30,9 @@
 				<span></span>
 	{{- end }}
 	{{- if $ctx.Page.Lastmod }}
-	{{- if $ctx.Page.Date }}
-				<br>
-	{{- end }}
 				<span>{{ i18n "updated" | safeHTML }} <time datetime="{{ $ctx.Page.Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}">{{ $ctx.Page.Lastmod.Local.Format "Jan 2, 2006" }} {{ i18n "atTime" ($ctx.Page.Lastmod.Local.Format "3:04 PM MST") }}</time></span>
 		{{- else }}
 				<span></span>
 	{{- end }}
-			</aside>
-		</footer>
+			</div>
 {{- end -}}

@@ -1,7 +1,8 @@
-/* link-button-head-nav */
 :host {
-	margin-left: .5em;
-	margin-right: .5em;
+	display: inline-block;
+	line-height: initial;
+	margin-left: .4em;
+	margin-right: .4em;
 }
 
 ::slotted(a) {
@@ -9,25 +10,25 @@
 	border-radius: 8px;
 	color: var(--header-nav-link-color);
 	display: block;
-	padding-left: .4em;
-	padding-right: .4em;
+	line-height: 1rem;
+	padding: .2em;
 	text-decoration: none;
 }
 
-::slotted(a):link {
+::slotted(a:link) {
 	color: var(--header-nav-link-color);
 }
 
-::slotted(a):visited {
+::slotted(a:visited) {
 	color: var(--header-nav-visited-color);
 }
 
-::slotted(a):hover {
+::slotted(a:hover) {
 	background-color: var(--header-nav-hover-background-color);
 	color: var(--header-nav-hover-text-color);
 }
 
-::slotted(a):active {
+::slotted(a:active) {
 	background-color: var(--header-nav-hover-background-color);
 	color: var(--header-nav-hover-text-color);
 }

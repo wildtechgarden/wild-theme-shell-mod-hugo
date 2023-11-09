@@ -23,9 +23,11 @@ LQIP
 muffet
 pagefind
 pageref
+pctx
 rclone
 RESOURCEDIR
 RewriteCond
+rollup
 shadowrootmode
 shortcode
 Shortcodes

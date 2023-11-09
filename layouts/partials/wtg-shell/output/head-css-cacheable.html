@@ -1,5 +1,5 @@
 {{- $combinedCSS := (slice) -}}
-{{- $essentialCSS := resources.Match "/wtg-theme/css/site-cacheable/**/*.css" -}}
+{{- $essentialCSS := resources.Match "/wtg-theme/css/site-cacheable/**/.css" -}}
 {{- if $essentialCSS -}}
 	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
 {{- else -}}
@@ -8,6 +8,10 @@
 		{{- errorf "'/wtg-theme/css/site-cacheable/**/*.css' is missing" -}}
 	{{- end -}}
 	{{- $combinedCSS = $combinedCSS | append $essentialCSS -}}
+{{- end -}}
+{{- $additionalCSS := resources.Match "/wtg-shell/css/site-cacheable/*.css" -}}
+{{- if $additionalCSS -}}
+	{{- $combinedCSS = $combinedCSS | append $additionalCSS -}}
 {{- end -}}
 {{- $customCSS := resources.Match "/css/wtg-custom/site-cacheable/*.css" -}}
 {{- if $customCSS -}}

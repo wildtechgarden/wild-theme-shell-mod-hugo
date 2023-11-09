@@ -2,7 +2,7 @@
 
 body {
 	display: grid;
-	grid-template-rows: minmax(1cm, auto) 1fr;
+	grid-template-rows: minmax(max-content, 1fr) 20fr;
 	height: 100vh;
 	left: 0;
 	overflow: hidden;
@@ -12,36 +12,49 @@ body {
 	z-index: 3
 }
 
-body > header:first-of-type {
-	overflow: visible;
+body > header {
+	display: none;
+	height: max-content;
+	overflow: hidden;
+	width: 100%;
+}
+
+scrollable-section {
+	display: grid;
+	grid-template-rows: minmax(max-content, 20fr) max-content;
+	height: auto;
+	left: 0;
+	position: relative;
+	top: 0;
+	width: 100%;
 }
 
 main {
-	height: 100%;
-	left: 0;
-	position: relative;
-	top: 0;
-	width: 100%;
-	z-index: 4
-}
-
-body header:first-of-type + div:first-of-type {
 	display: grid;
-	grid-template-rows: 1fr minmax(1cm, auto);
-	height: 100%;
-	left: 0;
-	min-height: calc(100vh - 1cm);
-	overflow: hidden auto;
-	position: relative;
-	top: 0;
+	grid-template-rows: max-content minmax(max-content, 20fr) max-content;
 	width: 100%;
-	z-index: 5;
 }
 
-body header:first-of-type + div:first-of-type > main {
-	height: max-content;
-	min-height: 100%;
-	overflow: hidden;
-	padding-bottom: 1cm;
-	width: 100%;
+main-footer {
+	justify-self: end;
+}
+
+@media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
+	body > header {
+		display: block;
+	}
+}
+
+@media screen and (width >= 700px) and (resolution < 2dppx) {
+	main {
+		margin-left: .6em;
+		margin-right: .6em;
+	}
+}
+
+@media screen and (width >= 1200px) and (resolution >= 2dppx) {
+	main {
+		margin-left: .6em;
+		margin-right: .6em;
+	}
 }

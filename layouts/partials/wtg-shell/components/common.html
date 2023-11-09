@@ -1,0 +1,18 @@
+{{- $ctx := . -}}
+{{- $curPage := .Page }}
+{{- if templates.Exists "partials/wtg-theme/components/component-body.html" }}
+	{{ partial "wtg-theme/components/component-body.html" . -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-body.html" }}
+	{{ partial "wtg-shell/components/component-body.html" . -}}
+{{- end }}
+{{- if templates.Exists "partials/wtg-theme/components/component-fills.html" }}
+	{{ partial "wtg-theme/components/component-fills.html" (dict "Page" .Page "componentName" .componentName "slotFills" .slotFills "ctx" .) -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-fills.html" }}
+	{{ partial "wtg-shell/components/component-fills.html" (dict "Page" .Page "componentName" .componentName "slotFills" .slotFills "ctx" .) -}}
+{{- end }}
+{{- if templates.Exists "partials/wtg-theme/components/component-close.html" }}
+	{{ partial "wtg-theme/components/component-close.html" (dict "Page" .Page "componentName" .componentName) -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-close.html" }}
+	{{ partial "wtg-shell/components/component-close.html" (dict "Page" .Page "componentName" .componentName) -}}
+{{- end }}
+{{- /* Remove trailing newlines */ -}}

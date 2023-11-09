@@ -34,7 +34,7 @@
 		{{- $bodyClass = .Page.Params.bodyClass -}}
 	{{- end -}}
 {{- end }}
-<body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
+<body{{ with $bodyClass }} class="{{ . }}"{{ end }} onload="attachShadowRoots(document)">
 {{- block "body-header" . }}
 	{{- $omitPageHeader := false -}}
 	{{- if isset site.Params "omitpageheader" -}}
@@ -64,65 +64,124 @@
 		{{- end -}}
 	{{- end -}}
 {{- end -}}
-{{- $bodyScrollableClass := "" -}}
-{{- if isset site.Params "bodyscrollableclass" -}}
-	{{- $bodyMainClass = site.Params.bodyScrollableClass -}}
-	{{- if isset .Page.Params "bodyscrollableclass" -}}
-		{{- $bodyMainClass = .Page.Params.bodyScrollableClass -}}
-	{{- end -}}
-{{- end }}
-<div{{ with $bodyScrollableClass }} class="{{ . }}"{{ end }}>
-	{{- $bodyMainClass := "" -}}
-	{{- if isset site.Params "bodymainclass" -}}
-		{{- $bodyMainClass = site.Params.bodyMainClass -}}
-		{{- if isset .Page.Params "bodymainclass" -}}
-			{{- $bodyMainClass = .Page.Params.bodyMainClass -}}
-		{{- end -}}
-	{{- end }}
-	{{- $bodyMainId := "" -}}
-	{{- if isset site.Params "bodymainid" -}}
-		{{- $bodyMainId = site.Params.bodyMainId -}}
-		{{- if isset .Page.Params "bodymainid" -}}
-			{{- $bodyMainId = .Page.Params.bodyMainId -}}
-		{{- end -}}
-	{{- end }}
-	<main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="{{ . }}"{{ end }}>
-{{- block "main-title" . -}}
-	{{- if lt (len (findRE `(?s)<h1.*?>.*?</h1>` .Page.Content 1)) 1 }}
-		<h1>
-		{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title.html" }}
-			{{- partialCached "wtg-theme/helpers/find-page-title.html" . . -}}
-		{{- else }}
-			{{- partialCached "wtg-shell/helpers/find-page-title.html" . . -}}
-		{{ end -}}
-		</h1>
-	{{- end -}}
-{{- end }}
-{{ block "main-content" . }}
+{{- $curPage := .Page -}}
+{{- $styleFiles := (slice
+	"wtg-shell/components/main-bottom.css"
+	"wtg-shell/components/common.css"
+) -}}
+{{- $componentDict := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" "scrollable-section"
+) -}}
+<scrollable-section>
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partial "wtg-theme/components/component-contents.html" $componentDict -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partial "wtg-shell/components/component-contents.html" $componentDict -}}
 {{- end -}}
+{{- $bodyMainId := "" -}}
+{{- if isset site.Params "bodymainid" -}}
+	{{- $bodyMainId = site.Params.bodyMainId -}}
+	{{- if isset .Page.Params "bodymainid" -}}
+		{{- $bodyMainId = .Page.Params.bodyMainId -}}
+	{{- end -}}
+{{- end }}
+{{- $bodyMainClass := "" -}}
+{{- if isset site.Params "bodyclass" -}}
+	{{- $bodyMainClass = site.Params.bodyMainClass -}}
+	{{- if isset .Page.Params "bodyClass" -}}
+		{{- $bodyMainClass = .Page.Params.bodyMainClass -}}
+	{{- end -}}
+{{- end }}
+{{- $curPage := .Page -}}
+{{- $styleFiles := (slice
+	"wtg-shell/components/main.css"
+	"wtg-shell/components/common.css"
+) -}}
+{{- $componentDict := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" "main"
+) -}}
+<main{{ with $bodyMainClass }} class="{{ . }}"{{ end }}{{ with $bodyMainId }} id="{{ . }}"{{ end }}>
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partial "wtg-theme/components/component-contents.html" $componentDict -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partial "wtg-shell/components/component-contents.html" $componentDict -}}
+{{- end -}}
+{{- block "main-title" . -}}
+	<h1 slot="main-title">
+	{{- if templates.Exists "partials/wtg-theme/helpers/find-page-title.html" }}
+		{{- partial "wtg-theme/helpers/find-page-title.html" . -}}
+	{{- else }}
+		{{- partial "wtg-shell/helpers/find-page-title.html" . -}}
+	{{ end -}}
+	</h1>
+{{- end }}
+	<div slot="main-content">
+{{ block "main-content" . }}
+{{ end }}
+	</div>
+	<div slot="main-bottom-navigation">
 {{- block "navigation-in-main" . -}}
 	{{- if templates.Exists "partials/wtg-theme/output/page-navigation-main-bottom.html" -}}
 		{{- partialCached "wtg-theme/output/page-navigation-main-bottom.html" . . }}
 	{{- end -}}
 {{- end -}}
-{{- block "footer-in-main" . -}}
-{{- if templates.Exists "partials/wtg-theme/output/page-footer-in-main.html" -}}
-	{{- partialCached "wtg-theme/output/page-footer-in-main.html" . . }}
+	</div>
+	<main-footer slot="main-footer" role="contentinfo">
+{{- $curPage := .Page -}}
+{{- $styleFiles := (slice
+	"wtg-shell/components/main-footer.css"
+	"wtg-shell/components/common.css"
+) -}}
+{{- $componentDict3 := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" "main-footer"
+) -}}
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partial "wtg-theme/components/component-contents.html" $componentDict3 -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partial "wtg-shell/components/component-contents.html" $componentDict3 -}}
+{{- end -}}
+{{- block "main-footer" . -}}
+{{- if templates.Exists "partials/wtg-theme/output/main-footer.html" -}}
+	{{- partialCached "wtg-theme/output/main-footer.html" . . }}
 {{- else -}}
-	{{ partialCached "wtg-shell/output/page-footer-in-main.html" . . -}}
+	{{ partialCached "wtg-shell/output/main-footer.html" . . -}}
 {{- end -}}
 {{- end }}
-	</main>
+	</main-footer>
+</main>
 {{- block "navigation-below-main" . -}}
 {{- end -}}
-{{- block "footer-after-main" . -}}
-{{- if templates.Exists "partials/wtg-theme/output/page-footer-after-main.html" -}}
-	{{- partialCached "wtg-theme/output/page-footer-after-main.html" . . }}
+<page-footer role="contentinfo">
+{{- $curPage := .Page -}}
+{{- $styleFiles := (slice
+	"wtg-shell/components/page-footer.css"
+	"wtg-shell/components/common.css"
+) -}}
+{{- $componentDict := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" "page-footer"
+) -}}
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partial "wtg-theme/components/component-contents.html" $componentDict -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partial "wtg-shell/components/component-contents.html" $componentDict -}}
+{{- end -}}
+{{- block "page-footer" . -}}
+{{- if templates.Exists "partials/wtg-theme/output/page-footer.html" -}}
+	{{- partialCached "wtg-theme/output/page-footer.html" . . }}
 {{- else }}
-	{{- partialCached "wtg-shell/output/page-footer-after-main.html" . . }}
+	{{- partialCached "wtg-shell/output/page-footer.html" . . }}
 {{- end -}}
 {{- end }}
-</div>
+</page-footer>
+</scrollable-section>
 </body>
 </html>
 {{- /* Remove trailing newlines */ -}}

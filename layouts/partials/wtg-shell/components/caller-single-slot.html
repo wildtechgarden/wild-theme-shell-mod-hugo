@@ -1,0 +1,21 @@
+{{- $pctx := . -}}
+{{- $curPage := .Page -}}
+{{- $styleFiles := .styleFiles -}}
+{{- $slotFills := (slice) -}}
+{{- $componentName := .componentName -}}
+{{- if templates.Exists (printf "partials/wtg-theme/output/%s.html" $componentName) -}}
+	{{- $slotFills = $slotFills | append (partial (printf "wtg-theme/output/%s.html" $componentName) .) -}}
+{{- else if templates.Exists (printf "partials/wtg-shell/output/%s.html" $componentName) -}}
+	{{- $slotFills = $slotFills | append (partial (printf "wtg-shell/output/%s" $componentName) .) -}}
+{{- end -}}
+{{- $componentDict := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" $componentName
+	"slotFills" $slotFills
+) -}}
+{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
+	{{- partial "wtg-theme/components/common.html" $componentDict -}}
+{{- else if templates.Exists "partials/wtg-shell/components/common.html" -}}
+	{{- partial "wtg-shell/components/common.html" $componentDict -}}
+{{- end -}}

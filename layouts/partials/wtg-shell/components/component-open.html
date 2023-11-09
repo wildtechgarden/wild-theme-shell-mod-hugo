@@ -1,0 +1,7 @@
+{{- $ctx := . -}}
+{{- $curPage := .Page }}
+{{- if .ariaRole }}
+	{{ printf "<%s role=%q>" .componentName .ariaRole | safeHTML -}}
+{{- else }}
+	{{ printf "<%s>" .componentName | safeHTML -}}
+{{- end -}}

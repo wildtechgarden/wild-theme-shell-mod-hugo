@@ -1,0 +1,70 @@
+:host {
+	align-items: center;
+	background-color: var(--header-nav-background-color);
+	border-color: var(--header-nav-border-color);
+	border-style: solid;
+	border-width: 1px;
+	color: var(--header-nav-text-color);
+	column-gap: .6em;
+	display: flex;
+	flex-flow: row wrap;
+	height: max-content;
+	justify-content: center;
+	left: 0;
+	margin-left: 0;
+	margin-right: 0;
+	padding-bottom: .4em;
+	padding-top: .4em;
+	position: relative;
+	top: 0;
+	z-index: 7;
+}
+
+::slotted(a:link) {
+	color: var(--header-nav-link-color);
+}
+
+::slotted(a:visited) {
+	color: var(--header-nav-visited-color);
+}
+
+::slotted(a:hover) {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}
+
+::slotted(a:active) {
+	background-color: var(--header-nav-hover-background-color);
+	color: var(--header-nav-hover-text-color);
+}
+
+@media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
+	:host {
+		flex-flow: row nowrap;
+		padding: 0 .6em;
+	}
+}
+
+@media print {
+	:host {
+		background-color: initial;
+	}
+
+	::slotted(a:link) {
+		color: var(--header-nav-link-color);
+	}
+
+	::slotted(a:visited) {
+		color: var(--header-nav-visited-color);
+	}
+
+	::slotted(a:hover) {
+		background-color: var(--header-nav-hover-background-color);
+		color: var(--header-nav-hover-text-color);
+	}
+
+	::slotted(a:active) {
+		background-color: var(--header-nav-hover-background-color);
+		color: var(--header-nav-hover-text-color);
+	}
+	}

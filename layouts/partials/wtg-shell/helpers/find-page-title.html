@@ -9,5 +9,6 @@
 		{{- $pageTitle = path.Base .Page.TranslationKey -}}
 	{{- end -}}
 {{- end -}}
+{{- $pageTitle = $pageTitle | safeHTML -}}
 {{- return $pageTitle -}}
 {{- /* Remove trailing newlines */ -}}

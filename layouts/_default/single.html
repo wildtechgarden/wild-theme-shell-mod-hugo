@@ -1,8 +1,12 @@
 {{ define "main-content" }}
-{{- if templates.Exists "partials/wtg-theme/output/layout-default-single.html" }}
-{{ partial "wtg-theme/output/layout-default-single.html" . -}}
-{{- else }}
-{{ .Content }}
-{{- end -}}
+	{{- if templates.Exists "partials/wtg-theme/output/layout-default-single.html" }}
+		{{ partial "wtg-theme/output/layout-default-single.html" . -}}
+	{{- else }}
+		{{- if templates.Exists "partials/wtg-theme/output/mangle-content.html" -}}
+			{{- partial "wtg-theme/output/mangle-content.html" . -}}
+		{{- else if templates.Exists "partials/wtg-shell/output/mangle-content.html" -}}
+			{{- partial "wtg-shell/output/mangle-content.html" . -}}
+		{{- end -}}
+	{{- end -}}
 {{ end }}
 {{- /* Remove trailing newlines */ -}}
