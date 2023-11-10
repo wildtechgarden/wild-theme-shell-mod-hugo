@@ -1,10 +1,24 @@
-{{- with resources.Get "wtg-shell/js/main.js" }}
-	{{- if eq hugo.Environment "development" }}
-		{{- with . }}
+{{- $combinedJS := (slice) -}}
+{{- $themeJS := resources.Match "wtg-theme/js/*.js" -}}
+{{- if $themeJS -}}
+	{{- $combinedJS = $combinedJS | append $themeJS -}}
+{{- end -}}
+{{- $shellJS := resources.Match "wtg-shell/js/*.js" -}}
+{{- if $shellJS -}}
+	{{- $combinedJS = $combinedJS | append $shellJS -}}
+{{- end -}}
+{{ $customJS := resources.Match "custom/js/*.js" -}}
+{{- if $customJS -}}
+	{{ $combinedJS = $combinedJS | append $customJS -}}
+{{- end -}}
+{{- if gt (len $combinedJS) 0 -}}
+	{{ $combinedJS = $combinedJS | resources.Concat "assets/js/site.js" -}}
+	{{- if eq hugo.Environment "development" -}}
+		{{- with $combinedJS }}
 			<script src="{{ .RelPermalink }}"></script>
 		{{- end }}
 	{{- else }}
-		{{- with . }}
+		{{- with $combinedJS }}
 		{{ . | minify | fingerprint }}
 			<script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
 		{{- end }}
