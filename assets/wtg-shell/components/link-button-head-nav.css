@@ -1,18 +1,17 @@
 :host {
 	display: inline-block;
+	margin-inline: .4em;
 	line-height: initial;
-	margin-left: .4em;
-	margin-right: .4em;
 }
 
 ::slotted(a) {
+	display: block;
 	border: solid 2px;
 	border-radius: 8px;
-	color: var(--header-nav-link-color);
-	display: block;
-	line-height: 1rem;
 	padding: .2em;
 	text-decoration: none;
+	line-height: 1rem;
+	color: var(--header-nav-link-color);
 }
 
 ::slotted(a:link) {

@@ -27,11 +27,11 @@
 
 	body {
 		display: block;
-		height: max-content;
+		position: static;
+		block-size: max-content;
+		inline-size: 100%;
 		overflow: visible;
 		overflow-wrap: break-word;
-		position: static;
-		width: 100%;
 	}
 
 	body > header:first-of-type {
@@ -41,16 +41,16 @@
 
 	scrollable-section:first-of-type {
 		display: block;
-		height: auto;
-		overflow: visible;
 		position: static;
+		block-size: auto;
+		overflow: visible;
 	}
 
 	main {
 		display: block;
-		height: auto;
-		overflow: visible;
 		position: static;
+		block-size: auto;
+		overflow: visible;
 	}
 
 	main-footer address {
@@ -71,12 +71,12 @@
 
 	page-footer {
 		display: flex;
-		flex-flow: row wrap;
-		height: auto;
-		justify-content: space-between;
-		overflow: visible;
-		padding-inline: 1rem;
 		position: static;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		padding-inline: 1rem;
+		block-size: auto;
+		overflow: visible;
 	}
 
 	page-footer details {

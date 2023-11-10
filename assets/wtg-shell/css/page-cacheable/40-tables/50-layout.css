@@ -1,18 +1,17 @@
 table {
-	margin-bottom: 1rem;
-	margin-top: 1rem;
+	margin-block: 1rem;
+	inline-size: 100%;
 	table-layout: fixed;
-	width: 100%;
 }
 
 @media screen and (width >= 700px) and (resolution < 2dppx) {
 	main > table {
-		width: calc(100% - 1.2em);
+		inline-size: calc(100% - 1.2em);
 	}
 }
 
 @media screen and (width >= 1200px) and (resolution >= 2dppx) {
 	main > table {
-		width: calc(100% - 1.2em);
+		inline-size: calc(100% - 1.2em);
 	}
 }

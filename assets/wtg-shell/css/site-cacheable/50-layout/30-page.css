@@ -2,37 +2,37 @@
 
 body {
 	display: grid;
-	grid-template-rows: minmax(max-content, 1fr) 20fr;
-	height: 100vh;
-	left: 0;
-	overflow: hidden;
 	position: relative;
 	top: 0;
-	width: 100%;
-	z-index: 3
+	left: 0;
+	grid-template-rows: minmax(max-content, 1fr) 20fr;
+	z-index: 3;
+	block-size: 100vh;
+	inline-size: 100%;
+	overflow: hidden;
 }
 
 body > header {
 	display: none;
-	height: max-content;
+	block-size: max-content;
+	inline-size: 100%;
 	overflow: hidden;
-	width: 100%;
 }
 
 scrollable-section {
 	display: grid;
-	grid-template-rows: minmax(max-content, 20fr) max-content;
-	height: auto;
-	left: 0;
 	position: relative;
 	top: 0;
-	width: 100%;
+	left: 0;
+	grid-template-rows: minmax(max-content, 20fr) max-content;
+	block-size: auto;
+	inline-size: 100%;
 }
 
 main {
 	display: grid;
 	grid-template-rows: max-content minmax(max-content, 20fr) max-content;
-	width: 100%;
+	inline-size: 100%;
 }
 
 main-footer {
@@ -47,14 +47,12 @@ main-footer {
 
 @media screen and (width >= 700px) and (resolution < 2dppx) {
 	main {
-		margin-left: .6em;
-		margin-right: .6em;
+		margin-inline: .6em;
 	}
 }
 
 @media screen and (width >= 1200px) and (resolution >= 2dppx) {
 	main {
-		margin-left: .6em;
-		margin-right: .6em;
+		margin-inline: .6em;
 	}
 }

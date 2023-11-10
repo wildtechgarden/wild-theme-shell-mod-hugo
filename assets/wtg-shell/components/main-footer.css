@@ -1,18 +1,17 @@
 :host {
-	align-self: end;
-	border-radius: .8rem;
 	display: inline;
-	font-style: italic;
-	height: max-content;
-	line-height: 1cm;
-	margin-bottom: .4em;
-	margin-right: 0;
-	max-width: calc(100% - .8em);
-	min-height: 1cm;
-	overflow: hidden;
-	padding-right: .4em;
-	width: max-content;
+	align-self: end;
 	z-index: 7;
+	margin-block-end: .4em;
+	margin-inline-end: 0;
+	border-radius: .8rem;
+	padding-inline-end: .4em;
+	block-size: max-content;
+	min-block-size: 1cm;
+	max-inline-size: calc(100% - .8em);
+	overflow: hidden;
+	line-height: 1cm;
+	font-style: italic;
 }
 
 details[open] {
@@ -25,16 +24,16 @@ details > summary {
 }
 
 details {
-	border-top-left-radius: .8rem;
-	border-top-right-radius: .8rem;
-	margin-left: 0;
-	padding-left: .8em;
-	padding-top: .4em;
+	margin-inline-start: 0;
+	border-start-start-radius: .8rem;
+	border-start-end-radius: .8rem;
+	padding-block-start: .4em;
+	padding-inline-start: .8em;
 }
 
 aside {
 	display: block;
-	height: max-content;
+	block-size: max-content;
 }
 
 details + aside {
@@ -42,47 +41,46 @@ details + aside {
 }
 
 details[open] + aside {
-	background-color: var(--popup-box-background-color);
-	border-bottom-left-radius: .8rem;
-	border-bottom-right-radius: .8rem;
-	color: var(--popup-box-text-color);
 	display: block;
-	padding-bottom: .8em;
-	padding-left: .8em;
-	padding-right: .8em;
+	border-end-start-radius: .8rem;
+	border-end-end-radius: .8rem;
+	background-color: var(--popup-box-background-color);
+	padding-block-end: .8em;
+	padding-inline: .8em;
+	color: var(--popup-box-text-color);
 }
 
 @media print {
 	:host {
 		display: block;
-		height: auto;
-		overflow: visible;
-		padding-inline: 1rem;
 		position: static;
+		padding-inline: 1rem;
+		block-size: auto;
+		overflow: visible;
 	}
 
 	details {
 		display: inline;
-		height: auto;
-		overflow: visible;
-		padding: 0;
 		position: static;
+		padding: 0;
+		block-size: auto;
+		overflow: visible;
 	}
 
 	details summary {
-		padding-right: 0;
+		padding-inline-end: 0;
 	}
 
 	details summary::marker {
-		content: "";
 		display: none;
+		content: "";
 	}
 
 	details + aside {
 		display: inline;
-		height: auto;
-		overflow: visible;
-		padding-inline: 0;
 		position: static;
+		padding-inline: 0;
+		block-size: auto;
+		overflow: visible;
 	}
 }

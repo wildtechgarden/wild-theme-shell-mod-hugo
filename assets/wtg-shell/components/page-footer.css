@@ -1,23 +1,19 @@
 :host {
-	align-items: center;
-	background-color: var(--header-nav-background-color);
-	border-color: var(--header-nav-border-color);
-	border-style: solid;
-	border-width: 1px;
-	color: var(--header-nav-text-color);
-	column-gap: .6em;
 	display: flex;
-	flex-flow: row wrap;
-	height: max-content;
-	justify-content: center;
-	left: 0;
-	margin-left: 0;
-	margin-right: 0;
-	padding-bottom: .4em;
-	padding-top: .4em;
 	position: relative;
 	top: 0;
+	left: 0;
+	flex-flow: row wrap;
+	column-gap: .6em;
+	align-items: center;
+	justify-content: center;
 	z-index: 7;
+	margin-inline: 0;
+	border: 1px solid var(--header-nav-border-color);
+	background-color: var(--header-nav-background-color);
+	padding-block: .4em;
+	block-size: max-content;
+	color: var(--header-nav-text-color);
 }
 
 ::slotted(a:link) {

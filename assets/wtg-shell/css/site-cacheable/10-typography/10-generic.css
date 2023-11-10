@@ -15,47 +15,39 @@ html {
 }
 
 h1 {
+	margin-block: .4em;
 	font-size: 1.85rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 h2 {
+	margin-block: .4em;
 	font-size: 1.47rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 h3 {
+	margin-block: .4em;
 	font-size: 1.27rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 h4 {
+	margin-block: .4em;
 	font-size: 1.19rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 h5 {
+	margin-block: .4em;
 	font-size: 1.09rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 h6 {
+	margin-block: .4em;
 	font-size: 1.01rem;
-	margin-bottom: .4em;
-	margin-top: .4em;
 }
 
 hr {
-	margin-bottom: 2em;
-	margin-top: 2em;
+	margin-block: 2em;
 }
 
 p {
-	margin-bottom: 1em;
-	margin-top: 1em;
+	margin-block: 1em;
 }

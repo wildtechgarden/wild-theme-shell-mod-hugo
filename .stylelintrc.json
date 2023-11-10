@@ -1,10 +1,10 @@
 {
-	"extends": "stylelint-config-standard",
-	"plugins": [
-		"stylelint-order"
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-concentric-order"
 	],
 	"rules": {
 		"declaration-block-no-shorthand-property-overrides": true,
-		"order/properties-alphabetical-order": true
+		"import-notation": "url"
 	}
 }

@@ -1,19 +1,19 @@
 :host {
 	display: block;
-	height: 100%;
+	block-size: 100%;
+	inline-size: 100%;
 	overflow: hidden visible;
-	width: 100%;
 }
 
 slot {
+	inline-size: 100%;
 	overflow: hidden visible;
-	width: 100%;
 }
 
 ::slotted(div) {
+	inline-size: 100%;
 	overflow: hidden visible;
 	overflow-wrap: break-word;
-	width: 100%;
 }
 
 @media print {
