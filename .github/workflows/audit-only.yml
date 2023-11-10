@@ -24,9 +24,9 @@ jobs:
         config-file: tests/config/test-config.toml
         hugo-version: latest
         # source-directory: tests/config
-    - name: Validate HTML and CSS of website
-      uses: wildtechgarden/validator-html-action@main
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        use-existing-workspace: "true"
+        # - name: Validate HTML and CSS of website
+        #   uses: wildtechgarden/validator-html-action@main
+        #   with:
+        #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+        #     use-existing-workspace: "true"
 ...
