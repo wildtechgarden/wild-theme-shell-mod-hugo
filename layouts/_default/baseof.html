@@ -34,7 +34,7 @@
 		{{- $bodyClass = .Page.Params.bodyClass -}}
 	{{- end -}}
 {{- end }}
-<body{{ with $bodyClass }} class="{{ . }}"{{ end }} onload=";browserInit(document);">
+<body{{ with $bodyClass }} class="{{ . }}"{{ end }}>
 {{- block "body-header" . }}
 	{{- $omitPageHeader := false -}}
 	{{- if isset site.Params "omitpageheader" -}}

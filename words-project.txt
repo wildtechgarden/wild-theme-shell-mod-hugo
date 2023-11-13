@@ -28,6 +28,7 @@ rclone
 RESOURCEDIR
 RewriteCond
 rollup
+shadowrootattach
 shadowrootmode
 shortcode
 Shortcodes

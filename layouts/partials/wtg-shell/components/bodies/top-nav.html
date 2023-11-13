@@ -1,53 +1,69 @@
+<mobile-menu-hover-target data-js-data-mode="button-hidden">
 {{- $curPage := .Page -}}
+{{- $styleFiles := (slice
+	"wtg-shell/components/mobile-menu-button.css"
+	"wtg-shell/components/common.css"
+) -}}
+{{- $componentDict := (dict
+	"styleFiles" $styleFiles
+	"Page" $curPage
+	"componentName" "mobile-menu-button"
+) -}}
+	<mobile-menu-button data-js-data-default="hidden" role="button" title="Menu">
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partialCached "wtg-theme/components/component-contents.html" $componentDict (printf "%s%s" "mobile-menu-button" (delimit $styleFiles " ")) -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partialCached "wtg-shell/components/component-contents.html" $componentDict (printf "%s%s" "mobile-menu-button" (delimit $styleFiles " ")) -}}
+{{- end -}}
+	</mobile-menu-button>
+{{- $styleFiles := (slice
+	"wtg-shell/components/link-button-head-nav.css"
+	"wtg-shell/components/common.css"
+) -}}
 {{ with $curPage }}
-{{- $styleFiles := (slice
-	"wtg-shell/components/link-button-head-nav.css"
-	"wtg-shell/components/common.css"
-	"wtg-shell/components/top-nav-first-buttons.css"
-) -}}
-{{- $link := printf "<a href=%q>%s</a>" "/" site.Title }}
-{{- $linkButtonDict := (dict "styleFiles" $styleFiles "Page" $curPage "componentName" "link-button" "slotFills" (slice $link)) -}}
-{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
-	{{- partialCached "wtg-theme/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
-{{- else if templates.Exists "partials/wtg-shell/components/common.html" -}}
-	{{- partialCached "wtg-shell/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
-{{- end -}}
-{{- /* Next header piece placeholder for language selector */ -}}
-	<language-selector></language-selector>
-{{- /* Next header piece is/are menu items */}}
-
-{{/* if a 'main' menu is defined */}}
-{{- with site.Menus.main -}}
-{{- $styleFiles := (slice
-	"wtg-shell/components/link-button-head-nav.css"
-	"wtg-shell/components/common.css"
-) -}}
-{{- range . }}
-	{{- $link := printf "<a href=%q>%s</a>" .URL .Name }}
+	<menu>
+	{{- $link := printf "<a href=%q>%s</a>" "/" site.Title }}
 	{{- $linkButtonDict := (dict "styleFiles" $styleFiles "Page" $curPage "componentName" "link-button" "slotFills" (slice $link)) -}}
-	{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
+	<li>{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
 		{{- partialCached "wtg-theme/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
-	{{- else -}}
-		{{- if templates.Exists "partials/wtg-shell/components/common.html" -}}
-			{{- partialCached "wtg-shell/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
-		{{- else -}}
-			<a href="{{- .URL -}}">{{- .Name -}}</a>
-		{{- end -}}
-	{{- end -}}
-{{- end -}}
-{{- else -}}
-{{- /* Final section(s) is/are 'mainSections' items, if present */ -}}
-{{- range site.Params.mainSections -}}
-	{{- $page := site.GetPage ( printf "/%s" . ) -}}
-	{{- with $page }}
-		<a href="{{ .RelPermalink }}">
-			{{- if templates.Exists "partials/wtg-theme/helpers/find-link-title" -}}
-				{{- partialCached "wtg-theme/helpers/find-link-title" . . -}}
+	{{- else if templates.Exists "partials/wtg-shell/components/common.html" -}}
+		{{- partialCached "wtg-shell/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
+	{{- end -}}</li>
+	{{- /* Next header piece placeholder for language selector */ -}}
+	<li><language-selector></language-selector></li>
+	{{- /* Next header piece is/are menu items */}}
+	{{- /* if a 'main' menu is defined */ -}}
+	{{- with site.Menus.main -}}
+		{{- $styleFiles := (slice
+			"wtg-shell/components/link-button-head-nav.css"
+			"wtg-shell/components/common.css"
+		) -}}
+		{{- range . }}
+			{{- $link := printf "<a href=%q>%s</a>" .URL .Name }}
+			{{- $linkButtonDict := (dict "styleFiles" $styleFiles "Page" $curPage "componentName" "link-button" "slotFills" (slice $link)) -}}
+	<li>{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
+				{{- partialCached "wtg-theme/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
+			{{- else if templates.Exists "partials/wtg-shell/components/common.html" -}}
+				{{- partialCached "wtg-shell/components/common.html" $linkButtonDict (printf "%s%s%s" "link-button" (delimit $styleFiles " ") $link) -}}
 			{{- else -}}
-				{{- partialCached "wtg-shell/helpers/find-link-title" . . -}}
-			{{- end -}}
+			<a href="{{- .URL -}}">{{- .Name -}}</a>
+			{{- end -}}</li>
+		{{- end -}}
+	{{- else -}}
+		{{- /* Final section(s) is/are 'mainSections' items, if present */ -}}
+		{{- range site.Params.mainSections -}}
+			{{- $page := site.GetPage ( printf "/%s" . ) -}}
+			{{- with $page }}
+		<a href="{{ .RelPermalink }}">
+				{{- if templates.Exists "partials/wtg-theme/helpers/find-link-title" -}}
+					{{- partialCached "wtg-theme/helpers/find-link-title" . . -}}
+				{{- else -}}
+					{{- partialCached "wtg-shell/helpers/find-link-title" . . -}}
+				{{- end -}}
 		</a>
+			{{- end -}}
 		{{- end -}}
 	{{- end -}}
+	</menu>
 {{- end -}}
-{{- end -}}
+</mobile-menu-hover-target>

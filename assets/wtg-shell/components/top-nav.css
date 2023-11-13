@@ -1,38 +1,92 @@
 :host {
-	display: flex;
-	border: 1px solid var(--header-nav-border-color);;
-	background-color: var(--header-nav-background-color);
-	padding: .4em;
+	display: block;
+	background: transparent;
 	block-size: 100%;
 	inline-size: 100%;
 	overflow: hidden;
 	color: var(--header-nav-text-color);
 }
 
-language-selector + link-button {
+mobile-menu-hover-target {
+	display: block;
+	margin-inline-start: auto;
+	background: transparent;
+	block-size: max-content;
+	inline-size: max-content;
+	overflow: hidden;
+}
+
+menu {
+	display: none;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	margin-block: 0;
+	border-block-end: 1px solid var(--header-nav-border-color);
+	border-inline: 1px solid var(--header-nav-border-color);
+	background-color: var(--header-nav-background-color);
+	padding-inline-start: 0;
+	block-size: 100%;
+	overflow: hidden;
+}
+
+mobile-menu-hover-target[data-js-data-mode="button-hidden"] mobile-menu-button {
+	margin-inline-start: auto;
+	border-block-start: 1px solid var(--header-nav-border-color);
+	border-inline: 1px solid var(--header-nav-border-color);
+	background-color: var(--header-nav-background-color);
+	inline-size: max-content;
+	max-inline-size: 100%;
+}
+
+mobile-menu-hover-target[data-js-data-mode="button-hidden"]:hover menu,
+mobile-menu-hover-target[data-js-data-mode="button-hidden"]:hover menu:active {
+	display: block;
+	margin-inline-start: auto;
+	inline-size: max-content;
+	max-inline-size: 100%;
+}
+
+li {
+	list-style-type: "";
+}
+
+li:has(language-selector) {
 	margin-inline-start: auto;
 }
 
-language-selector + link-button,
-link-button:first-of-type {
-	margin-inline-start: 0;
+li:has(language-selector) + li {
+	margin-inline-start: auto;
 }
 
-link-button:last-of-type {
+li:first-of-type {
+	margin-inline: 0 auto;
+}
+
+li:last-of-type {
 	margin-inline-end: 0;
+}
+
+mobile-menu-hover-target:hover menu li,
+mobile-menu-hover-target:active menu li {
+	inline-size: max-content;
+	max-inline-size: 100%;
 }
 
 language-selector {
 	display: block;
 	align-self: center;
 	margin-block: auto;
-	margin-inline-start: auto;
 	border: none;
 	padding-inline: .4em;
 }
 
 @media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
-	:host {
+	menu {
 		display: flex;
+		inline-size: 100%;
+	}
+
+	mobile-menu-button {
+		display: none;
 	}
 }

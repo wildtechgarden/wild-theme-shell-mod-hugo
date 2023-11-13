@@ -1,3 +1,82 @@
+/* CSS for generic elements layout */
+
+:root {
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	position: relative;
+	top: 0;
+	left: 0;
+	grid-template-rows: minmax(max-content, 1fr) 20fr;
+	z-index: 3;
+	margin: 0;
+	padding: 0;
+	block-size: 100vh;
+	inline-size: 100%;
+	overflow: hidden;
+}
+
+a {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+h1 {
+	margin-block-start: .8em;
+}
+
+body > header {
+	inline-size: 100%;
+}
+
+body > header > top-nav {
+	display: block;
+	block-size: max-content;
+	inline-size: 100%;
+	overflow: hidden;
+}
+
+scrollable-section {
+	display: grid;
+	position: relative;
+	top: 0;
+	left: 0;
+	grid-template-rows: minmax(max-content, 20fr) max-content;
+	block-size: auto;
+	inline-size: 100%;
+}
+
+main {
+	display: grid;
+	grid-template-rows: max-content minmax(max-content, 20fr) max-content;
+	inline-size: 100%;
+}
+
+main-footer {
+	justify-self: end;
+}
+
+/* @media screen and (width >= 700px) and (resolution < 2dppx), screen and (width >= 1200px) and (resolution >= 2dppx) {
+} */
+
+@media screen and (width >= 700px) and (resolution < 2dppx) {
+	main {
+		margin-inline: .6em;
+	}
+}
+
+@media screen and (width >= 1200px) and (resolution >= 2dppx) {
+	main {
+		margin-inline: .6em;
+	}
+}
+
 top-nav link-button {
 	text-overflow: ellipsis;
 	white-space: nowrap;

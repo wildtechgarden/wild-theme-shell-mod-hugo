@@ -11,15 +11,22 @@
 	"wtg-shell/components/top-nav.css"
 	"wtg-shell/components/common.css"
 ) -}}
+{{- $scriptFiles := (slice
+	"wtg-shell/js/enhanced-no-js.js"
+) -}}
 {{- $componentDict := (dict
 	"styleFiles" $styleFiles
+	"scriptFiles" $scriptFiles
+	"jsExec" "launchOnLoad"
 	"Page" $curPage
 	"componentName" "top-nav"
 	"ariaRole" "navigation"
 ) -}}
-{{- if templates.Exists "partials/wtg-theme/components/common.html" -}}
-	{{- partialCached "wtg-theme/components/common.html" $componentDict (printf "%s%s" "top-nav" (delimit $styleFiles " ")) -}}
-{{- else if templates.Exists "partials/wtg-shell/components/common.html" -}}
-	{{- partialCached "wtg-shell/components/common.html" $componentDict (printf "%s%s" "top-nav" (delimit $styleFiles " ")) -}}
+<top-nav role="navigation" class="no-js">
+{{- if templates.Exists "partials/wtg-theme/components/component-contents.html" -}}
+	{{- partialCached "wtg-theme/components/component-contents.html" $componentDict (printf "%s%s" "top-nav" (delimit $styleFiles " ") (delimit $scriptFiles " ")) -}}
+{{- else if templates.Exists "partials/wtg-shell/components/component-contents.html" -}}
+	{{- partialCached "wtg-shell/components/component-contents.html" $componentDict (printf "%s%s" "top-nav" (delimit $styleFiles " ") (delimit $scriptFiles " ")) -}}
 {{- end -}}
+</top-nav>
 {{- /* Remove trailing whitespace */ -}}

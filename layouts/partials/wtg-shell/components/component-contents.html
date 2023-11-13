@@ -1,27 +1,41 @@
 {{- $ctx := . -}}
 {{- $curPage := .Page }}
+{{- $componentName := .componentName -}}
 	<template shadowrootmode="open">
-	{{- with .styleFiles -}}
-		{{- range . -}}
+{{- with .styleFiles -}}
+	{{- range . -}}
 		{{- $css := resources.Get . }}
 		{{- with $css -}}
 			{{- if ne hugo.Environment "development" -}}
 				{{- $css = . | resources.Minify | resources.Fingerprint }}
-		<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
 			{{- else }}
-		<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+	<link rel="stylesheet" href="{{ $css.RelPermalink }}">
 			{{- end -}}
 		{{- end -}}
 	{{- end -}}
 {{- end }}
-{{- with .scriptFile -}}
-	{{- $js := resources.Match . }}
-	{{- with $js -}}
-		{{- if ne hugo.Environment "development" -}}
-			{{- $js = . | minify | fingerprint }}
+{{- $scriptFiles := .scriptFiles -}}
+{{- $jsExec := .jsExec -}}
+{{- with .scriptFiles -}}
+	{{- $jsResources := (slice) -}}
+	{{- range . -}}
+		{{- $js := resources.Get . }}
+		{{- with $js -}}
+			{{- $jsResources = $jsResources | append . -}}
+		{{- end -}}
+		{{- if gt (len $jsResources) 0 -}}
+			{{- $scriptHash := (delimit $scriptFiles " " | crypto.FNV32a) -}}
+			{{- $scriptLaunchOnLoad := printf "document.querySelectorAll(\"%s\").forEach(function (element) { element.addEventListener(\"shadowLoaded\", %sEvent); }); document.querySelectorAll(\"%s\").forEach(function (element) { element.dispatchEvent(new Event(\"shadowLoaded\"))});" $componentName $jsExec $componentName -}}
+			{{- $launchOnLoad := resources.FromString (printf "assets/components/js/%s-launchOnLoad-%d.js" $componentName $scriptHash) $scriptLaunchOnLoad -}}
+			{{- $jsResources = $jsResources | append $launchOnLoad -}}
+			{{- if ne hugo.Environment "development" -}}
+				{{- $js = $jsResources | resources.Concat (printf "assets/components/js/%s-%d.js" $componentName $scriptHash) | minify | fingerprint -}}
 		<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-		{{- else }}
-		<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+			{{- else }}
+				{{- $js = $jsResources | resources.Concat (printf "assets/components/js/%s-%d.js" $componentName $scriptHash) -}}
+		<script src="{{ $js.RelPermalink }}"></script>
+			{{- end -}}
 		{{- end -}}
 	{{- end -}}
 {{- end -}}
